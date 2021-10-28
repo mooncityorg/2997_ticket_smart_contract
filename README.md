@@ -15,4 +15,3 @@ pip3 install -r requirements.txt
 [`dash`](https://pypi.org/project/dash/)&nbsp; [`plotly`](https://pypi.org/project/plotly/)&nbsp; [`gunicorn`]()&nbsp;  [`dash-core-components`](https://pypi.org/project/dash-core-components/)&nbsp; [`dash-html-components`](https://pypi.org/project/dash-html-components/)&nbsp;
 
 [`asyncio`](https://pypi.org/project/asyncio/)&nbsp; [`mysql-connector`](https://pypi.org/project/mysql-connector/)&nbsp; [`selenium`](https://pypi.org/project/selenium/)&nbsp; [`selenium-webdriver`](https://pypi.org/project/webdriver-manager/)
-##
