@@ -25,5 +25,8 @@
   "divDivDivStyleA" : {
     "marginTop" : 25,
     "textAlign" : "center"
+  },
+  "divDivDivStyleB" : {
+    "textAlign" : "center"
   }
 }
