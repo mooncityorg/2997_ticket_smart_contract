@@ -2,10 +2,10 @@ from os import path
 from json import load
 
 
-def getJSON(arg: str):
+def getJSON(file: str) -> dict:
     '''  '''
 
-    directory = path.realpath(__file__)[:-17]
-    with open(f'{directory}{arg}', 'r') as file:
+    directory = path.realpath(__file__)[:-16]
+    with open(f'{directory}{file}', 'r') as fileIn:
 
-        return load(file)
+        return load(fileIn)
