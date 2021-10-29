@@ -1,18 +1,11 @@
 from os import path
 from json import load
 
-class Tool:
 
-    def __init__(self):
+def getJSON(arg: str):
+    '''  '''
 
-        self.path = path.realpath(__file__)[:-17]
+    directory = path.realpath(__file__)[:-17]
+    with open(f'{directory}{arg}', 'r') as file:
 
-
-    def getJSON(self, file: str):
-        '''  '''
-
-        with open(f'{path}{file}', 'r') as fileVariable:
-
-            return load(fileVariable)
-
-
+        return load(file)
