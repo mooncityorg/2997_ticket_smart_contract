@@ -5,15 +5,16 @@
     "right" : 0,
     "bottom" : 0,
     "position" : "fixed",
-    "backgroundColor" : "#FBD603"
+    "backgroundColor" : "rgb(0, 82, 163)"
   },
   "divDivStyle" : {
-    "top" : 80,
+    "top" : 60,
     "left"  : 80,
     "right" : 80,
-    "bottom" : 80,
+    "bottom" : 100,
     "borderRadius" : 10,
     "position" : "fixed",
+    "border" : "5px solid #fed52f ",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   }
 }
