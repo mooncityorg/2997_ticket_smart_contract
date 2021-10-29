@@ -3,7 +3,6 @@ from json import load
 
 class Tool:
 
-
     def __init__(self):
 
         self.path = path.realpath(__file__)[:-17]
