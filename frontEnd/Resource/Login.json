@@ -4,7 +4,8 @@
     "left"  : 0,
     "right" : 0,
     "bottom" : 0,
-    "background-color" : "#FBD603"
+    "position" : "fixed",
+    "backgroundColor" : "#FBD603"
   },
   "divDivStyle" : {
     "top" : 80,
