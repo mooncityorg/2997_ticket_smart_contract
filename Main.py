@@ -2,7 +2,7 @@ from dash import dcc
 from dash import Dash
 from dash import html
 
-from Back End.Tools import
+from backEnd.Tools import Tools
 
 application = Dash(suppress_callback_exceptions = True)
 server = application.server
@@ -12,8 +12,7 @@ application.layout = html.Div([
 
     html.Div(children = [
 
-        html.H1(children = 'ok'),
-        html.H1(children = 'me')
+        html.H1('ok')
 
     ])
 
@@ -21,5 +20,10 @@ application.layout = html.Div([
 
 
 if (__name__ == '__main__'):
+
+    x2 = Tools()
+
+    p = x2.getPath()
+    print(p)
 
     application.run_server(debug = True)
