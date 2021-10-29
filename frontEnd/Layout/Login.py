@@ -13,13 +13,11 @@ loginLayout = html.Div(id = 'divId',
                                         html.Div(id = 'divDivDivId',
                                                  children = [
 
-
+                                                     html.Img(src = style['divDivDivImgSrc'],
+                                                              style = style['divDivDivImgStyle'])
 
                                                  ], style = style['divDivDivStyle'])
 
                                     ], style = style['divDivStyle'])
 
                        ], style = style['divStyle'])
-
-
-#

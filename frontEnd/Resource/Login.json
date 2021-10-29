@@ -16,5 +16,14 @@
     "position" : "fixed",
     "border" : "5px solid #fed52f ",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
+  },
+  "divDivDivImgSrc" : "https://2.bp.blogspot.com/-0Dy52Hi8_Kw/UXAZK8YX9uI/AAAAAAAAB34/57cWrXS6uXU/s320/UMKC-logo.png",
+  "divDivDivImgStyle" : {
+    "width" : 325,
+    "height" : 150
+  },
+  "divDivDivStyle" : {
+    "marginTop" : 25,
+    "textAlign" : "center"
   }
 }
