@@ -53,6 +53,5 @@ loginLayout = html.Div(id = 'divId',
 
 # this is where callback goes
 # we grab states of username and password
-# input is button id
-# output is uncertain
+# input is button id # output is uncertain
 # back end is called here

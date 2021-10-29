@@ -27,6 +27,7 @@
     "textAlign" : "center"
   },
   "divDivDivStyleB" : {
+    "marginTop" : 75,
     "textAlign" : "center"
   }
 }
