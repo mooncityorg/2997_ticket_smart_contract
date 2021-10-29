@@ -14,3 +14,5 @@ class Tool:
         with open(f'{path}{file}', 'r') as fileVariable:
 
             return load(fileVariable)
+
+
