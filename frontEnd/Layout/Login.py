@@ -4,8 +4,14 @@ from backEnd.Tool import getJSON
 
 
 style = getJSON(file = '/frontEnd/Resource/Login.json')
-loginLayout = html.Div([
+loginLayout = html.Div(id = 'divId',
+                       children = [
 
-    html.H1('h1')
+                           html.Div(id = 'divDivId',
+                                    children = [
 
-], style = style['divStyle'])
+                                        #
+
+                                    ], style = style['divDivStyle'])
+
+                       ], style = style['divStyle'])
