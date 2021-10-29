@@ -7,17 +7,33 @@ style = getJSON(file = '/frontEnd/Resource/Login.json')
 loginLayout = html.Div(id = 'divId',
                        children = [
 
+                           # Background <
                            html.Div(id = 'divDivId',
                                     children = [
 
-                                        html.Div(id = 'divDivDivId',
+                                        # UMKC Logo <
+                                        html.Div(id = 'divDivDivIdA',
                                                  children = [
 
                                                      html.Img(src = style['divDivDivImgSrc'],
                                                               style = style['divDivDivImgStyle'])
 
-                                                 ], style = style['divDivDivStyle'])
+                                                 ], style = style['divDivDivStyleA']),
+
+                                        # >
+
+                                        # Input <
+                                        html.Div(id = 'divDivDivIdB',
+                                                 children = [
+
+
+
+                                                 ], style = style['divDivDivStyleB'])
+
+                                        # >
 
                                     ], style = style['divDivStyle'])
+
+                           # >
 
                        ], style = style['divStyle'])
