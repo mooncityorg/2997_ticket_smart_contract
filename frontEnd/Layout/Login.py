@@ -92,7 +92,7 @@ loginLayout = html.Div(
                         "background": "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"}),
                         html.Div(
                             children=[
-                                html.Div(html.Img(src=style['divDivDivImgSrc']),
+                                html.Div(html.Img(src="https://2.bp.blogspot.com/-0Dy52Hi8_Kw/UXAZK8YX9uI/AAAAAAAAB34/57cWrXS6uXU/s320/UMKC-logo.png"),
                                         style={"top": 60,
                                         "left": 80,
                                         "right": 80,
