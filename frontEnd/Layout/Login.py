@@ -40,11 +40,9 @@ loginLayout = html.Div(id = 'layoutId',
                            html.Div(id = 'divMarkdownId',
                                     children = [
 
-                                        dcc.Markdown('''
-                                        
-                                        # [test](https://github.com/)
-                                        
-                                        ''')
+                                        dcc.Markdown(id = 'markdownId',
+                                                     style = style['markdownStyle'],
+                                                     children = '# ok')
 
                                     ], style = style['divMarkdownStyle'])
 

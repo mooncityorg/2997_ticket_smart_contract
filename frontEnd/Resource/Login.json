@@ -18,16 +18,23 @@
     "right" : 80,
     "bottom" : 100,
     "borderRadius" : 10,
-    "position" : "absolute",
+    "position" : "fixed",
     "border" : "5px solid #FFD52F",
     "backgroundPosition" : "center",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
+  },
+  "markdownStyle" : {
+    "top" : 1200,
+    "left" : 80,
+    "right" : 80,
+    "bottom" : 0,
+    "position" : "fixed"
   },
   "divMarkdownStyle" : {
     "top" : 1215,
     "left" : 80,
     "right" : 80,
-    "bottom" : 50,
+    "bottom" : 60,
     "position" : "fixed",
     "textAlign" : "center",
     "backgroundColor" : "#FFD52F",
