@@ -1,5 +1,5 @@
 {
-  "divStyle" : {
+  "layoutStyle" : {
     "top" : 0,
     "left"  : 0,
     "right" : 0,
@@ -7,7 +7,7 @@
     "position" : "fixed",
     "backgroundColor" : "#04487F"
   },
-  "divDivStyle" : {
+  "divBackgroundStyle" : {
     "top" : 60,
     "left"  : 80,
     "right" : 80,
@@ -18,16 +18,16 @@
     "backgroundPosition" : "center",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
-  "divDivDivImgSrc" : "https://2.bp.blogspot.com/-0Dy52Hi8_Kw/UXAZK8YX9uI/AAAAAAAAB34/57cWrXS6uXU/s320/UMKC-logo.png",
-  "divDivDivImgStyle" : {
+  "imgSrc" : "https://2.bp.blogspot.com/-0Dy52Hi8_Kw/UXAZK8YX9uI/AAAAAAAAB34/57cWrXS6uXU/s320/UMKC-logo.png",
+  "imgStyle" : {
     "width" : 325,
     "height" : 150
   },
-  "divDivDivStyleA" : {
+  "divImageStyle" : {
     "marginTop" : 25,
     "textAlign" : "center"
   },
-  "divDivDivStyleB" : {
+  "divInputStyle" : {
     "marginTop" : 75,
     "textAlign" : "center"
   }
