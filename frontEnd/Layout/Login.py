@@ -26,7 +26,39 @@ loginLayout = html.Div(id = 'layoutId',
                                         html.Div(id = 'divInputId',
                                                  children = [
 
+                                                     # Username <
+                                                     html.Div(id = 'divUsernameId',
+                                                              children = [
 
+                                                                  dcc.Input(type = 'text',
+                                                                            id = 'inputUsernameId',
+                                                                            placeholder = 'Username')
+
+                                                              ], style = style['divUsernameStyle']),
+
+                                                     # >
+
+                                                     # Password <
+                                                     html.Div(id = 'divPasswordId',
+                                                              children = [
+
+                                                                  dcc.Input(type = 'password',
+                                                                            id = 'inputPasswordId',
+                                                                            placeholder = 'Password')
+
+                                                              ], style = style['divPasswordStyle']),
+
+                                                     # >
+
+                                                     # Submit <
+                                                     html.Div(id = 'divSubmitId',
+                                                              children = [
+
+
+
+                                                              ], style = style['divSubmitStyle'])
+
+                                                     # >
 
                                                  ], style = style['divInputStyle'])
 
@@ -41,8 +73,11 @@ loginLayout = html.Div(id = 'layoutId',
                                     children = [
 
                                         dcc.Markdown(id = 'markdownId',
-                                                     style = style['markdownStyle'],
-                                                     children = '### **{}**'.format(''.join(i for i in style['markdownChildren'])))
+                                                     children = [
+
+                                                         '{}'.format(''.join(i for i in style['markdownChildren']))
+
+                                                     ], style = style['markdownStyle'])
 
                                     ], style = style['divMarkdownStyle'])
 

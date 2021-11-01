@@ -8,8 +8,17 @@
     "marginTop" : 25,
     "textAlign" : "center"
   },
+  "divUsernameStyle" : {
+
+  },
+  "divPasswordStyle" : {
+
+  },
+  "divSubmitStyle" : {
+
+  },
   "divInputStyle" : {
-    "marginTop" : 75,
+    "marginTop" : 125,
     "textAlign" : "center"
   },
   "divBackgroundStyle" : {
@@ -32,7 +41,7 @@
     "fontFamily" : "sans serif"
   },
   "markdownChildren" : [
-    "[Webmail](https://www.umkc.edu/email/) &nbsp; &nbsp; ",
+    "### [Webmail](https://www.umkc.edu/email/) &nbsp; &nbsp; ",
     "[Pathway](https://umkc.umsystem.edu/) &nbsp; &nbsp; ",
     "[Canvas](https://umsystem.instructure.com/) &nbsp; &nbsp; ",
     "[UMKC Connect](https://umkc.starfishsolutions.com/starfish-ops/support/login.html) &nbsp; &nbsp; ",
