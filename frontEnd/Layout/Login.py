@@ -36,7 +36,7 @@ loginLayout = html.Div(id = 'layoutId',
                                                                             placeholder = 'Username',
                                                                             style = style['usernameStyle'])
 
-                                                              ], style = style['divUsernameStyle']),
+                                                              ]),
 
                                                      # >
 
@@ -50,7 +50,7 @@ loginLayout = html.Div(id = 'layoutId',
                                                                             placeholder = 'Password',
                                                                             style = style['passwordStyle'])
 
-                                                              ], style = style['divPasswordStyle']),
+                                                              ]),
 
                                                      # >
 
@@ -58,9 +58,20 @@ loginLayout = html.Div(id = 'layoutId',
                                                      html.Div(id = 'divSubmitId',
                                                               children = [
 
-                                                                  ###
 
-                                                              ], style = style['divSubmitStyle'])
+
+                                                              ]),
+
+                                                     # >
+
+                                                     # Forgot Password <
+                                                     html.Div(id = 'divForgotPasswordId',
+                                                              children = [
+
+
+
+                                                              ])
+
 
                                                      # >
 
@@ -72,18 +83,18 @@ loginLayout = html.Div(id = 'layoutId',
 
                            # >
 
-                           # Markdown <
-                           html.Div(id = 'divMarkdownId',
+                           # Redirect <
+                           html.Div(id = 'divRedirectId',
                                     children = [
 
-                                        dcc.Markdown(id = 'markdownId',
+                                        dcc.Markdown(id = 'redirectId',
                                                      children = [
 
-                                                         '{}'.format(''.join(i for i in style['markdownChildren']))
+                                                         '{}'.format(''.join(i for i in style['redirectChildren']))
 
-                                                     ], style = style['markdownStyle'])
+                                                     ], style = style['redirectStyle'])
 
-                                    ], style = style['divMarkdownStyle'])
+                                    ], style = style['divRedirectStyle'])
 
                            # >
 

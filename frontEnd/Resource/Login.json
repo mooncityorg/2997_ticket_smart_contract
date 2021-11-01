@@ -9,20 +9,18 @@
     "textAlign" : "center"
   },
   "usernameStyle" : {
-    "padding" : 15,
-    "fontFamily" : "sans serif"
-  },
-  "divUsernameStyle" : {
-    "margin" : 30,
-    "borderRadius" : 10
+    "padding" : 20,
+    "borderRadius" : 5,
+    "fontFamily" : "sans serif",
+    "border" : "5px solid #FFD52F"
   },
   "passwordStyle" : {
-    "padding" : 15,
-    "fontFamily" : "sans serif"
-  },
-  "divPasswordStyle" : {
-    "margin" : 30,
-    "borderRadius" : 10
+    "padding" : 20,
+    "marginTop" : 30,
+    "borderRadius" : 5,
+    "fontFamily" : "sans serif",
+    "border" : "5px solid #FFD52F"
+
   },
   "divSubmitStyle" : {
 
@@ -42,7 +40,7 @@
     "backgroundPosition" : "center",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
-  "markdownStyle" : {
+  "redirectStyle" : {
     "top" : 1205,
     "left" : 80,
     "right" : 80,
@@ -50,14 +48,14 @@
     "position" : "fixed",
     "fontFamily" : "sans serif"
   },
-  "markdownChildren" : [
+  "redirectChildren" : [
     "### [Webmail](https://www.umkc.edu/email/) &nbsp; &nbsp; ",
     "[Pathway](https://umkc.umsystem.edu/) &nbsp; &nbsp; ",
     "[Canvas](https://umsystem.instructure.com/) &nbsp; &nbsp; ",
     "[UMKC Connect](https://umkc.starfishsolutions.com/starfish-ops/support/login.html) &nbsp; &nbsp; ",
     "[UMKC Roo News](https://info.umkc.edu/unews/) &nbsp; &nbsp; "
   ],
-  "divMarkdownStyle" : {
+  "divRedirectStyle" : {
     "top" : 1215,
     "left" : 80,
     "right" : 80,
