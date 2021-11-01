@@ -72,7 +72,12 @@ loginLayout = html.Div(id = 'layoutId',
                                                      html.Div(id = 'divForgotPasswordId',
                                                               children = [
 
+                                                                  dcc.Markdown(id = 'forgotPasswordId',
+                                                                               children = [
 
+                                                                                   style['forgotPasswordChildren']
+
+                                                                               ])
 
                                                               ])
 
