@@ -30,9 +30,11 @@ loginLayout = html.Div(id = 'layoutId',
                                                      html.Div(id = 'divUsernameId',
                                                               children = [
 
-                                                                  dcc.Input(type = 'text',
+                                                                  dcc.Input(value = '',
+                                                                            type = 'text',
                                                                             id = 'inputUsernameId',
-                                                                            placeholder = 'Username')
+                                                                            placeholder = 'Username',
+                                                                            style = style['usernameStyle'])
 
                                                               ], style = style['divUsernameStyle']),
 
@@ -42,9 +44,11 @@ loginLayout = html.Div(id = 'layoutId',
                                                      html.Div(id = 'divPasswordId',
                                                               children = [
 
-                                                                  dcc.Input(type = 'password',
+                                                                  dcc.Input(value = '',
+                                                                            type = 'password',
                                                                             id = 'inputPasswordId',
-                                                                            placeholder = 'Password')
+                                                                            placeholder = 'Password',
+                                                                            style = style['passwordStyle'])
 
                                                               ], style = style['divPasswordStyle']),
 

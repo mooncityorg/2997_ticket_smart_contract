@@ -8,16 +8,27 @@
     "marginTop" : 25,
     "textAlign" : "center"
   },
+  "usernameStyle" : {
+    "padding" : 15,
+    "fontFamily" : "sans serif"
+  },
   "divUsernameStyle" : {
+    "margin" : 30,
+    "borderRadius" : 10
+  },
+  "passwordStyle" : {
+    "padding" : 15,
+    "fontFamily" : "sans serif"
   },
   "divPasswordStyle" : {
-
+    "margin" : 30,
+    "borderRadius" : 10
   },
   "divSubmitStyle" : {
 
   },
   "divInputStyle" : {
-    "marginTop" : 125,
+    "marginTop" : 200,
     "textAlign" : "center"
   },
   "divBackgroundStyle" : {
