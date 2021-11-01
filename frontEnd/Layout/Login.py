@@ -54,7 +54,7 @@ loginLayout = html.Div(id = 'layoutId',
                                                      html.Div(id = 'divSubmitId',
                                                               children = [
 
-                                                                  #
+                                                                  ##
 
                                                               ], style = style['divSubmitStyle'])
 
