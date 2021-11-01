@@ -1,6 +1,7 @@
 from dash import dcc
 from dash import html
-from backEnd.Tool import getJSON
+from backEnd.Tool import getJSON, application
+from dash.dependencies import Input, Output, State
 
 
 style = getJSON(file = '/frontEnd/Resource/Login.json')
@@ -45,6 +46,7 @@ loginLayout = html.Div(id = 'layoutId',
                                                               children = [
 
                                                                   dcc.Input(value = '',
+                                                                            debounce = True,
                                                                             type = 'password',
                                                                             id = 'inputPasswordId',
                                                                             placeholder = 'Password',
@@ -108,3 +110,29 @@ loginLayout = html.Div(id = 'layoutId',
                            # >
 
                        ], style = style['layoutStyle'])
+
+
+@application.callback(Output('layoutId', 'children'),
+                      Input('buttonSubmitId', 'n_clicks'),
+                      State('layoutId', 'children'),
+                      State('inputUsernameId', 'value'),
+                      State('inputPasswordId', 'value'))
+def submitFunction(click: int, layout: list, username: str, password: str):
+    '''  '''
+
+
+
+    # if (clicked) <
+    if (click != 0):
+
+        print()
+        print('username: ', username)
+        print('password: ', password)
+
+        return layout
+
+    # >
+
+    else:
+
+        return layout

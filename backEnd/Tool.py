@@ -1,5 +1,10 @@
 from os import path
 from json import load
+from dash import Dash
+
+
+application = Dash(suppress_callback_exceptions = True)
+server = application.server
 
 
 def getJSON(file: str) -> dict:

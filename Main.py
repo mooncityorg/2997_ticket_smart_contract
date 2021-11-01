@@ -1,11 +1,8 @@
-from dash import Dash
 from frontEnd.Layout.Login import loginLayout
-
-
-application = Dash(suppress_callback_exceptions = True)
-server, application.layout = application.server, loginLayout
+from backEnd.Tool import application
 
 
 if (__name__ == '__main__'):
 
+    application.layout = loginLayout
     application.run_server(debug = True)
