@@ -24,8 +24,10 @@
     "border" : "5px solid #FFD52F"
 
   },
-  "divSubmitStyle" : {
-
+  "submitStyle" : {
+    "marginTop" : 30,
+    "borderRadius" : 5,
+    "fontFamily" : "sans serif"
   },
   "divInputStyle" : {
     "marginTop" : 200,

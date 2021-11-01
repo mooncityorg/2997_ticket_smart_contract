@@ -58,7 +58,11 @@ loginLayout = html.Div(id = 'layoutId',
                                                      html.Div(id = 'divSubmitId',
                                                               children = [
 
-
+                                                                  html.Button(type = 'submit',
+                                                                              n_clicks = 0,
+                                                                              children = 'Submit',
+                                                                              id = 'buttonSubmitId',
+                                                                              style = style['submitStyle'])
 
                                                               ]),
 
