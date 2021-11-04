@@ -10,7 +10,7 @@
   },
   "usernameStyle" : {
     "padding" : 16,
-    "borderRadius" : 5,
+    "borderRadius" : 10,
     "textAlign" : "center",
     "fontFamily" : "sans serif",
     "border" : "5px solid #FFD52F"
@@ -23,7 +23,7 @@
   },
   "passwordStyle" : {
     "padding" : 16,
-    "borderRadius" : 5,
+    "borderRadius" : 10,
     "textAlign" : "center",
     "fontFamily" : "sans serif",
     "border" : "5px solid #FFD52F"
