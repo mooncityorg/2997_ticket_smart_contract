@@ -46,6 +46,7 @@ loginLayout = html.Div(id = 'layoutId',
                                                               children = [
 
                                                                   dcc.Input(value = '',
+                                                                            n_submit = 0,
                                                                             debounce = True,
                                                                             type = 'password',
                                                                             id = 'inputPasswordId',
@@ -92,11 +93,14 @@ loginLayout = html.Div(id = 'layoutId',
 
 @application.callback(Output('layoutId', 'children'),
                       Input('buttonLoginId', 'n_clicks'),
+                      Input('inputPasswordId', 'n_submit'),
                       State('layoutId', 'children'),
                       State('inputUsernameId', 'value'),
                       State('inputPasswordId', 'value'))
-def submitFunction(click: int, layout: list, username: str, password: str):
+def submitFunction(click: int, submit: int, layout: list, username: str, password: str):
     '''  '''
+
+    print(submit)
 
     # if (clicked) <
     if (click != 0):
