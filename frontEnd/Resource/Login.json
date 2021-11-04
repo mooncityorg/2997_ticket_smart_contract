@@ -35,13 +35,19 @@
     "position" : "fixed"
   },
   "loginStyle" : {
+    "paddingTop" : 5,
+    "paddingLeft" : 20,
+    "paddingRight" : 20,
+    "paddingBottom" : 5,
     "borderRadius" : 5,
-    "fontFamily" : "sans serif"
+    "fontFamily" : "sans serif",
+    "backgroundColor" : "#0066CC",
+    "border" : "5px solid #0066CC"
   },
   "divLoginStyle" : {
     "left" : 80,
     "right" : 80,
-    "top" : "56%",
+    "top" : "58%",
     "position" : "fixed"
   },
   "divInputStyle" : {
