@@ -37,7 +37,7 @@ loginLayout = html.Div(id = 'layoutId',
                                                                             placeholder = 'Username',
                                                                             style = style['usernameStyle'])
 
-                                                              ]),
+                                                              ], style = style['divUsernameStyle']),
 
                                                      # >
 
@@ -52,41 +52,34 @@ loginLayout = html.Div(id = 'layoutId',
                                                                             placeholder = 'Password',
                                                                             style = style['passwordStyle'])
 
-                                                              ]),
+                                                              ], style = style['divPasswordStyle']),
 
                                                      # >
 
-                                                     # Submit <
-                                                     html.Div(id = 'divSubmitId',
+                                                     # Login <
+                                                     html.Div(id = 'divLoginId',
                                                               children = [
 
-                                                                  html.Button(type = 'submit',
-                                                                              n_clicks = 0,
-                                                                              children = 'Submit',
-                                                                              id = 'buttonSubmitId',
-                                                                              style = style['submitStyle'])
+                                                                  html.Button(n_clicks = 0,
+                                                                              children = 'Login',
+                                                                              id = 'buttonLoginId',
+                                                                              style = style['loginStyle'])
 
-                                                              ]),
-
-                                                     # >
-
-                                                     # Forgot Password <
-                                                     html.Div(id = 'divForgotPasswordId',
-                                                              children = [
-
-                                                                  dcc.Markdown(id = 'forgotPasswordId',
-                                                                               children = [
-
-                                                                                   style['forgotPasswordChildren']
-
-                                                                               ])
-
-                                                              ])
-
+                                                              ], style = style['divLoginStyle']),
 
                                                      # >
 
-                                                 ], style = style['divInputStyle'])
+                                                 ], style = style['divInputStyle']),
+
+                                        # >
+
+                                        # Redirect <
+                                        dcc.Markdown(id = 'redirectId',
+                                                     children = [
+
+                                                         ('### ' + ''.join(i for i in style['redirectChildren']))
+
+                                                     ], style = style['redirectStyle'])
 
                                         # >
 
@@ -94,33 +87,16 @@ loginLayout = html.Div(id = 'layoutId',
 
                            # >
 
-                           # Redirect <
-                           html.Div(id = 'divRedirectId',
-                                    children = [
-
-                                        dcc.Markdown(id = 'redirectId',
-                                                     children = [
-
-                                                         '{}'.format(''.join(i for i in style['redirectChildren']))
-
-                                                     ], style = style['redirectStyle'])
-
-                                    ], style = style['divRedirectStyle'])
-
-                           # >
-
                        ], style = style['layoutStyle'])
 
 
 @application.callback(Output('layoutId', 'children'),
-                      Input('buttonSubmitId', 'n_clicks'),
+                      Input('buttonLoginId', 'n_clicks'),
                       State('layoutId', 'children'),
                       State('inputUsernameId', 'value'),
                       State('inputPasswordId', 'value'))
 def submitFunction(click: int, layout: list, username: str, password: str):
     '''  '''
-
-
 
     # if (clicked) <
     if (click != 0):

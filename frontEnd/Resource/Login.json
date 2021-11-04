@@ -1,11 +1,11 @@
 {
   "imgSrc" : "https://2.bp.blogspot.com/-0Dy52Hi8_Kw/UXAZK8YX9uI/AAAAAAAAB34/57cWrXS6uXU/s320/UMKC-logo.png",
   "imgStyle" : {
-    "width" : 325,
+    "width" : 350,
     "height" : 150
   },
   "divImageStyle" : {
-    "marginTop" : 25,
+    "marginTop" : 10,
     "textAlign" : "center"
   },
   "usernameStyle" : {
@@ -15,24 +15,38 @@
     "fontFamily" : "sans serif",
     "border" : "5px solid #FFD52F"
   },
+  "divUsernameStyle" : {
+    "left" : 80,
+    "right" : 80,
+    "top" : "44%",
+    "position" : "fixed"
+  },
   "passwordStyle" : {
     "padding" : 16,
-    "marginTop" : 30,
     "borderRadius" : 5,
     "textAlign" : "center",
     "fontFamily" : "sans serif",
     "border" : "5px solid #FFD52F"
-
   },
-  "submitStyle" : {
-    "marginTop" : 30,
+  "divPasswordStyle" : {
+    "left" : 80,
+    "right" : 80,
+    "top" : "50%",
+    "position" : "fixed"
+  },
+  "loginStyle" : {
     "borderRadius" : 5,
-    "marginBottom" : 50,
     "fontFamily" : "sans serif"
   },
-  "forgotPasswordChildren" : "[Forgot Password?](https://passwordreset.microsoftonline.com/?ru=https%3a%2f%2flogin.microsoftonline.com%2fe3fefdbe-f7e9-401b-a51a-355e01b05a89%2freprocess%3fctx%3drQIIAeNisFLNKCkpsNLXL80triwuSc3Vy8wrLikqTS4pLUrVS87P1S9OzM0xKhLiEjC2qGJU_S7psuPSvBNBu3b5r2LUBuktxqc5Jz89Mw9sxCFG1XgLE1Njs5REM93kVINEXRMDo0RdC2NLA91EQzPTJEtTcxNj05QLjIwvGBlvMbEGg-z9xWRWWpRnlZ9YnFlslZeYm1psVZJsFezo62NlqGcIFslM0U3LL8pNLLFKzU3MzHFMSSlKLS7exKySapyWmpaSlKqbZp5qCbTNMEk30dQwUdfY1DQVyDEwTbSwvMDC84qFyYDjBwvjIlagH8O3u87b8abdt3t9auYXrhaGU6z6bn5-ZS4uXmm5iWEmAZY-RnkGrtraxfoGxZEZrgVGGZXhoX5e7mHmiYal5bZGVoYT2HhPsTF8YGPsYGeYxc6wi5OUQDrAywAA0&mkt=en-US&hosted=0&device_platform=Linux)",
+  "divLoginStyle" : {
+    "left" : 80,
+    "right" : 80,
+    "top" : "56%",
+    "position" : "fixed"
+  },
   "divInputStyle" : {
-    "marginTop" : 300,
+    "top" : "50%",
+    "position" : "fixed",
     "textAlign" : "center"
   },
   "divBackgroundStyle" : {
@@ -42,36 +56,27 @@
     "bottom" : 100,
     "borderRadius" : 10,
     "position" : "fixed",
+    "borderBottomWidth" : 35,
+    "borderBottomStyle" : "solid",
     "border" : "5px solid #FFD52F",
     "backgroundPosition" : "center",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
   "redirectStyle" : {
-    "top" : 1205,
     "left" : 80,
     "right" : 80,
-    "bottom" : 0,
+    "bottom" : 87,
     "position" : "fixed",
+    "textAlign" : "center",
     "fontFamily" : "sans serif"
   },
   "redirectChildren" : [
-    "### [Webmail](https://www.umkc.edu/email/) &nbsp; &nbsp; ",
+    "[Webmail](https://www.umkc.edu/email/) &nbsp; &nbsp; ",
     "[Pathway](https://umkc.umsystem.edu/) &nbsp; &nbsp; ",
     "[Canvas](https://umsystem.instructure.com/) &nbsp; &nbsp; ",
     "[UMKC Connect](https://umkc.starfishsolutions.com/starfish-ops/support/login.html) &nbsp; &nbsp; ",
     "[UMKC Roo News](https://info.umkc.edu/unews/) &nbsp; &nbsp; "
   ],
-  "divRedirectStyle" : {
-    "top" : 1215,
-    "left" : 80,
-    "right" : 80,
-    "bottom" : 75,
-    "position" : "fixed",
-    "textAlign" : "center",
-    "backgroundColor" : "#FFD52F",
-    "borderBottomLeftRadius" : 10,
-    "borderBottomRightRadius" : 10
-  },
   "layoutStyle" : {
     "top" : 0,
     "left"  : 0,
