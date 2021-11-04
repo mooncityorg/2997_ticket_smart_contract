@@ -39,7 +39,7 @@
     "paddingLeft" : 20,
     "paddingRight" : 20,
     "paddingBottom" : 5,
-    "borderRadius" : 5,
+    "borderRadius" : 10,
     "fontFamily" : "sans serif",
     "backgroundColor" : "#0066CC",
     "border" : "5px solid #0066CC"
