@@ -5,8 +5,20 @@ from dash.dependencies import Input, Output, State
 
 
 style = getJSON(file = '/frontEnd/Resource/Login.json')
-loginLayout = html.Div(id = 'layoutId',
+loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
+
+                           # Login Warning <
+                           dcc.ConfirmDialog(id = 'loginWarningId',
+                                             message = 'The login you entered was incorrect.'),
+
+                           # >
+
+                           # Authentication Warning <
+                           dcc.ConfirmDialog(id = 'authenticationWarningId',
+                                             message = 'The authentication you entered was incorrect.'),
+
+                           # >
 
                            # Background <
                            html.Div(id = 'divBackgroundId',
@@ -91,14 +103,28 @@ loginLayout = html.Div(id = 'layoutId',
                        ], style = style['layoutStyle'])
 
 
-@application.callback(Output('layoutId', 'children'),
-                      Input('buttonLoginId', 'n_clicks'),
-                      Input('inputPasswordId', 'n_submit'),
-                      State('layoutId', 'children'),
-                      State('inputUsernameId', 'value'),
-                      State('inputPasswordId', 'value'))
-def submitFunction(click: int, submit: int, layout: list, username: str, password: str):
-    '''  '''
+'''authenticationLayout = html.Div(id = 'authenticationLayoutId',
+                                children = [
+
+
+
+                                ])
+
+
+# note: we should output to replace the input div with an authentication box,
+# and then the authentication box should output the replacement of the entire
+# variable's children should it be successful. after authentication- we login
+# and take the data for new users. profile picture, the classes they're in. etc.
+@application.callback(Output('layoutId', 'children'), # should be transitioned to authentication
+                      Output('loginWarningId', 'displayed'), # selenium login status, kept here
+                      Input('buttonLoginId', 'n_clicks'), # if user clicks submission, keep here
+                      Input('inputPasswordId', 'n_submit'), # if user hits enter to submit, keep here
+                      State('layoutId', 'children'), # if fail, keep curernt state
+                      State('inputUsernameId', 'value'), # get username
+                      State('inputPasswordId', 'value')) # get password
+def loginFunction(click: int, submit: int, layout: list, username: str, password: str):
+    #output[1] : if (true), then new layout; if (false), then old layout
+     #   output[2] : if (incorrect), then true; if (correct), then false
 
     # if (clicked) <
     if (click != 0):
@@ -107,10 +133,13 @@ def submitFunction(click: int, submit: int, layout: list, username: str, passwor
         print('username: ', username)
         print('password: ', password)
 
-        return layout
+        return layout, True
 
     # >
 
     else:
 
-        return layout
+        return layout, False
+
+
+# a second callback that replaces the contents of input box with a verification screen'''
