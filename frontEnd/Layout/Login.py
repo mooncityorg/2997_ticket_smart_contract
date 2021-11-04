@@ -100,8 +100,6 @@ loginLayout = html.Div(id = 'layoutId',
 def submitFunction(click: int, submit: int, layout: list, username: str, password: str):
     '''  '''
 
-    print(submit)
-
     # if (clicked) <
     if (click != 0):
 
