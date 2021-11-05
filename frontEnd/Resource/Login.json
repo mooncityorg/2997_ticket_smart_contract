@@ -41,8 +41,7 @@
     "paddingBottom" : 5,
     "borderRadius" : 10,
     "fontFamily" : "sans serif",
-    "backgroundColor" : "#0066CC",
-    "border" : "5px solid #0066CC"
+    "border" : "5px solid #FFD52F"
   },
   "divLoginStyle" : {
     "left" : 80,
