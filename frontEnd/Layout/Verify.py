@@ -6,8 +6,8 @@ from dash.dependencies import Input, Output, State
 # >
 
 
-style = getJSON(file = '/frontEnd/Resource/Authentication.json')
-authenticationLayout = html.Div(id = 'authenticationLayoutId',
+style = getJSON(file = '/frontEnd/Resource/Verify.json')
+authenticationLayout = html.Div(id = 'verifyLayoutId',
                                 children = [
 
                                     # Warning <

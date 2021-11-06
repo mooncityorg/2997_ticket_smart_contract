@@ -2,7 +2,7 @@
 from dash import dcc, html
 from backEnd.Tool import getJSON, application
 from dash.dependencies import Input, Output, State
-from frontEnd.Layout.Authentication import authenticationLayout
+from frontEnd.Layout.Verify import authenticationLayout
 
 # >
 
