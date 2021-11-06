@@ -1,8 +1,8 @@
 # Import <
 from dash import dcc, html
 from backEnd.Tool import getJSON, application
+from frontEnd.Layout.Verify import verifyLayout
 from dash.dependencies import Input, Output, State
-from frontEnd.Layout.Verify import authenticationLayout
 
 # >
 
@@ -115,7 +115,7 @@ def loginFunction(click: int, submit: int, layout: list, username: str, password
     # if (Login) <
     if (click or submit):
 
-        return authenticationLayout, False
+        return verifyLayout, False
 
 
     # >
