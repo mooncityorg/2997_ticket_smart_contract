@@ -1,11 +1,6 @@
 # Import <
 from dash import dcc, html
 from backEnd.Tool import getJSON, application
-
-# >
-
-
-# Import <
 from dash.dependencies import Input, Output, State
 from frontEnd.Layout.Authentication import authenticationLayout
 
@@ -105,43 +100,21 @@ loginLayout = html.Div(id = 'loginLayoutId',
                        ], style = style['layoutStyle'])
 
 
-'''authenticationLayout = html.Div(id = 'authenticationLayoutId',
-                                children = [
-
-
-
-                                ])
-
-
-# note: we should output to replace the input div with an authentication box,
-# and then the authentication box should output the replacement of the entire
-# variable's children should it be successful. after authentication- we login
-# and take the data for new users. profile picture, the classes they're in. etc.
-@application.callback(Output('layoutId', 'children'), # should be transitioned to authentication
-                      Output('loginWarningId', 'displayed'), # selenium login status, kept here
-                      Input('buttonLoginId', 'n_clicks'), # if user clicks submission, keep here
-                      Input('inputPasswordId', 'n_submit'), # if user hits enter to submit, keep here
-                      State('layoutId', 'children'), # if fail, keep curernt state
-                      State('inputUsernameId', 'value'), # get username
-                      State('inputPasswordId', 'value')) # get password
+@application.callback(Output('warningId', 'displayed'),
+                      Output('divInputId', 'children'),
+                      Input('buttonLoginId', 'n_clicks'),
+                      Input('inputPasswordId', 'n_submit'),
+                      State('divInputId', 'children'),
+                      State('inputUsernameId', 'value'),
+                      State('inputPasswordId', 'value'))
 def loginFunction(click: int, submit: int, layout: list, username: str, password: str):
-    #output[1] : if (true), then new layout; if (false), then old layout
-     #   output[2] : if (incorrect), then true; if (correct), then false
+    '''  '''
 
-    # if (clicked) <
-    if (click != 0):
+    # if (Login) <
+    if (click or submit):
 
-        print()
-        print('username: ', username)
-        print('password: ', password)
-
-        return layout, True
+        return False, authenticationLayout
 
     # >
 
-    else:
-
-        return layout, False
-
-
-# a second callback that replaces the contents of input box with a verification screen'''
+    return False, layout
