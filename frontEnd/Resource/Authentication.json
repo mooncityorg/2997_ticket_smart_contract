@@ -6,6 +6,12 @@
     "fontFamily" : "sans serif",
     "border" : "5px solid #FFD52F"
   },
+  "divCodeStyle" : {
+    "left" : 80,
+    "right" : 80,
+    "top" : "50%",
+    "position" : "fixed"
+  },
   "verifyStyle" : {
     "paddingTop" : 5,
     "paddingLeft" : 20,
@@ -14,6 +20,12 @@
     "borderRadius" : 10,
     "fontFamily" : "sans serif",
     "border" : "5px solid #FFD52F"
+  },
+  "divVerifyStyle" : {
+    "left" : 80,
+    "right" : 80,
+    "top" : "58%",
+    "position" : "fixed"
   },
   "divInputStyle" : {
     "left" : 80,

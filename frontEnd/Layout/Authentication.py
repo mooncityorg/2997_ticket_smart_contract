@@ -31,7 +31,7 @@ authenticationLayout = html.Div(id = 'authenticationLayoutId',
                                                                         style = style['inputStyle'],
                                                                         placeholder = '6-Digit Code')
 
-                                                          ]),
+                                                          ], style = style['divCodeStyle']),
 
                                                  # >
 
@@ -44,7 +44,7 @@ authenticationLayout = html.Div(id = 'authenticationLayoutId',
                                                                           children = 'Verify',
                                                                           style = style['verifyStyle'])
 
-                                                          ])
+                                                          ], style = style['divVerifyStyle'])
 
                                                  # >
 
