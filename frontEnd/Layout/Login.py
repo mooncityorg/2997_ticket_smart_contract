@@ -12,7 +12,7 @@ loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
 
                            # Warning <
-                           dcc.ConfirmDialog(id = 'warningId',
+                           dcc.ConfirmDialog(id = 'loginWarningId',
                                              message = 'The login you entered was incorrect.'),
 
                            # >
@@ -99,21 +99,25 @@ loginLayout = html.Div(id = 'loginLayoutId',
                        ], style = style['layoutStyle'])
 
 
-@application.callback(Output('warningId', 'displayed'),
-                      Output('divInputId', 'children'),
+@application.callback(Output('divInputId', 'children'),
+                      Output('loginWarningId', 'displayed'),
                       Input('buttonLoginId', 'n_clicks'),
                       Input('inputPasswordId', 'n_submit'),
                       State('divInputId', 'children'),
                       State('inputUsernameId', 'value'),
                       State('inputPasswordId', 'value'))
 def loginFunction(click: int, submit: int, layout: list, username: str, password: str):
-    '''  '''
+    ''' return:
+            layout: does user proceed?
+            warning: has user encountered error?
+    '''
 
     # if (Login) <
     if (click or submit):
 
-        return False, authenticationLayout
+        return authenticationLayout, False
+
 
     # >
 
-    return False, layout
+    return layout, False

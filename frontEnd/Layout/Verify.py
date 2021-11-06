@@ -11,7 +11,7 @@ authenticationLayout = html.Div(id = 'verifyLayoutId',
                                 children = [
 
                                     # Warning <
-                                    dcc.ConfirmDialog(id = 'warningId',
+                                    dcc.ConfirmDialog(id = 'verifyWarningId',
                                                       message = 'The authentication you entered was incorrect.'),
 
                                     # >
@@ -55,5 +55,24 @@ authenticationLayout = html.Div(id = 'verifyLayoutId',
                                 ])
 
 
-#@application.callback(Output('verifyLayoutId', 'children'),
-#                      Input())
+@application.callback(Output('verifyLayoutId', 'children'),
+                      Output('verifyWarningId', 'displayed'),
+                      Input('inputCodeId', 'n_submit'),
+                      Input('buttonVerifyId', 'n_clicks'),
+                      State('inputCodeId', 'value'),
+                      State('verifyLayoutId', 'children'))
+def verifyFunction(submit: int, click: int, code: str, layout: list):
+    ''' return:
+            layout: does user proceed?
+            warning: has user encountered error?
+    '''
+
+    # if (Verify) <
+    if (click or submit):
+
+        print('ok')
+        return layout, False
+
+    # >
+
+    return layout, False
