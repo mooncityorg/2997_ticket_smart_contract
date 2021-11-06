@@ -41,7 +41,6 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                                               children = [
 
                                                                   dcc.Input(value = '',
-                                                                            type = 'text',
                                                                             id = 'inputUsernameId',
                                                                             placeholder = 'Username',
                                                                             style = style['usernameStyle'])

@@ -1,3 +1,24 @@
 {
-
+  "inputStyle" : {
+    "padding" : 16,
+    "borderRadius" : 10,
+    "textAlign" : "center",
+    "fontFamily" : "sans serif",
+    "border" : "5px solid #FFD52F"
+  },
+  "verifyStyle" : {
+    "paddingTop" : 5,
+    "paddingLeft" : 20,
+    "paddingRight" : 20,
+    "paddingBottom" : 5,
+    "borderRadius" : 10,
+    "fontFamily" : "sans serif",
+    "border" : "5px solid #FFD52F"
+  },
+  "divInputStyle" : {
+    "left" : 80,
+    "right" : 80,
+    "top" : "50%",
+    "position" : "fixed"
+  }
 }

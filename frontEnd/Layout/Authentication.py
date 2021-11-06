@@ -16,13 +16,39 @@ authenticationLayout = html.Div(id = 'authenticationLayoutId',
 
                                     # >
 
-                                    # <
+                                    # Input <
                                     html.Div(id = 'divInputId',
                                              children = [
 
-                                                 html.H1('ok')
+                                                 # Code <
+                                                 html.Div(id = 'divCodeId',
+                                                          children = [
 
-                                             ])
+                                                              dcc.Input(value = '',
+                                                                        n_submit = 0,
+                                                                        id = 'inputId',
+                                                                        debounce = True,
+                                                                        style = style['inputStyle'],
+                                                                        placeholder = '6-Digit Code')
+
+                                                          ]),
+
+                                                 # >
+
+                                                 # Verify <
+                                                 html.Div(id = 'divVerifyId',
+                                                          children = [
+
+                                                              html.Button(n_clicks = 0,
+                                                                          id = 'verifyId',
+                                                                          children = 'Verify',
+                                                                          style = style['verifyStyle'])
+
+                                                          ])
+
+                                                 # >
+
+                                             ], style = style['divInputStyle'])
 
                                     # >
 
