@@ -1,22 +1,24 @@
-from dash import dcc
-from dash import html
+# Import <
+from dash import dcc, html
 from backEnd.Tool import getJSON, application
+
+# >
+
+
+# Import <
 from dash.dependencies import Input, Output, State
+from frontEnd.Layout.Authentication import authenticationLayout
+
+# >
 
 
 style = getJSON(file = '/frontEnd/Resource/Login.json')
 loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
 
-                           # Login Warning <
-                           dcc.ConfirmDialog(id = 'loginWarningId',
+                           # Warning <
+                           dcc.ConfirmDialog(id = 'warningId',
                                              message = 'The login you entered was incorrect.'),
-
-                           # >
-
-                           # Authentication Warning <
-                           dcc.ConfirmDialog(id = 'authenticationWarningId',
-                                             message = 'The authentication you entered was incorrect.'),
 
                            # >
 
