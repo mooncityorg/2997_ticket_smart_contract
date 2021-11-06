@@ -16,8 +16,8 @@ style = getJSON(file = '/frontEnd/Resource/Login.json')
 loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
 
-                           # Warning <
-                           dcc.ConfirmDialog(id = 'loginWarningId',
+                           # Confirm <
+                           dcc.ConfirmDialog(id = 'loginConfirmId',
                                              message = 'The login you entered was incorrect.'),
 
                            # >
@@ -105,7 +105,7 @@ loginLayout = html.Div(id = 'loginLayoutId',
 
 
 @application.callback(Output('loginLayoutId', 'children'),
-                      Output('loginWarningId', 'displayed'),
+                      Output('loginConfirmId', 'displayed'),
                       Input('buttonLoginId', 'n_clicks'),
                       Input('inputPasswordId', 'n_submit'),
                       State('inputUsernameId', 'value'),

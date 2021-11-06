@@ -17,8 +17,8 @@ verifyStyle = getJSON(file = '/frontEnd/Resource/Verify.json')
 verifyLayout = html.Div(id = 'verifyLayoutId',
                         children = [
 
-                            # Warning <
-                            dcc.ConfirmDialog(id = 'verifyWarningId',
+                            # Confirm <
+                            dcc.ConfirmDialog(id = 'verifyConfirmId',
                                               message = 'The verification you entered was incorrect.'),
 
                             # >
@@ -92,15 +92,13 @@ verifyLayout = html.Div(id = 'verifyLayoutId',
 
 
 @application.callback(Output('verifyLayoutId', 'children'),
-                      Output('verifyWarningId', 'displayed'),
+                      Output('verifyConfirmId', 'displayed'),
                       Input('inputCodeId', 'n_submit'),
                       Input('buttonVerifyId', 'n_clicks'),
                       State('inputCodeId', 'value'),
                       State('verifyLayoutId', 'children'))
 def verifyFunction(submit: int, click: int, code: str, layout: list):
     '''  '''
-
-    print('osdak')
 
     # if (Verify) <
     if (click or submit):
