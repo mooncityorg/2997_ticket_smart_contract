@@ -7,7 +7,12 @@ from dash.dependencies import Input, Output, State
 # >
 
 
+# Declaration <
 style = getJSON(file = '/frontEnd/Resource/Login.json')
+
+# >
+
+
 loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
 
@@ -99,18 +104,15 @@ loginLayout = html.Div(id = 'loginLayoutId',
                        ], style = style['layoutStyle'])
 
 
-@application.callback(Output('divInputId', 'children'),
+@application.callback(Output('loginLayoutId', 'children'),
                       Output('loginWarningId', 'displayed'),
                       Input('buttonLoginId', 'n_clicks'),
                       Input('inputPasswordId', 'n_submit'),
-                      State('divInputId', 'children'),
                       State('inputUsernameId', 'value'),
-                      State('inputPasswordId', 'value'))
-def loginFunction(click: int, submit: int, layout: list, username: str, password: str):
-    ''' return:
-            layout: does user proceed?
-            warning: has user encountered error?
-    '''
+                      State('inputPasswordId', 'value'),
+                      State('loginLayoutId', 'children'))
+def loginFunction(click: int, submit: int, username: str, password: str, layout: list):
+    '''  '''
 
     # if (Login) <
     if (click or submit):

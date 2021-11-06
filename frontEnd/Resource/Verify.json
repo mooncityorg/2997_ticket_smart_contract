@@ -1,5 +1,5 @@
 {
-  "inputStyle" : {
+  "codeStyle" : {
     "padding" : 16,
     "borderRadius" : 10,
     "textAlign" : "center",

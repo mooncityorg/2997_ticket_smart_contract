@@ -7,53 +7,88 @@ from dash.dependencies import Input, Output, State
 # >
 
 
-style = getJSON(file = '/frontEnd/Resource/Verify.json')
+# Declaration <
+loginStyle = getJSON(file = '/frontEnd/Resource/Login.json')
+verifyStyle = getJSON(file = '/frontEnd/Resource/Verify.json')
+
+# >
+
+
 verifyLayout = html.Div(id = 'verifyLayoutId',
                         children = [
 
                             # Warning <
                             dcc.ConfirmDialog(id = 'verifyWarningId',
-                                              message = 'The authentication you entered was incorrect.'),
+                                              message = 'The verification you entered was incorrect.'),
 
                             # >
 
-                            # Input <
-                            html.Div(id = 'divInputId',
+                            # Background <
+                            html.Div(id = 'divBackgroundId',
                                      children = [
 
-                                         # Code <
-                                         html.Div(id = 'divCodeId',
+                                         # Image <
+                                         html.Div(id = 'divImageId',
                                                   children = [
 
-                                                      dcc.Input(value = '',
-                                                                n_submit = 0,
-                                                                debounce = True,
-                                                                id = 'inputCodeId',
-                                                                style = style['inputStyle'],
-                                                                placeholder = '6-Digit Code')
+                                                      html.Img(src = loginStyle['imgSrc'],
+                                                               style = loginStyle['imgStyle'])
 
-                                                  ], style = style['divCodeStyle']),
+                                                  ], style = loginStyle['divImageStyle']),
 
                                          # >
 
-                                         # Verify <
-                                         html.Div(id = 'divVerifyId',
+                                         # Input <
+                                         html.Div(id = 'divInputId',
                                                   children = [
 
-                                                      html.Button(n_clicks = 0,
-                                                                  children = 'Verify',
-                                                                  id = 'buttonVerifyId',
-                                                                  style = style['verifyStyle'])
+                                                      # Code <
+                                                      html.Div(id = 'divCodeId',
+                                                               children = [
 
-                                                  ], style = style['divVerifyStyle'])
+                                                                   dcc.Input(value = '',
+                                                                             n_submit = 0,
+                                                                             debounce = True,
+                                                                             id = 'inputCodeId',
+                                                                             placeholder = '6-Digit Code',
+                                                                             style = verifyStyle['codeStyle'])
+
+                                                               ], style = verifyStyle['divCodeStyle']),
+
+                                                      # >
+
+                                                      # Verify <
+                                                      html.Div(id = 'divVerifyId',
+                                                               children = [
+
+                                                                   html.Button(n_clicks = 0,
+                                                                               children = 'Verify',
+                                                                               id = 'buttonVerifyId',
+                                                                               style = verifyStyle['verifyStyle'])
+
+                                                               ], style = verifyStyle['divVerifyStyle'])
+
+                                                      # >
+
+                                                  ], style = loginStyle['divInputStyle']),
 
                                          # >
 
-                                     ], style = style['divInputStyle'])
+                                         # Redirect <
+                                         dcc.Markdown(id = 'redirectId',
+                                                      children = [
+
+                                                          ('### ' + ''.join(i for i in loginStyle['redirectChildren']))
+
+                                                      ], style = loginStyle['redirectStyle'])
+
+                                         # >
+
+                                     ], style = loginStyle['divBackgroundStyle'])
 
                             # >
 
-                        ])
+                        ], style = loginStyle['layoutStyle'])
 
 
 @application.callback(Output('verifyLayoutId', 'children'),
@@ -63,10 +98,9 @@ verifyLayout = html.Div(id = 'verifyLayoutId',
                       State('inputCodeId', 'value'),
                       State('verifyLayoutId', 'children'))
 def verifyFunction(submit: int, click: int, code: str, layout: list):
-    ''' return:
-            layout: does user proceed?
-            warning: has user encountered error?
-    '''
+    '''  '''
+
+    print('osdak')
 
     # if (Verify) <
     if (click or submit):
@@ -75,4 +109,5 @@ def verifyFunction(submit: int, click: int, code: str, layout: list):
 
     # >
 
+    input('; ')
     return layout, False
