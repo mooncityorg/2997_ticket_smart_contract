@@ -26,8 +26,8 @@ authenticationLayout = html.Div(id = 'verifyLayoutId',
 
                                                               dcc.Input(value = '',
                                                                         n_submit = 0,
-                                                                        id = 'inputId',
                                                                         debounce = True,
+                                                                        id = 'inputCodeId',
                                                                         style = style['inputStyle'],
                                                                         placeholder = '6-Digit Code')
 
@@ -40,8 +40,8 @@ authenticationLayout = html.Div(id = 'verifyLayoutId',
                                                           children = [
 
                                                               html.Button(n_clicks = 0,
-                                                                          id = 'verifyId',
                                                                           children = 'Verify',
+                                                                          id = 'buttonVerifyId',
                                                                           style = style['verifyStyle'])
 
                                                           ], style = style['divVerifyStyle'])
@@ -53,3 +53,7 @@ authenticationLayout = html.Div(id = 'verifyLayoutId',
                                     # >
 
                                 ])
+
+
+#@application.callback(Output('verifyLayoutId', 'children'),
+#                      Input())
