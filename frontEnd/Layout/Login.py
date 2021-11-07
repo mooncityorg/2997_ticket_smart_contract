@@ -1,6 +1,6 @@
 # Import <
 from dash import dcc, html
-from backEnd.Tool import getJSON, application
+from backEnd.Utility import getJSON, application
 from frontEnd.Layout.Verify import verifyLayout
 from dash.dependencies import Input, Output, State
 
