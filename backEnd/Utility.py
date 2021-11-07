@@ -16,7 +16,7 @@ server = application.server
 def getJSON(file: str) -> dict:
     '''  '''
 
-    directory = path.realpath(__file__)[:-16]
+    directory = '/'.join(path.realpath(__file__).split('/')[:-2])
     with open(f'{directory}{file}', 'r') as fileIn:
 
         return load(fileIn)
