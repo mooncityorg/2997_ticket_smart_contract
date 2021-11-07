@@ -107,5 +107,4 @@ def verifyFunction(submit: int, click: int, code: str, layout: list):
 
     # >
 
-    input('; ')
     return layout, False
