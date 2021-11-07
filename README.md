@@ -1,5 +1,5 @@
 ## CS451RC
-> [University of Missouri - Kansas City](https://www.umkc.edu): [CS451R: Capstone](https://catalog.umkc.edu/search/?P=COMP-SCI%20451R)
+> [University of Missouri - Kansas City](https://www.umkc.edu): [CS451R](https://catalog.umkc.edu/search/?P=COMP-SCI%20451R): Capstone
 ##
 
 ### Installation
