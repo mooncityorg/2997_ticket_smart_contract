@@ -3,7 +3,6 @@ from dash import dcc, html
 from backEnd.Tool import getJSON, application
 from dash.dependencies import Input, Output, State
 
-
 # >
 
 

@@ -119,7 +119,6 @@ def loginFunction(click: int, submit: int, username: str, password: str, layout:
 
         return verifyLayout, False
 
-
     # >
 
     return layout, False
