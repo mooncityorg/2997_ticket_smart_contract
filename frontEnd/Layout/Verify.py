@@ -102,8 +102,8 @@ def verifyFunction(submit: int, click: int, code: str, layout: list):
     # if (Verify) <
     if (click or submit):
 
-        return layout, False
+        return (layout, False)
 
     # >
 
-    return layout, False
+    return (layout, False)
