@@ -4,7 +4,7 @@
 # >
 
 
-class Appointment:
+class Event:
 
 
     def __init__(self):
