@@ -4,9 +4,6 @@ from json import load
 from dash import Dash
 from time import sleep
 from string import punctuation
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 
 # >
 
@@ -27,7 +24,7 @@ def getJSON(file: str) -> dict:
         return load(fileIn)
 
 
-def Login(username: str, password: str):
+def Login(username: str, password: str, driver):
     '''  '''
 
     # Password Validation <
@@ -44,10 +41,7 @@ def Login(username: str, password: str):
     if (hasUpper and hasDigit and hasPunctuation):
 
         # Declaration <
-        options = Options()
-        options.headless = True
         setting = getJSON(file = '/backEnd/Resource/Utility.json')['Login']
-        driver = webdriver.Chrome(ChromeDriverManager().install(), options = options)
 
         # >
 

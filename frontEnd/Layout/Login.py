@@ -1,14 +1,20 @@
 # Import <
 from dash import dcc, html
+from selenium import webdriver
 from frontEnd.Layout.Verify import verifyLayout
 from dash.dependencies import Input, Output, State
+from selenium.webdriver.chrome.options import Options
 from backEnd.Utility import getJSON, application, Login
+from webdriver_manager.chrome import ChromeDriverManager
 
 # >
 
 
 # Declaration <
+options = Options()
+options.headless = True
 style = getJSON(file = '/frontEnd/Resource/Login.json')
+driver = webdriver.Chrome(ChromeDriverManager().install(), options = options)
 
 # >
 
@@ -117,7 +123,8 @@ def loginFunction(click: int, submit: int, username: str, password: str, layout:
     # if (Login) <
     if (click or submit):
 
-        driver, condition = Login(username, password)
+        global driver
+        driver, condition = Login(username, password, driver)
 
         # if (passing) <
         if (condition == True):
