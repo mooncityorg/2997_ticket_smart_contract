@@ -1,5 +1,5 @@
 ## CS451RC
-> [University of Missouri - Kansas City](https://www.umkc.edu): [CS451R: Capstone](https://catalog.umkc.edu/search/?P=COMP-SCI%20451R)
+> [University of Missouri - Kansas City](https://www.umkc.edu): [CS451R](https://catalog.umkc.edu/search/?P=COMP-SCI%20451R): Capstone
 ##
 
 ### Installation
@@ -11,7 +11,7 @@ cd CS451RC
 pip3 install -r requirements.txt
 ```
 ### Documentation
-> [Estimated Efforts](https://docs.google.com/spreadsheets/d/1_ktrDKYRLrQg5ytMyFj78w5QKksiKWad/edit?usp=sharing&ouid=112710811472575331481&rtpof=true&sd=true)
+- [Estimated Efforts](https://docs.google.com/spreadsheets/d/1_ktrDKYRLrQg5ytMyFj78w5QKksiKWad/edit?usp=sharing&ouid=112710811472575331481&rtpof=true&sd=true)
 
 ##
 [`Alex Arbuckle`](https://github.com/orgs/3ACWJ6/people/ala2q6)&nbsp; [`Alex Omorodion`](https://github.com/orgs/3ACWJ6/people/alexanderomorodion)&nbsp; [`Alec Ivy`](https://github.com/orgs/3ACWJ6/people/awiy87)&nbsp; [`Ben Garver`](https://github.com/orgs/3ACWJ6/people/BLGFQY)&nbsp; [`Saum Yazdani`](https://github.com/orgs/3ACWJ6/people/SaumYazdani)&nbsp; [`Will Scheer`](https://github.com/orgs/3ACWJ6/people/willscheer1)&nbsp;
