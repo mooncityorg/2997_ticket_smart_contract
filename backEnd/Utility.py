@@ -44,10 +44,10 @@ def Login(username: str, password: str):
     if (hasUpper and hasDigit and hasPunctuation):
 
         # Declaration <
-        #options = Options()
-        #options.headless = True
+        options = Options()
+        options.headless = True
         setting = getJSON(file = '/backEnd/Resource/Utility.json')['Login']
-        driver = webdriver.Chrome(ChromeDriverManager().install())#, options = options)
+        driver = webdriver.Chrome(ChromeDriverManager().install(), options = options)
 
         # >
 
@@ -114,7 +114,7 @@ def Verify(username: str, password: str, code: str):
         # Code <
         driver.find_element_by_xpath(setting['codeInput']).send_keys(code), sleep(1)
         driver.find_element_by_xpath(setting['codeClick']).click(), sleep(1)
-        driver.find_element_by_xpath(setting[''])
+        driver.find_element_by_xpath(setting['pathwayCheck'])
 
         # >
 
