@@ -3,10 +3,12 @@ from os import path
 from json import load
 from dash import Dash
 from time import sleep
+from dash import html, dcc
 from string import punctuation
+from selenium.common.exceptions import NoSuchElementException
+
 
 # >
-
 
 # Declaration <
 application = Dash(suppress_callback_exceptions = True)
@@ -18,16 +20,16 @@ server = application.server
 def getJSON(file: str) -> dict:
     '''  '''
 
-    directory = ('/'.join(path.realpath(__file__).split('/')[:-2]))
+    directory = ('/'.join(path.realpath(__file__).split('/')[:-3]))
     with open(f'{directory}{file}', 'r') as fileIn:
 
         return load(fileIn)
 
 
-def Login(username: str, password: str, driver):
+def Login(driver, username: str, password: str):
     '''  '''
 
-    # Password Validation <
+    # Check Password <
     hasUpper, hasDigit, hasPunctuation = False, False, False
     for c in password:
 
@@ -37,10 +39,11 @@ def Login(username: str, password: str, driver):
 
     # >
 
-    # if (passing) <
+    # if (valid) <
     if (hasUpper and hasDigit and hasPunctuation):
 
         # Declaration <
+        username += '@umsystem.edu'
         setting = getJSON(file = '/backEnd/Resource/Utility.json')['Login']
 
         # >
@@ -51,59 +54,57 @@ def Login(username: str, password: str, driver):
 
         # >
 
-        # try (passing) <
+        # try (if valid) <
         try:
 
             # Username <
-            username += '@umsystem.edu'
             driver.find_element_by_xpath(setting['Username']).send_keys(username), sleep(1)
             driver.find_element_by_xpath(setting['usernameClick']).click(), sleep(1)
 
             # >
 
-            # Password <
+            # Passowrd <
             driver.find_element_by_xpath(setting['Password']).send_keys(password), sleep(1)
             driver.find_element_by_xpath(setting['passwordClick']).click(), sleep(1)
 
             # >
 
-            # Select <
-            driver.find_element_by_xpath(setting['Select']).click(), sleep(1)
-
-            # >
-
-            return (driver, True)
+            return driver
 
         # >
 
-        # except (not passing) <
-        except:
-
-            return (None, False)
+        # except (then invalid) <
+        except NoSuchElementException: return None
 
         # >
 
     # >
 
-    # else (not passing)
-    else:
-
-        return (None, False)
+    # else (invalid) <
+    else: return None
 
     # >
 
 
-def Verify(username: str, password: str, code: str):
+def Verify(driver, code: str):
     '''  '''
 
     # Declaration <
-    driver, status = Login(username, password)
     setting = getJSON(file = '/backEnd/Resource/Utility.json')['Verify']
 
     # >
 
-    # if (passing) <
+    # try (if valid) <
     try:
+
+        # Select <
+        try:
+
+            driver.find_element_by_xpath(setting['Select']).click(), sleep(1)
+
+        except NoSuchElementException: pass
+
+        # >
 
         # Code <
         driver.find_element_by_xpath(setting['codeInput']).send_keys(code), sleep(1)
@@ -112,13 +113,11 @@ def Verify(username: str, password: str, code: str):
 
         # >
 
-        return (driver, True)
+        return driver
 
     # >
 
-    # except(not passing) <
-    except:
-
-        return (None, False)
+    # except (then invalid) <
+    except NoSuchElementException: return None
 
     # >

@@ -1,11 +1,11 @@
 # Import <
 from dash import dcc, html
 from selenium import webdriver
-from frontEnd.Layout.Verify import verifyLayout
 from dash.dependencies import Input, Output, State
+from frontEnd.Layout.Dashboard import dashboardLayout
 from selenium.webdriver.chrome.options import Options
-from backEnd.Utility import getJSON, application, Login
 from webdriver_manager.chrome import ChromeDriverManager
+from backEnd.API.Utility import getJSON, application, Login, Verify
 
 # >
 
@@ -22,14 +22,20 @@ driver = webdriver.Chrome(ChromeDriverManager().install(), options = options)
 loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
 
-                           # Confirm <
-                           dcc.ConfirmDialog(id = 'loginConfirmId',
-                                             message = 'The login you entered was incorrect.'),
+                           # Login Confirm Dialog <
+                           dcc.ConfirmDialog(id = 'loginConfirmDialogId',
+                                             message = 'Login information was invalid.'),
 
                            # >
 
-                           # Background <
-                           html.Div(id = 'divBackgroundId',
+                           # Verify Confirm Dialog <
+                           dcc.ConfirmDialog(id = 'verifyConfirmDialog',
+                                             message = 'Verify information was invalid.'),
+
+                           # >
+
+                           # Login <
+                           html.Div(id = 'divLoginId',
                                     children = [
 
                                         # Image <
@@ -76,16 +82,16 @@ loginLayout = html.Div(id = 'loginLayoutId',
 
                                                      # >
 
-                                                     # Login <
-                                                     html.Div(id = 'divLoginId',
+                                                     # Submit <
+                                                     html.Div(id = 'divSubmitId',
                                                               children = [
 
                                                                   html.Button(n_clicks = 0,
-                                                                              children = 'Login',
-                                                                              id = 'buttonLoginId',
-                                                                              style = style['loginStyle'])
+                                                                              children = 'Submit',
+                                                                              id = 'buttonSubmitId',
+                                                                              style = style['submitStyle'])
 
-                                                              ], style = style['divLoginStyle']),
+                                                              ], style = style['divSubmitStyle']),
 
                                                      # >
 
@@ -94,57 +100,105 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                         # >
 
                                         # Redirect <
-                                        dcc.Markdown(id = 'redirectId',
+                                        dcc.Markdown(id = 'markdownRedirectId',
                                                      children = [
 
                                                          ('### ' + ''.join(i for i in style['redirectChildren']))
 
-                                                     ], style = style['redirectStyle'])
+                                                     ], style = style['markdownRedirectStyle'])
 
                                         # >
 
-                                    ], style = style['divBackgroundStyle']),
+                                    ], style = style['divLoginStyle'])
 
                            # >
 
-                       ], style = style['layoutStyle'])
+                       ], style = style['loginLayoutStyle'])
 
 
-@application.callback(Output('loginLayoutId', 'children'),
-                      Output('loginConfirmId', 'displayed'),
-                      Input('buttonLoginId', 'n_clicks'),
+@application.callback(Output('divPasswordId', 'children'),
+                      Output('buttonSubmitId', 'n_clicks'),
+                      Output('inputUsernameId', 'disabled'),
+                      Output('loginConfirmDialogId', 'displayed'),
+                      Input('buttonSubmitId', 'n_clicks'),
                       Input('inputPasswordId', 'n_submit'),
                       State('inputUsernameId', 'value'),
                       State('inputPasswordId', 'value'),
-                      State('loginLayoutId', 'children'))
-def loginFunction(click: int, submit: int, username: str, password: str, layout: list):
+                      State('divPasswordId', 'children'))
+def loginFunction(click: int, submit: int, username: str, password: str, div: list):
     '''  '''
 
-    # if (Login) <
+    # if (login) <
     if (click or submit):
 
-        global driver
-        driver, condition = Login(username, password, driver)
+        # global driver # < UNCOMMENT AFTER NOVEMBER 20th < #
+        # condition = Login(driver, username, password) # < UNCOMMENT AFTER NOVEMBER 20th < #
+        # driver = condition if (condition) else (driver) # < UNCOMMENT AFTER NOVEMBER 20th < #
+        condition = True # < REMOVE AFTER NOVEMBER 20th < #
 
-        # if (passing) <
-        if (condition == True):
+        # if (passed) <
+        if (condition):
 
-            return (verifyLayout, False)
+            return ((html.Div(id = 'divCodeId',
+                             children = [
+
+                                 dcc.Input(value = '',
+                                           n_submit = 0,
+                                           debounce = True,
+                                           type = 'password',
+                                           id = 'inputCodeId',
+                                           placeholder = '6-Digit Code',
+                                           style = style['passwordStyle'])
+
+                             ], style = style['divPasswordStyle'])
+
+                    ), 0, True, False)
 
         # >
 
-        # else (not passing) <
-        else:
-
-            return (layout, True)
+        # else (not passed) <
+        else: return (div, False, True)
 
         # >
 
     # >
 
-    # else (not passing) <
+    else: return (div, False, False)
+
+
+@application.callback(Output('loginLayoutId', 'children'),
+                      Output('verifyConfirmDialog', 'displayed'),
+                      Input('inputCodeId', 'n_submit'),
+                      Input('buttonSubmitId', 'n_clicks'),
+                      State('inputCodeId', 'value'),
+                      State('loginLayoutId', 'children'))
+def verifyFunction(submit: int, click: int, code: str, div: list):
+    '''  '''
+
+    # if (verify) <
+    if (submit or click):
+
+        # condition = Verify(driver, code) # < UNCOMMENT AFTER NOVEMBER 20th < #
+        condition = True # < REMOVE AFTER NOVEMBER 20th < #
+
+        # if (passed) <
+        if (condition):
+
+            return (dashboardLayout, False)
+
+        # >
+
+        # else (not passed) <
+        else: return (div, True)
+
+        # >
+
+    # >
+
     else:
 
-        return (layout, False)
+        # Send Code <
+        Verify(driver, code)
+        return (div, False)
 
-    # >
+        # >

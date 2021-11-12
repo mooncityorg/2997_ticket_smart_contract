@@ -34,16 +34,16 @@
     "top" : "50%",
     "position" : "fixed"
   },
-  "loginStyle" : {
+  "submitStyle" : {
     "paddingTop" : 5,
     "paddingLeft" : 20,
+    "borderRadius" : 10,
     "paddingRight" : 20,
     "paddingBottom" : 5,
-    "borderRadius" : 10,
     "fontFamily" : "sans serif",
     "border" : "5px solid #FFD52F"
   },
-  "divLoginStyle" : {
+  "divSubmitStyle" : {
     "left" : 80,
     "right" : 80,
     "top" : "58%",
@@ -54,7 +54,22 @@
     "position" : "fixed",
     "textAlign" : "center"
   },
-  "divBackgroundStyle" : {
+  "redirectChildren" : [
+    "[Pathway](https://umkc.umsystem.edu/) &nbsp; &nbsp; ",
+    "[Webmail](https://www.umkc.edu/email/) &nbsp; &nbsp; ",
+    "[Canvas](https://umsystem.instructure.com/) &nbsp; &nbsp; ",
+    "[UMKC Roo News](https://info.umkc.edu/unews/) &nbsp; &nbsp; ",
+    "[UMKC Connect](https://umkc.starfishsolutions.com/starfish-ops/support/login.html) &nbsp; &nbsp; "
+  ],
+  "markdownRedirectStyle" : {
+    "left" : 80,
+    "right" : 80,
+    "bottom" : 87,
+    "position" : "fixed",
+    "textAlign" : "center",
+    "fontFamily" : "sans serif"
+  },
+  "divLoginStyle" : {
     "top" : 60,
     "left"  : 80,
     "right" : 80,
@@ -67,22 +82,7 @@
     "backgroundPosition" : "center",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
-  "redirectStyle" : {
-    "left" : 80,
-    "right" : 80,
-    "bottom" : 87,
-    "position" : "fixed",
-    "textAlign" : "center",
-    "fontFamily" : "sans serif"
-  },
-  "redirectChildren" : [
-    "[Pathway](https://umkc.umsystem.edu/) &nbsp; &nbsp; ",
-    "[Webmail](https://www.umkc.edu/email/) &nbsp; &nbsp; ",
-    "[Canvas](https://umsystem.instructure.com/) &nbsp; &nbsp; ",
-    "[UMKC Roo News](https://info.umkc.edu/unews/) &nbsp; &nbsp; ",
-    "[UMKC Connect](https://umkc.starfishsolutions.com/starfish-ops/support/login.html) &nbsp; &nbsp; "
-  ],
-  "layoutStyle" : {
+  "loginLayoutStyle" : {
     "top" : 0,
     "left"  : 0,
     "right" : 0,
