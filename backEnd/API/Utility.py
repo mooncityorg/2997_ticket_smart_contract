@@ -3,10 +3,8 @@ from os import path
 from json import load
 from dash import Dash
 from time import sleep
-from dash import html, dcc
 from string import punctuation
 from selenium.common.exceptions import NoSuchElementException
-
 
 # >
 

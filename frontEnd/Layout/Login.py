@@ -198,7 +198,7 @@ def verifyFunction(submit: int, click: int, code: str, div: list):
     else:
 
         # Send Code <
-        Verify(driver, code)
+        # Verify(driver, code)
         return (div, False)
 
         # >
