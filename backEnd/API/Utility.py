@@ -119,6 +119,3 @@ def Verify(driver, code: str):
     except NoSuchElementException: return None
 
     # >
-
-
-
