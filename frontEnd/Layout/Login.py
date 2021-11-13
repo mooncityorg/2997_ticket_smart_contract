@@ -136,8 +136,10 @@ def loginFunction(click: int, submit: int, username: str, password: str, div: li
         # driver = condition if (condition) else (driver) # < UNCOMMENT AFTER NOVEMBER 20th < #
         condition = True # < REMOVE AFTER NOVEMBER 20th < #
 
-        # if (passed) <
         if (condition):
+
+            # if (existing user): call custom dashboard
+            # else (new user): push to verify
 
             return ((html.Div(id = 'divCodeId',
                              children = [
@@ -184,6 +186,9 @@ def verifyFunction(submit: int, click: int, code: str, div: list):
         # if (passed) <
         if (condition):
 
+            # set data
+            # add user to database
+            dashboard = dashboardLayout
             return (dashboardLayout, False)
 
         # >
