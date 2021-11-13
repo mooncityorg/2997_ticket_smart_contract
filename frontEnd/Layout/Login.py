@@ -187,7 +187,7 @@ def verifyFunction(submit: int, click: int, code: str, div: list):
         if (condition):
 
             # set data
-            # add user to database
+            # username dashboard element
             dashboard = dashboardLayout
             return (dashboardLayout, False)
 
