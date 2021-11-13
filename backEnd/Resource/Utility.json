@@ -13,6 +13,6 @@
     "codeInput" : "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div/div[3]/div/input",
     "codeClick" : "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div/div[2]/div[2]/div/div[2]/div/div[6]/div/div/div/div/input",
     "codeCheck" : "/html/body/div/form[1]/div/div/div[2]/div[1]/div/div/div/div/div/div[2]/div[2]/div/div[2]/div/div[3]/div/div[1]/div/div/span",
-    "pathwayCheck" : "/html/body/table[1]/tbody/tr[2]/td/table/tbody/tr/td[3]/ul/li[1]/table/tbody/tr[2]/td/div/div/center/span"
+    "studentCenter" : "/html/body/table[1]/tbody/tr[2]/td/table/tbody/tr/td[3]/ul/li[1]/table/tbody/tr[2]/td/div/div/table/tbody/tr[1]/td/p/span/a[1]"
   }
 }

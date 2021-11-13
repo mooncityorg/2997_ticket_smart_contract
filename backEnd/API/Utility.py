@@ -107,7 +107,11 @@ def Verify(driver, code: str):
         # Code <
         driver.find_element_by_xpath(setting['codeInput']).send_keys(code), sleep(1)
         driver.find_element_by_xpath(setting['codeClick']).click(), sleep(1)
-        driver.find_element_by_xpath(setting['pathwayCheck'])
+
+        # >
+
+        # Student Center <
+        driver.find_element_by_xpath(setting['studentCenter']).click(), sleep(1)
 
         # >
 
@@ -119,3 +123,5 @@ def Verify(driver, code: str):
     except NoSuchElementException: return None
 
     # >
+
+
