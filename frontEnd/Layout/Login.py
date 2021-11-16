@@ -159,13 +159,13 @@ def loginFunction(click: int, submit: int, username: str, password: str, div: li
         # >
 
         # else (not passed) <
-        else: return (div, False, True)
+        else: return (div, click, False, True)
 
         # >
 
     # >
 
-    else: return (div, False, False)
+    else: return (div, click, False, False)
 
 
 @application.callback(Output('loginLayoutId', 'children'),
