@@ -43,7 +43,7 @@
     "Dropped" : "/html/body/form/div[5]/table/tbody/tr/td/div/table/tbody/tr[8]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td[2]/div/input[2]",
     "Waitlisted" : "/html/body/form/div[5]/table/tbody/tr/td/div/table/tbody/tr[8]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[4]/td[2]/div/input[2]",
     "Filter" : "/html/body/form/div[5]/table/tbody/tr/td/div/table/tbody/tr[8]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[5]/td[2]/div/a/span/input",
-    "Schedule" : {
+    "Course" : {
       "Title" : "/html/body/form/div[5]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div/table/tbody/tr[<>]/td[2]/div/table/tbody/tr[1]/td",
       "Class Nbr" : "/html/body/form/div[5]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div/table/tbody/tr[<>]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td[2]/div/table/tbody/tr/td/table/tbody/tr[2]/td[1]/div/span",
       "Days & Times" : "/html/body/form/div[5]/table/tbody/tr/td/div/table/tbody/tr[10]/td[2]/div/table/tbody/tr[<>]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td[2]/div/table/tbody/tr/td/table/tbody/tr[2]/td[4]/div/span",

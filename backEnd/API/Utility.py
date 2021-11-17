@@ -179,7 +179,7 @@ def getSchedule(driver):
         try:
 
             course = {}
-            for k, v in setting['Schedule'].items():
+            for k, v in setting['Course'].items():
 
                 course[k] = driver.find_element_by_xpath(v.replace('<>', str(i))).text
 
