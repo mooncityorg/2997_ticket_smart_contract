@@ -3,6 +3,7 @@ from os import path
 from json import load
 from dash import Dash
 from time import sleep
+from time import strftime
 from string import punctuation
 from selenium.common.exceptions import NoSuchElementException
 
@@ -96,11 +97,7 @@ def Verify(driver, code: str):
     try:
 
         # Select <
-        try:
-
-            driver.find_element_by_xpath(setting['Select']).click(), sleep(1)
-
-        except NoSuchElementException: pass
+        driver.find_element_by_xpath(setting['Select']).click(), sleep(1)
 
         # >
 
@@ -125,3 +122,76 @@ def Verify(driver, code: str):
     # >
 
 
+def getSchedule(driver):
+    '''  '''
+
+    # Declaration <
+    schedule = []
+    month, year = strftime('%m %Y').split()
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['getSchedule']
+    semester = [k for k, v in setting['Semester'].items() if (month in v)][0]
+
+    # >
+
+    # Website <
+    driver.get(setting['Website']), sleep(1)
+
+    # >
+
+    # Select <
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
+    for i in range(50):
+
+        # try (if valid) <
+        try:
+
+            termA = f'{year} {semester} Semester'
+            termB = driver.find_element_by_xpath(setting['Term'].replace('<>', str(i))).text
+
+            # if (match) <
+            if (termA == termB):
+
+                driver.find_element_by_xpath(setting['Button'].replace('<>', str(i))).click()
+                driver.find_element_by_xpath(setting['Continue']).click(), sleep(1)
+
+            # >
+
+        # >
+
+        # except (then invalid) <
+        except NoSuchElementException: pass
+
+        # >
+
+    # >
+
+    # Filter Schedule <
+    driver.find_element_by_xpath(setting['Dropped']).click()
+    driver.find_element_by_xpath(setting['Waitlisted']).click()
+    driver.find_element_by_xpath(setting['Filter']).click()
+
+    # >
+
+    # iterate (course) <
+    for i in range(0, 50, 2):
+
+        # try (if valid) <<
+        try:
+
+            course = {}
+            for k, v in setting['Schedule'].items():
+
+                course[k] = driver.find_element_by_xpath(v.replace('<>', str(i))).text
+
+            schedule.append(course)
+
+        # >
+
+        # except (then invalid) <
+        except NoSuchElementException: pass
+
+        # >
+
+    # >
+
+    return schedule
