@@ -125,7 +125,45 @@ def Verify(driver, code: str):
 def scrapeUser(driver):
     '''  '''
 
-    pass
+    # Declaration <
+    schedule, isTutor = [], False
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeUser']
+
+    # >
+
+    # get Name <
+    driver.get(setting['nameWebsite']), sleep(1)
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
+    name = driver.find_element_by_xpath(setting['Name']).text
+
+    # >
+
+    # get Tutor <
+    driver.get(setting['tutorWebsite']), sleep(1)
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
+
+    # >
+
+    # iterate (course) <
+    for i in range(25):
+
+        # try (if valid) <
+        try:
+
+            course = driver.find_element_by_xpath(setting['Title'].replace('<>', str(i))).text
+            schedule.append(course)
+            isTutor = True
+
+        # >
+
+        # except (then invalid) <
+        except NoSuchElementException: pass
+
+        # >
+
+    # >
+
+    return {'name' : name, 'isTutor' : isTutor, 'schedule' : schedule}
 
 
 def scrapeCourse(driver):
@@ -134,18 +172,18 @@ def scrapeCourse(driver):
     # Declaration <
     schedule = []
     month, year = strftime('%m %Y').split()
-    setting = getJSON(file = '/backEnd/Resource/Utility.json')['getSchedule']
-    semester = [k for k, v in setting['Semester'].items() if (month in v)][0]
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeCourse']
+    semester = [key for key, value in setting['Semester'].items() if (month in value)][0]
 
     # >
 
     # Website <
     driver.get(setting['Website']), sleep(1)
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
 
     # >
 
     # Select <
-    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
     for i in range(50):
 
         # try (if valid) <
