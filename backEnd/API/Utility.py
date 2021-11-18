@@ -122,7 +122,13 @@ def Verify(driver, code: str):
     # >
 
 
-def getSchedule(driver):
+def scrapeUser(driver):
+    '''  '''
+
+    pass
+
+
+def scrapeCourse(driver):
     '''  '''
 
     # Declaration <
