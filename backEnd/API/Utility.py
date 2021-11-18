@@ -140,7 +140,6 @@ def scrapeUser(driver):
 
     # get Tutor <
     driver.get(setting['tutorWebsite']), sleep(1)
-    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
 
     # >
 
