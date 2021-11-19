@@ -16,13 +16,33 @@ server = application.server
 # >
 
 
-def getJSON(file: str) -> dict:
+def geetJSON(file: str) -> dict:
     '''  '''
 
     directory = ('/'.join(path.realpath(__file__).split('/')[:-3]))
     with open(f'{directory}{file}', 'r') as fileIn:
 
         return load(fileIn)
+
+
+def getJSON(file: str) -> dict:
+    '''  '''
+
+    delimiter = '/'
+    realpath = path.realpath(__file__)
+    while (True):
+
+        try:
+
+            directory = delimiter.join(realpath.split(delimiter)[:-3])
+            with open(f'{directory}{file}', 'r') as fin:
+
+                return load(fin)
+
+        except FileNotFoundError:
+
+            realpath = realpath[2:]
+            delimiter = '\\'
 
 
 def Login(driver, username: str, password: str):
