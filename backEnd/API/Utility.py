@@ -9,6 +9,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 # >
 
+
 # Declaration <
 application = Dash(suppress_callback_exceptions = True)
 server = application.server
@@ -19,10 +20,27 @@ server = application.server
 def getJSON(file: str) -> dict:
     '''  '''
 
-    directory = ('/'.join(path.realpath(__file__).split('/')[:-3]))
-    with open(f'{directory}{file}', 'r') as fileIn:
+    delimiter = '/'
+    realpath = path.realpath(__file__)
+    while (True):
 
-        return load(fileIn)
+        # try (if Linux) <
+        try:
+
+            directory = delimiter.join(realpath.split(delimiter)[:-3])
+            with open(f'{directory}{file}', 'r') as fin:
+
+                return load(fin)
+
+        # >
+
+        # except (then Windows) <
+        except FileNotFoundError:
+
+            realpath = realpath[2:]
+            delimiter = '\\'
+
+        # >
 
 
 def Login(driver, username: str, password: str):
@@ -122,24 +140,67 @@ def Verify(driver, code: str):
     # >
 
 
-def getSchedule(driver):
+def scrapeUser(driver):
+    '''  '''
+
+    # Declaration <
+    schedule, isTutor = [], False
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeUser']
+
+    # >
+
+    # get Name <
+    driver.get(setting['nameWebsite']), sleep(1)
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
+    name = driver.find_element_by_xpath(setting['Name']).text
+
+    # >
+
+    # get Tutor <
+    driver.get(setting['tutorWebsite']), sleep(1)
+
+    # >
+
+    # iterate (course) <
+    for i in range(25):
+
+        # try (if valid) <
+        try:
+
+            course = driver.find_element_by_xpath(setting['Title'].replace('<>', str(i))).text
+            schedule.append(course)
+            isTutor = True
+
+        # >
+
+        # except (then invalid) <
+        except NoSuchElementException: pass
+
+        # >
+
+    # >
+
+    return {'name' : name, 'isTutor' : isTutor, 'schedule' : schedule}
+
+
+def scrapeCourse(driver):
     '''  '''
 
     # Declaration <
     schedule = []
     month, year = strftime('%m %Y').split()
-    setting = getJSON(file = '/backEnd/Resource/Utility.json')['getSchedule']
-    semester = [k for k, v in setting['Semester'].items() if (month in v)][0]
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeCourse']
+    semester = [key for key, value in setting['Semester'].items() if (month in value)][0]
 
     # >
 
     # Website <
     driver.get(setting['Website']), sleep(1)
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
 
     # >
 
     # Select <
-    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
     for i in range(50):
 
         # try (if valid) <

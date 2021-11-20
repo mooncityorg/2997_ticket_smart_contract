@@ -9,6 +9,7 @@ git clone https://github.com/ala2q6/CS451RC.git
 
 cd CS451RC
 pip3 install -r requirements.txt
+pip3 install selenium
 ```
 ### Documentation
 - [Project Tasks](https://docs.google.com/spreadsheets/d/1gZYKvQd2QA68sU6TPEna4bvildrTx1Aos0OXQP4rNK8/edit?usp=sharing)
