@@ -9,6 +9,7 @@ from selenium.common.exceptions import NoSuchElementException
 
 # >
 
+
 # Declaration <
 application = Dash(suppress_callback_exceptions = True)
 server = application.server
