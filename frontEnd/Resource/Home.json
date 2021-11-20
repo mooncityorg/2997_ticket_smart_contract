@@ -1,3 +1,32 @@
 {
-
+  "h1Style" : {
+    "fontSize" : 30,
+    "color" : "#FFFFFF",
+    "fontFamily" : "sans serif"
+  },
+  "divLogoStyle" : {
+    "marginTop" : 10,
+    "marginLeft" : 25,
+    "marginBottom" : 10,
+    "position" : "fixed"
+  },
+  "divSearchStyle" : {
+  },
+  "divHeaderStyle" : {
+    "left" : 80,
+    "right" : 80,
+    "margin" : 10,
+    "borderRadius" : 10,
+    "display" : "block",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #FFD52F"
+  },
+  "homeLayoutStyle" : {
+    "top" : 0,
+    "left" : 0,
+    "right" : 0,
+    "bottom" : 0,
+    "position" : "fixed",
+    "backgroundColor" : "#04487F"
+  }
 }

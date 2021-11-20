@@ -13,6 +13,6 @@ from dash import html, dcc
 dashboardLayout = html.Div(id = 'dashboardLayoutId',
                            children = [
 
-                               html.H1('ok')
+                               #
 
                            ])
