@@ -72,9 +72,12 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                             # Forgot Password <
                                             dbc.Row([dbc.Col(
 
-                                                #
+                                                dbc.Badge(children = 'Forgot Password?',
+                                                          href = style['forgotPasswordHref'],
+                                                          color = style['forgotPasswordColor'],
+                                                          style = style['forgotPasswordStyle']),
 
-                                            )]),
+                                            width = 3)], justify = 'center'),
 
                                             # >
 
@@ -83,7 +86,7 @@ loginLayout = html.Div(id = 'loginLayoutId',
 
                                                 #
 
-                                            )])
+                                            width = 3)], justify = 'center')
 
                                             # >
 

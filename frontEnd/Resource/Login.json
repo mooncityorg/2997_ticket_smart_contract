@@ -22,6 +22,11 @@
     "textAlign" : "center",
     "fontFamily" : "sans serif"
   },
+  "forgotPasswordHref" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "forgotPasswordColor" : "",
+  "forgotPasswordStyle" : {
+
+  },
   "divInputStyle" : {
     "height" : "50vh",
     "marginTop" : 175,
