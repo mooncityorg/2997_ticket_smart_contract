@@ -1,6 +1,7 @@
 # Import <
 from dash import html, dcc
 from backEnd.API.Utility import getJSON
+import dash_bootstrap_components as dbc
 
 # >
 
@@ -18,36 +19,13 @@ homeLayout = html.Div(id = 'homeLayoutId',
                       children = [
 
                           # Header <
-                          html.Div(id = 'divHeaderId',
-                                   children = [
+                          dbc.Row([
 
-                                       # Logo <
-                                       html.Div(id = 'divLogoId',
-                                                children = [
+                              dbc.Col(html.Div("One of three columns"), width = 4),
+                              dbc.Col(html.Div("One of three columns"), width = 4),
+                              dbc.Col(html.Div("One of three columns"), width = 4),
 
-                                                    html.H1(children = 'Connect++',
-                                                            style = style['h1Style'])
-
-                                                ], style = style['divLogoStyle']),
-
-                                       # >
-
-                                       # Search <
-                                       html.Div(id = 'divSearchId',
-                                                children = [
-
-                                                    dcc.Dropdown(id = 'dropdownId',
-                                                                 options = [
-
-
-
-                                                                 ])
-
-                                                ], style = style['divSearchStyle'])
-
-                                       # >
-
-                                   ], style = style['divHeaderStyle'])
+                          ], justify = 'center')
 
                           # >
 

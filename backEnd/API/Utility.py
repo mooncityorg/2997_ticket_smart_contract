@@ -5,13 +5,15 @@ from dash import Dash
 from time import sleep
 from time import strftime
 from string import punctuation
+import dash_bootstrap_components as dbc
 from selenium.common.exceptions import NoSuchElementException
 
 # >
 
 
 # Declaration <
-application = Dash(suppress_callback_exceptions = True)
+application = Dash(suppress_callback_exceptions = True,
+                   external_stylesheets = [dbc.themes.BOOTSTRAP])
 server = application.server
 
 # >
@@ -43,10 +45,9 @@ def getJSON(file: str) -> dict:
         # >
 
 
-def Login(driver, username: str, password: str):
+def checkPassword(password: str) -> bool:
     '''  '''
 
-    # Check Password <
     hasUpper, hasDigit, hasPunctuation = False, False, False
     for c in password:
 
@@ -54,51 +55,46 @@ def Login(driver, username: str, password: str):
         if (c.isdigit()): hasDigit = True
         if (c in punctuation): hasPunctuation = True
 
-    # >
+    if (hasUpper and hasDigit and hasPunctuation): return True
+    else: return False
 
-    # if (valid) <
-    if (hasUpper and hasDigit and hasPunctuation):
 
-        # Declaration <
-        username += '@umsystem.edu'
-        setting = getJSON(file = '/backEnd/Resource/Utility.json')['Login']
+def Login(driver, username: str, password: str):
+    '''  '''
 
-        # >
-
-        # Website <
-        driver.get(setting['Website']), sleep(1)
-        driver.find_element_by_xpath(setting['websiteClick']).click(), sleep(1)
-
-        # >
-
-        # try (if valid) <
-        try:
-
-            # Username <
-            driver.find_element_by_xpath(setting['Username']).send_keys(username), sleep(1)
-            driver.find_element_by_xpath(setting['usernameClick']).click(), sleep(1)
-
-            # >
-
-            # Passowrd <
-            driver.find_element_by_xpath(setting['Password']).send_keys(password), sleep(1)
-            driver.find_element_by_xpath(setting['passwordClick']).click(), sleep(1)
-
-            # >
-
-            return driver
-
-        # >
-
-        # except (then invalid) <
-        except NoSuchElementException: return None
-
-        # >
+    # Declaration <
+    username += '@umsystem.edu'
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['Login']
 
     # >
 
-    # else (invalid) <
-    else: return None
+    # Website <
+    driver.get(setting['Website']), sleep(1)
+    driver.find_element_by_xpath(setting['websiteClick']).click(), sleep(1)
+
+    # >
+
+    # try (if valid) <
+    try:
+
+        # Username <
+        driver.find_element_by_xpath(setting['Username']).send_keys(username), sleep(1)
+        driver.find_element_by_xpath(setting['usernameClick']).click(), sleep(1)
+
+        # >
+
+        # Passowrd <
+        driver.find_element_by_xpath(setting['Password']).send_keys(password), sleep(1)
+        driver.find_element_by_xpath(setting['passwordClick']).click(), sleep(1)
+
+        # >
+
+        return driver
+
+    # >
+
+    # except (then invalid) <
+    except NoSuchElementException: return None
 
     # >
 
