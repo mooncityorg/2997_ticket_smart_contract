@@ -70,7 +70,6 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                             # >
 
                                             # Forgot Password <
-
                                             dbc.Row([dbc.Col(
 
                                                 dbc.Badge(children = 'Forgot Password?',

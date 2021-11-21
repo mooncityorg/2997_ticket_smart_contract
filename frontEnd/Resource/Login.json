@@ -5,7 +5,7 @@
     "height" : "20vh"
   },
   "divLogoStyle" : {
-    "marginTop" : 25,
+    "marginTop" : "6vh",
     "textAlign" : "center"
   },
   "usernameStyle" : {
@@ -30,14 +30,15 @@
   },
   "submitButtonColor" : "#ffcd00",
   "submitButtonStyle" : {
-    "borderRadius" : 10,
     "marginTop" : 35,
+    "color" : "#FFFFFF",
+    "borderRadius" : 10,
     "fontFamily" : "sans serif",
     "backgroundColor" : "#ffcd00"
   },
   "divInputStyle" : {
     "height" : "50vh",
-    "marginTop" : 175,
+    "marginTop" : "10vh",
     "borderTopLeftRadius" : 10,
     "borderTopRightRadius" : 10,
     "backgroundPosition" : "bottom",
