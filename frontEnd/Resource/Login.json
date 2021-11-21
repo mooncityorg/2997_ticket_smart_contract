@@ -25,7 +25,15 @@
   "forgotPasswordHref" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   "forgotPasswordColor" : "#ffcd00",
   "forgotPasswordStyle" : {
+    "marginTop" : 15,
     "fontFamily" : "sans serif"
+  },
+  "submitButtonColor" : "#ffcd00",
+  "submitButtonStyle" : {
+    "borderRadius" : 10,
+    "marginTop" : 35,
+    "fontFamily" : "sans serif",
+    "backgroundColor" : "#ffcd00"
   },
   "divInputStyle" : {
     "height" : "50vh",

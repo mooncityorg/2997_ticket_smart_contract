@@ -85,9 +85,14 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                             # Submit <
                                             dbc.Row([dbc.Col(
 
-                                                #
+                                                dbc.Button(size = 'sm',
+                                                           n_clicks = 0,
+                                                           children = 'Submit',
+                                                           id = 'submitButtonId',
+                                                           color = style['submitButtonColor'],
+                                                           style = style['submitButtonStyle']),
 
-                                            width = 3)], justify = 'center')
+                                            width = 'auto')], justify = 'center')
 
                                             # >
 
