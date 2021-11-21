@@ -23,9 +23,9 @@
     "fontFamily" : "sans serif"
   },
   "forgotPasswordHref" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  "forgotPasswordColor" : "",
+  "forgotPasswordColor" : "#ffcd00",
   "forgotPasswordStyle" : {
-
+    "fontFamily" : "sans serif"
   },
   "divInputStyle" : {
     "height" : "50vh",
@@ -40,6 +40,9 @@
   },
   "redirectColor" : "#0066cc",
   "redirectHref" : "https://github.com/3ASJW6",
+  "redirectStyle" : {
+    "fontFamily" : "sans serif"
+  },
   "divRedirectStyle" : {
     "paddingLeft" : 5,
     "paddingBottom" : 5,
