@@ -26,11 +26,12 @@ homeLayout = html.Div(id = 'homeLayoutId',
                                   html.Div(id = 'divHeaderId',
                                            children = [
 
-                                               html.H1('OK')
+                                               html.Img(src = style['logoSrc'],
+                                                        style = style['logoStyle'])
 
-                                           ], style = style['divHeaderStyle'])
+                                           ], style = style['divHeaderStyle']),
 
-                              )
+                              width = True)
 
                           ]),
 
@@ -63,7 +64,7 @@ homeLayout = html.Div(id = 'homeLayoutId',
 
                                            ], style = style['divDashboardStyle']),
 
-                              width = 'auto')
+                              width = True)
 
                               # >
 

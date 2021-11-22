@@ -1,24 +1,34 @@
 {
+  "logoSrc" : "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/kansas-city-roos-logo.png",
+  "logoStyle" : {
+    "width" : "6vh",
+    "height" : "6vh"
+  },
   "divHeaderStyle" : {
     "margin" : 10,
+    "height" : "7vh",
     "borderRadius" : 10,
-    "backgroundColor" : "#ffcd00"
+    "backgroundSize" : "cover",
+    "backgroundColor" : "#ffcd00",
+    "border" : "5px solid #ffcd00",
+    "backgroundRepeat" : "no-repeat",
+    "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
   "divMenuStyle" : {
-    "margin" : 10,
+    "height" : "auto",
+    "marginLeft" : 10,
+    "marginRight" : 10,
+    "marginBottom" : 10,
     "borderRadius" : 10,
     "backgroundColor" : "#ffcd00"
   },
   "divDashboardStyle" : {
+    "marginRight" : 10,
+    "marginBottom" : 10,
     "borderRadius" : 10,
     "backgroundColor" : "#ffcd00"
   },
   "homeLayoutStyle" : {
-    "top" : 0,
-    "left" : 0,
-    "right" : 0,
-    "bottom" : 0,
-    "position" : "fixed",
-    "backgroundColor" : "linear-gradient(to bottom, #0066cc 80%, #04487F 20%"
+    "overflow" : "hidden"
   }
 }
