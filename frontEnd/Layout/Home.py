@@ -24,11 +24,13 @@ homeLayout = html.Div(id = 'homeLayoutId',
                               dbc.Col(
 
                                   # Background <
-                                  html.Div(id = 'divLogoId',
+                                  html.Div(id = 'divHeaderBackgroundId',
                                            children = [
 
+                                               # Content <
                                                dbc.Row([
 
+                                                   # Logo <
                                                    dbc.Col(
 
                                                        html.Img(src = style['logoSrc'],
@@ -36,20 +38,30 @@ homeLayout = html.Div(id = 'homeLayoutId',
 
                                                    width = 'auto'),
 
+                                                   # >
+
+                                                   # Search <
                                                    dbc.Col(
 
-                                                       dbc.FormFloating([
+                                                       dbc.InputGroup([
 
-                                                           dbc.Input(type = 'email', placeholder = '#'),
-                                                           dbc.Label('email address')
+                                                           dbc.Input(id = 'inputSearchId',
+                                                                     placeholder = 'Search'),
+                                                           dbc.DropdownMenu(label = 'Role',
+                                                                            id = 'dropdownMenuSearchId',
+                                                                            color = style['dropdownMenuSearchColor'])
 
                                                        ]),
 
-                                                   width = 'auto')
+                                                   align = 'center', width = 'auto')
+
+                                                   # >
 
                                                ], justify = 'between')
 
-                                           ], style = style['divLogoStyle']),
+                                               # >
+
+                                           ], style = style['divHeaderBackgroundStyle']),
 
                                   # >
 
@@ -72,7 +84,7 @@ homeLayout = html.Div(id = 'homeLayoutId',
 
                                            ], style = style['divMenuStyle']),
 
-                              width = 1),
+                              width = 'auto'),
 
                               # >
 
