@@ -9,7 +9,7 @@
     "height" : "8vh",
     "margin" : "1vh",
     "borderRadius" : 10,
-    "paddingRight" : "3vh",
+    "paddingRight" : "2vh",
     "backgroundSize" : "cover",
     "backgroundColor" : "#ffcd00",
     "border" : "5px solid #ffcd00",
