@@ -23,13 +23,30 @@ homeLayout = html.Div(id = 'homeLayoutId',
 
                               dbc.Col(
 
-                                  html.Div(id = 'divHeaderId',
+                                  # Background <
+                                  html.Div(id = 'divLogoId',
                                            children = [
 
-                                               html.Img(src = style['logoSrc'],
-                                                        style = style['logoStyle'])
+                                               dbc.Row([
 
-                                           ], style = style['divHeaderStyle']),
+                                                   dbc.Col(
+
+                                                       html.Img(src = style['logoSrc'],
+                                                                style = style['logoStyle']),
+
+                                                   width = 'auto'),
+
+                                                   dbc.Col(
+
+                                                       #
+
+                                                   width = 'auto')
+
+                                               ], justify = 'between')
+
+                                           ], style = style['divLogoStyle']),
+
+                                  # >
 
                               width = True)
 

@@ -4,7 +4,7 @@
     "width" : "6vh",
     "height" : "6vh"
   },
-  "divHeaderStyle" : {
+  "divLogoStyle" : {
     "height" : "7vh",
     "margin" : "1vh",
     "borderRadius" : 10,
