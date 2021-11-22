@@ -1,25 +1,17 @@
 {
-  "h1Style" : {
-    "fontSize" : 30,
-    "color" : "#FFFFFF",
-    "fontFamily" : "sans serif"
-  },
-  "divLogoStyle" : {
-    "marginTop" : 10,
-    "marginLeft" : 25,
-    "marginBottom" : 10,
-    "position" : "fixed"
-  },
-  "divSearchStyle" : {
-  },
   "divHeaderStyle" : {
-    "left" : 80,
-    "right" : 80,
     "margin" : 10,
     "borderRadius" : 10,
-    "display" : "block",
-    "backgroundColor" : "#0066cc",
-    "border" : "5px solid #FFD52F"
+    "backgroundColor" : "#ffcd00"
+  },
+  "divMenuStyle" : {
+    "margin" : 10,
+    "borderRadius" : 10,
+    "backgroundColor" : "#ffcd00"
+  },
+  "divDashboardStyle" : {
+    "borderRadius" : 10,
+    "backgroundColor" : "#ffcd00"
   },
   "homeLayoutStyle" : {
     "top" : 0,
@@ -27,6 +19,6 @@
     "right" : 0,
     "bottom" : 0,
     "position" : "fixed",
-    "backgroundColor" : "#04487F"
+    "backgroundColor" : "linear-gradient(to bottom, #0066cc 80%, #04487F 20%"
   }
 }

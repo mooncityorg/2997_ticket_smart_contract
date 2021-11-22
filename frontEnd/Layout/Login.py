@@ -23,6 +23,11 @@ style = getJSON(file = '/frontEnd/Resource/Login.json')
 loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
 
+                           # Confirm Dialog <
+
+
+                           # >
+
                            # Logo <
                            dbc.Row([dbc.Col(
 
@@ -84,12 +89,12 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                             # Submit <
                                             dbc.Row([dbc.Col(
 
-                                                dbc.Button(size = 'sm',
-                                                           n_clicks = 0,
-                                                           children = 'Submit',
-                                                           id = 'submitButtonId',
-                                                           color = style['submitButtonColor'],
-                                                           style = style['submitButtonStyle']),
+                                                dbc.Badge(href = '#',
+                                                          n_clicks = 0,
+                                                          id = 'submitId',
+                                                          children = 'Submit',
+                                                          color = style['submitColor'],
+                                                          style = style['submitStyle']),
 
                                             width = 'auto')], justify = 'center')
 
@@ -119,3 +124,15 @@ loginLayout = html.Div(id = 'loginLayoutId',
                            # >
 
                        ], style = style['loginLayoutStyle'])
+
+
+@application.callback(Output('loginLayoutId', 'children'),
+                      Input('submitId', 'n_clicks'),
+                      Input('inputPasswordId', 'n_submit'),
+                      State('loginLayoutId', 'children'))
+def submitFunction(click: int, submit: int, layout: list) -> list:
+    '''  '''
+
+    if (click or submit): return homeLayout
+    else: return layout
+

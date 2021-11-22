@@ -21,16 +21,53 @@ homeLayout = html.Div(id = 'homeLayoutId',
                           # Header <
                           dbc.Row([
 
-                              dbc.Col(html.Div("One of three columns"), width = 4),
-                              dbc.Col(html.Div("One of three columns"), width = 4),
-                              dbc.Col(html.Div("One of three columns"), width = 4),
+                              dbc.Col(
 
-                          ], justify = 'center')
+                                  html.Div(id = 'divHeaderId',
+                                           children = [
+
+                                               html.H1('OK')
+
+                                           ], style = style['divHeaderStyle'])
+
+                              )
+
+                          ]),
 
                           # >
 
-                          # Navigation Bar <
+                          # Body <
+                          dbc.Row([
 
+                              # Navigation Bar <
+                              dbc.Col(
+
+                                  html.Div(id = 'divMenuId',
+                                           children = [
+
+                                               html.H1('ok')
+
+                                           ], style = style['divMenuStyle']),
+
+                              width = 2),
+
+                              # >
+
+                              # Dashboard <
+                              dbc.Col(
+
+                                  html.Div(id = 'divDashboardId',
+                                           children = [
+
+                                               html.H1('ok')
+
+                                           ], style = style['divDashboardStyle']),
+
+                              width = 'auto')
+
+                              # >
+
+                          ], className = 'g-0')
 
                           # >
 

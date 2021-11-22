@@ -28,13 +28,11 @@
     "marginTop" : 15,
     "fontFamily" : "sans serif"
   },
-  "submitButtonColor" : "#ffcd00",
-  "submitButtonStyle" : {
+  "submitColor" : "#ffcd00",
+  "submitStyle" : {
+    "fontSize" : 15,
     "marginTop" : 35,
-    "color" : "#FFFFFF",
-    "borderRadius" : 10,
-    "fontFamily" : "sans serif",
-    "backgroundColor" : "#ffcd00"
+    "fontFamily" : "sans serif"
   },
   "divInputStyle" : {
     "height" : "50vh",
