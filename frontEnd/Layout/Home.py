@@ -46,11 +46,11 @@ homeLayout = html.Div(id = 'homeLayoutId',
                                   html.Div(id = 'divMenuId',
                                            children = [
 
-                                               html.H1('ok')
+                                               #
 
                                            ], style = style['divMenuStyle']),
 
-                              width = 2),
+                              width = 1),
 
                               # >
 
@@ -60,7 +60,7 @@ homeLayout = html.Div(id = 'homeLayoutId',
                                   html.Div(id = 'divDashboardId',
                                            children = [
 
-                                               html.H1('ok')
+                                               #
 
                                            ], style = style['divDashboardStyle']),
 
