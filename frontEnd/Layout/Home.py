@@ -38,7 +38,12 @@ homeLayout = html.Div(id = 'homeLayoutId',
 
                                                    dbc.Col(
 
-                                                       #
+                                                       dbc.FormFloating([
+
+                                                           dbc.Input(type = 'email', placeholder = '#'),
+                                                           dbc.Label('email address')
+
+                                                       ]),
 
                                                    width = 'auto')
 

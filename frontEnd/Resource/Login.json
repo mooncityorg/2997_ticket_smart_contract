@@ -9,14 +9,12 @@
     "textAlign" : "center"
   },
   "usernameStyle" : {
-    "padding" : 10,
     "borderRadius" : 10,
     "marginTop" : "20vh",
     "textAlign" : "center",
     "fontFamily" : "sans serif"
   },
   "passwordStyle" : {
-    "padding" : 10,
     "marginTop" : "1vh",
     "borderRadius" : 10,
     "textAlign" : "center",

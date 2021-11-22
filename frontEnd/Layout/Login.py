@@ -52,9 +52,14 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                             # Username <
                                             dbc.Row([dbc.Col(
 
-                                                dbc.Input(id = 'inputUsernameId',
-                                                          placeholder = 'Username',
-                                                          style = style['usernameStyle']),
+                                                dbc.FormFloating([
+
+                                                    dbc.Input(id = 'inputUsernameId',
+                                                              placeholder = 'Username',
+                                                              style = style['usernameStyle']),
+                                                    dbc.Label('Username')
+
+                                                ]),
 
                                             width = 3)], justify = 'center'),
 
@@ -63,12 +68,17 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                             # Password <
                                             dbc.Row([dbc.Col(
 
-                                                dbc.Input(n_submit = 0,
-                                                          debounce = True,
-                                                          type = 'password',
-                                                          id = 'inputPasswordId',
-                                                          placeholder = 'Password',
-                                                          style = style['passwordStyle']),
+                                                dbc.FormFloating([
+
+                                                    dbc.Input(n_submit = 0,
+                                                              debounce = True,
+                                                              type = 'password',
+                                                              id = 'inputPasswordId',
+                                                              placeholder = 'Password',
+                                                              style = style['passwordStyle']),
+                                                    dbc.Label('Password')
+
+                                                ]),
 
                                             width = 3)], justify = 'center'),
 
