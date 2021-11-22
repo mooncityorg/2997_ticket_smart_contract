@@ -11,13 +11,11 @@
   "usernameStyle" : {
     "borderRadius" : 10,
     "marginTop" : "20vh",
-    "textAlign" : "center",
     "fontFamily" : "sans serif"
   },
   "passwordStyle" : {
     "marginTop" : "1vh",
     "borderRadius" : 10,
-    "textAlign" : "center",
     "fontFamily" : "sans serif"
   },
   "forgotPasswordHref" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
