@@ -17,7 +17,7 @@
   },
   "passwordStyle" : {
     "padding" : 10,
-    "marginTop" : 25,
+    "marginTop" : "1vh",
     "borderRadius" : 10,
     "textAlign" : "center",
     "fontFamily" : "sans serif"
@@ -25,16 +25,16 @@
   "forgotPasswordHref" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   "forgotPasswordColor" : "#ffcd00",
   "forgotPasswordStyle" : {
-    "marginTop" : 15,
     "color" : "#04487F",
+    "marginTop" : "1vh",
     "fontFamily" : "sans serif"
   },
   "submitColor" : "#ffcd00",
   "submitStyle" : {
     "fontSize" : 15,
-    "marginTop" : 50,
     "paddingTop" : 5,
     "color" : "#04487F",
+    "marginTop" : "5vh",
     "fontFamily" : "sans serif"
   },
   "divInputStyle" : {
