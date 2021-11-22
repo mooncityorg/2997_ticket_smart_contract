@@ -26,12 +26,15 @@
   "forgotPasswordColor" : "#ffcd00",
   "forgotPasswordStyle" : {
     "marginTop" : 15,
+    "color" : "#04487F",
     "fontFamily" : "sans serif"
   },
   "submitColor" : "#ffcd00",
   "submitStyle" : {
     "fontSize" : 15,
-    "marginTop" : 35,
+    "marginTop" : 50,
+    "paddingTop" : 5,
+    "color" : "#04487F",
     "fontFamily" : "sans serif"
   },
   "divInputStyle" : {
@@ -48,6 +51,7 @@
   "redirectColor" : "#0066cc",
   "redirectHref" : "https://github.com/3ASJW6",
   "redirectStyle" : {
+    "color" : "#ffcd00",
     "fontFamily" : "sans serif"
   },
   "divRedirectStyle" : {
