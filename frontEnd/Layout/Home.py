@@ -46,17 +46,29 @@ homeLayout = html.Div(id = 'homeLayoutId',
 
                                                        dbc.InputGroup([
 
-                                                           dbc.Input(id = 'inputSearchId',
-                                                                     placeholder = 'Search'),
-                                                           dbc.InputGroupText(id = 'inputGroupTextId'),
-                                                           dbc.DropdownMenu(label = 'Role',
-                                                                            id = 'dropdownMenuSearchId',
-                                                                            color = style['dropdownMenuSearchColor'],
-                                                                            children = [
+                                                           # by Name <
+                                                           dcc.Dropdown(id = 'byNameId',
+                                                                        placeholder = 'by Name',
+                                                                        style = style['byNameStyle']),
+                                                                        # requirement:
+                                                                        # options = method that returns:
+                                                                            # label : name, value : userId
 
-                                                                                dbc.DropdownMenuItem(i)
+                                                           # >
 
-                                                                            for i in style['dropdownMenuSearchChildren']])
+                                                           # filter Role <
+                                                           dcc.Dropdown(multi = True,
+                                                                        id = 'filterRole',
+                                                                        value = 'student',
+                                                                        placeholder = 'filter Role',
+                                                                        style = style['filterRoleStyle'],
+                                                                        options = [
+
+                                                                            {'label' : l, 'value' : v}
+
+                                                                        for l, v in style['filterRoleOptions'].items()])
+
+                                                           # >
 
                                                        ]),
 

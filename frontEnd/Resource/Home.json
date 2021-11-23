@@ -4,12 +4,24 @@
     "width" : "7vh",
     "height" : "7vh"
   },
-  "dropdownMenuSearchColor" : "#04487F",
-  "dropdownMenuSearchChildren" : {
-    "Student" : "studentId",
-    "Tutor" : "tutorId",
-    "Advisor" : "advisorId",
-    "Professor" : "professorId"
+  "byNameStyle" : {
+    "width" : "20vh",
+    "borderTopLeftRadius" : 10,
+    "borderTopRightRadius" : 0,
+    "borderBottomLeftRadius" : 10,
+    "borderBottomRightRadius" : 0
+  },
+  "filterRoleStyle" : {
+    "borderTopLeftRadius" : 0,
+    "borderTopRightRadius" : 10,
+    "borderBottomLeftRadius" : 0,
+    "borderBottomRightRadius" : 10
+  },
+  "filterRoleOptions" : {
+    "Student" : "student",
+    "Tutor" : "tutor",
+    "Professor" : "professor",
+    "Advisor" : "advisor"
   },
   "divHeaderBackgroundStyle" : {
     "height" : "8vh",
@@ -33,10 +45,10 @@
     "marginBottom" : "1vh",
     "backgroundSize" : "cover",
     "backgroundColor" : "#ffcd00",
+    "backgroundPosition" : "right",
     "border" : "5px solid #ffcd00",
     "backgroundRepeat" : "no-repeat",
     "backgroundAttachment" : "fixed",
-    "backgroundPosition" : "right",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
   "divDashboardStyle" : {
@@ -46,10 +58,10 @@
     "marginBottom" : "1vh",
     "backgroundSize" : "cover",
     "backgroundColor" : "#ffcd00",
+    "backgroundPosition" : "right",
     "border" : "5px solid #ffcd00",
     "backgroundRepeat" : "no-repeat",
     "backgroundAttachment" : "fixed",
-    "backgroundPosition" : "right",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
   "homeLayoutStyle" : {
