@@ -5,6 +5,12 @@
     "height" : "7vh"
   },
   "dropdownMenuSearchColor" : "#04487F",
+  "dropdownMenuSearchChildren" : {
+    "Student" : "studentId",
+    "Tutor" : "tutorId",
+    "Advisor" : "advisorId",
+    "Professor" : "professorId"
+  },
   "divHeaderBackgroundStyle" : {
     "height" : "8vh",
     "margin" : "1vh",

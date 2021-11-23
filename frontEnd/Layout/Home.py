@@ -1,7 +1,8 @@
 # Import <
 from dash import html, dcc
-from backEnd.API.Utility import getJSON
 import dash_bootstrap_components as dbc
+from dash.dependencies import Input, Output, State
+from backEnd.API.Utility import getJSON, application
 
 # >
 
@@ -47,9 +48,15 @@ homeLayout = html.Div(id = 'homeLayoutId',
 
                                                            dbc.Input(id = 'inputSearchId',
                                                                      placeholder = 'Search'),
+                                                           dbc.InputGroupText(id = 'inputGroupTextId'),
                                                            dbc.DropdownMenu(label = 'Role',
                                                                             id = 'dropdownMenuSearchId',
-                                                                            color = style['dropdownMenuSearchColor'])
+                                                                            color = style['dropdownMenuSearchColor'],
+                                                                            children = [
+
+                                                                                dbc.DropdownMenuItem(i)
+
+                                                                            for i in style['dropdownMenuSearchChildren']])
 
                                                        ]),
 
@@ -107,3 +114,11 @@ homeLayout = html.Div(id = 'homeLayoutId',
                           # >
 
                       ], style = style['homeLayoutStyle'])
+
+
+@application.callback(Output('inputGroupTextId', 'children'),
+                      Input('dropdownMenuSearchId', 'label'))
+def dropdownFunction(value: str) -> list:
+    '''  '''
+
+    print(value)

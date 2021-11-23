@@ -54,10 +54,10 @@ loginLayout = html.Div(id = 'loginLayoutId',
 
                                                 dbc.FormFloating([
 
-                                                    dbc.Label('Username'),
                                                     dbc.Input(id = 'inputUsernameId',
                                                               placeholder = 'Username',
-                                                              style = style['usernameStyle'])
+                                                              style = style['usernameStyle']),
+                                                    dbc.Label('Username')
 
                                                 ]),
 
@@ -70,13 +70,13 @@ loginLayout = html.Div(id = 'loginLayoutId',
 
                                                 dbc.FormFloating([
 
-                                                    dbc.Label('Password'),
                                                     dbc.Input(n_submit = 0,
                                                               debounce = True,
                                                               type = 'password',
                                                               id = 'inputPasswordId',
                                                               placeholder = 'Password',
-                                                              style = style['passwordStyle'])
+                                                              style = style['passwordStyle']),
+                                                    dbc.Label('Password')
 
                                                 ]),
 
