@@ -60,8 +60,7 @@ homeLayout = html.Div(id = 'homeLayoutId',
                                                            # >
 
                                                            # filter Role <
-                                                           dcc.Dropdown(multi = True,
-                                                                        id = 'filterRole',
+                                                           dcc.Dropdown(id = 'filterRole',
                                                                         value = 'student',
                                                                         placeholder = 'filter Role',
                                                                         style = style['filterRoleStyle'],

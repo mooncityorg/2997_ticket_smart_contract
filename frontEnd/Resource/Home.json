@@ -7,6 +7,7 @@
     "borderBottomRightRadius" : 0
   },
   "filterRoleStyle" : {
+    "width" : "15vh",
     "borderTopLeftRadius" : 0,
     "borderTopRightRadius" : 10,
     "borderBottomLeftRadius" : 0,
