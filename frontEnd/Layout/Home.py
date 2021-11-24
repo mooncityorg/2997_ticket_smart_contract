@@ -31,13 +31,16 @@ homeLayout = html.Div(id = 'homeLayoutId',
                                                # Content <
                                                dbc.Row([
 
-                                                   # Logo <
+                                                   # <
                                                    dbc.Col(
 
-                                                       html.Img(src = style['logoSrc'],
-                                                                style = style['logoStyle']),
+                                                       dbc.InputGroup([
 
-                                                   width = 'auto'),
+                                                           #
+
+                                                       ]),
+
+                                                   align = 'center', width = 'auto'),
 
                                                    # >
 

@@ -1,9 +1,4 @@
 {
-  "logoSrc" : "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/kansas-city-roos-logo.png",
-  "logoStyle" : {
-    "width" : "7vh",
-    "height" : "7vh"
-  },
   "byNameStyle" : {
     "width" : "20vh",
     "borderTopLeftRadius" : 10,
@@ -24,10 +19,9 @@
     "Advisor" : "advisor"
   },
   "divHeaderBackgroundStyle" : {
-    "height" : "8vh",
     "margin" : "1vh",
+    "padding" : "1vh",
     "borderRadius" : 10,
-    "paddingRight" : "2vh",
     "backgroundSize" : "cover",
     "backgroundColor" : "#ffcd00",
     "border" : "5px solid #ffcd00",
