@@ -7,10 +7,21 @@ from backEnd.API.Utility import parentQuery
 class User:
 
     def __init__(self):
-        '''  '''
+        connection_string = pyodbc.connect(
+            "Driver={SQL Server};"
+            "Server=451project.database.windows.net;"
+            "Database=451_DB;"
+            "UID=_db_;"
+            "PWD=451Project;"
+        )
+        self.cursor = connection_string.cursor()
 
-        pass
+    # get a user based on a userId
+    def getUser(self, userId) -> dict:
 
-    def getUser(self, cursor, userId) -> dict:
+        return parentQuery(self.cursor, "User_Info", "*", ("userId", userId))
 
-        return parentQuery(cursor, "User_Info", "*", userId)[0]
+    # get all users
+    def getAllUser(self) -> dict:
+
+        return parentQuery(self.cursor, "User_Info", "*", ("", ""))

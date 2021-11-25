@@ -258,33 +258,8 @@ def scrapeCourse(driver):
     return schedule
 
 
-def parentQuery(cursor, tableName, columns, primary) -> list:
-
-    # get all column names from specified table
-    cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName))
-    temp = cursor.fetchall()
-    columnNames = list()
-    for x in temp:
-        columnNames.append(x[0])
-    # print(columnNames)
-
-    # get all row data for specified column and key
-    query = "SELECT {} FROM {} WHERE {}='{}'".format(columns, tableName, columnNames[0], primary)
-    # print("\n", "query = ", query, "\n")
-    cursor.execute(query)
-    columnsInfo = list(cursor.fetchall())
-    # print(columnsInfo, "\n")
-
-    # unpacking values and building list of dictionaries
-    datalist = list()
-    for i in range(len(columnsInfo)):
-        datalist.append(dict(zip(columnNames, columnsInfo[i])))
-
-    return datalist
-
-
 # gets information from a child table based on single key input
-def childQueryOne(cursor, tableName, columns, keyName, keyValue) -> list:
+def parentQuery(cursor, tableName, columns, primary: tuple):
 
     cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName))
     temp = cursor.fetchall()
@@ -293,36 +268,44 @@ def childQueryOne(cursor, tableName, columns, keyName, keyValue) -> list:
         columnNames.append(x[0])
     # print(columnNames)
 
-    query = "SELECT {} FROM {} WHERE {}='{}'".format(columns, tableName, keyName, keyValue)
-    # print("\n", query)
+    if primary[0] == "":
+        query = "SELECT {} FROM {}".format(columns, tableName)
+    else:
+        query = "SELECT {} FROM {} WHERE {}='{}'".format(columns, tableName, primary[0], primary[1])
+
+    print('\n', "query = ", query)
     cursor.execute(query)
     columnsInfo = list(cursor.fetchall())
     # print("\n", columnsInfo)
 
-    datalist = list()
-    for i in range(len(columnsInfo)):
-        datalist.append(dict(zip(columnNames, columnsInfo[i])))
-
-    return datalist
+    if len(columnsInfo) == 1:
+        return dict(zip(columnNames, columnsInfo[0]))
+    else:
+        datalist = list()
+        for i in range(len(columnsInfo)):
+            datalist.append(dict(zip(columnNames, columnsInfo[i])))
+        return datalist
 
 
 # gets information from a child table based on double key input
-def childQueryTwo(cursor, tableName, columns, keyOneName, keyOneValue, keyTwoName, keyTwoValue):
+def childQuery(cursor, tableName, columns, primary: tuple, secondary: tuple):
 
     cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName))
     temp = cursor.fetchall()
     columnNames = list()
     for x in temp:
         columnNames.append(x[0])
-    print("column names = ", columnNames)
+    # print("column names = ", columnNames)
 
-    query = "SELECT {} FROM {} WHERE {}='{}' AND {}='{}'".format(columns, tableName, keyOneName, keyOneValue, keyTwoName, keyTwoValue)
-    print("\n child two query = ", query)
+    query = "SELECT {} FROM {} WHERE {}='{}' AND {}='{}'".format(columns, tableName, primary[0], primary[1], secondary[0], secondary[1])
+    print('\n', "query = ", query)
     cursor.execute(query)
     columnsInfo = list(cursor.fetchall())
 
-    datalist = list()
-    for i in range(len(columnsInfo)):
-        datalist.append(dict(zip(columnNames, columnsInfo[i])))
-
-    return datalist
+    if len(columnsInfo) == 1:
+        return dict(zip(columnNames, columnsInfo[0]))
+    else:
+        datalist = list()
+        for i in range(len(columnsInfo)):
+            datalist.append(dict(zip(columnNames, columnsInfo[i])))
+        return datalist
