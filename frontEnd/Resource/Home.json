@@ -1,28 +1,73 @@
 {
-  "byNameStyle" : {
-    "width" : "20vh",
+  "startSpacerStyle" : {
+    "width" : "3vh",
+    "backgroundColor" : "#0066cc",
     "borderTopLeftRadius" : 10,
     "borderTopRightRadius" : 0,
     "borderBottomLeftRadius" : 10,
-    "borderBottomRightRadius" : 0
+    "borderBottomRightRadius" : 0,
+    "border" : "5px solid #0066cc"
   },
-  "filterRoleStyle" : {
-    "width" : "15vh",
+  "usernameStyle" : {
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #0066cc"
+  },
+  "spacerStyle" : {
+    "width" : "3vh",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #0066cc"
+  },
+  "calendarStyle" : {
+    "fontFamily" : "sans serif",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #0066cc"
+  },
+  "eventStyle" : {
+    "width" : 150,
+    "fontFamily" : "sans serif",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #0066cc"
+  },
+  "eventOptions" : {
+    "Create" : "createId",
+    "Update" : "updateId",
+    "Cancel" : "cancelId"
+  },
+  "searchStyle" : {
+    "width" : 250,
+    "fontFamily" : "sans serif",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #0066cc"
+  },
+  "roleStyle" : {
+    "width" : 150,
+    "fontFamily" : "sans serif",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #0066cc"
+  },
+  "roleOptions" : {
+    "Student" : "studentId",
+    "Tutor" : "tutorId",
+    "Advisor" : "advisorId",
+    "Professor" : "professorId"
+  },
+  "endSpacerStyle" : {
+    "width" : "3vh",
     "borderTopLeftRadius" : 0,
     "borderTopRightRadius" : 10,
     "borderBottomLeftRadius" : 0,
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #0066cc",
     "borderBottomRightRadius" : 10
   },
-  "filterRoleOptions" : {
-    "Student" : "student",
-    "Tutor" : "tutor",
-    "Professor" : "professor",
-    "Advisor" : "advisor"
-  },
-  "divHeaderBackgroundStyle" : {
+  "divHeaderStyle" : {
     "margin" : "1vh",
     "padding" : "1vh",
     "borderRadius" : 10,
+    "paddingTop" : "1vh",
+    "paddingLeft" : "10vh",
+    "paddingRight" : "10vh",
+    "paddingBottom" : "1vh",
     "backgroundSize" : "cover",
     "backgroundColor" : "#ffcd00",
     "border" : "5px solid #ffcd00",
@@ -31,30 +76,16 @@
     "backgroundAttachment" : "fixed",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
-  "divMenuStyle" : {
-    "width" : "8vh",
-    "height" : "89vh",
+  "divMainStyle" : {
+    "height" : "91vh",
     "borderRadius" : 10,
     "marginLeft" : "1vh",
     "marginRight" : "1vh",
     "marginBottom" : "1vh",
     "backgroundSize" : "cover",
     "backgroundColor" : "#ffcd00",
-    "backgroundPosition" : "right",
     "border" : "5px solid #ffcd00",
-    "backgroundRepeat" : "no-repeat",
-    "backgroundAttachment" : "fixed",
-    "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
-  },
-  "divDashboardStyle" : {
-    "height" : "89vh",
-    "borderRadius" : 10,
-    "marginRight" : "1vh",
-    "marginBottom" : "1vh",
-    "backgroundSize" : "cover",
-    "backgroundColor" : "#ffcd00",
-    "backgroundPosition" : "right",
-    "border" : "5px solid #ffcd00",
+    "backgroundPosition" : "center",
     "backgroundRepeat" : "no-repeat",
     "backgroundAttachment" : "fixed",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
