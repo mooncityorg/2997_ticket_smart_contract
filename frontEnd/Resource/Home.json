@@ -1,9 +1,9 @@
 {
   "startSpacerStyle" : {
     "width" : "3vh",
-    "backgroundColor" : "#0066cc",
     "borderTopLeftRadius" : 10,
     "borderTopRightRadius" : 0,
+    "backgroundColor" : "#0066cc",
     "borderBottomLeftRadius" : 10,
     "borderBottomRightRadius" : 0,
     "border" : "5px solid #0066cc"
@@ -13,12 +13,16 @@
     "border" : "5px solid #0066cc"
   },
   "spacerStyle" : {
-    "width" : "5vh",
+    "width" : "2vh",
     "backgroundColor" : "#0066cc",
     "border" : "5px solid #0066cc"
   },
   "calendarStyle" : {
     "fontFamily" : "sans serif",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #0066cc"
+  },
+  "dashboardStyle" : {
     "backgroundColor" : "#0066cc",
     "border" : "5px solid #0066cc"
   },
@@ -60,9 +64,7 @@
     "border" : "5px solid #0066cc",
     "borderBottomRightRadius" : 10
   },
-  "divHeaderStyle" : {
-    "paddingLeft" : "auto",
-
+  "divHeaderBackgroundStyle" : {
     "margin" : "1vh",
     "padding" : "1vh",
     "borderRadius" : 10,
@@ -75,8 +77,8 @@
     "backgroundAttachment" : "fixed",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
-  "divMainStyle" : {
-    "height" : "90vh",
+  "divMainBackgroundStyle" : {
+    "height" : "91.5vh",
     "borderRadius" : 10,
     "marginLeft" : "1vh",
     "marginRight" : "1vh",

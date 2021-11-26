@@ -16,131 +16,152 @@ style = getJSON(file = '/frontEnd/Resource/Home.json')
 # >
 
 
-homeLayout = html.Div(id = 'homeLayoutId',
-                      children = [
+homeLayout = dbc.Container([
 
-                          # Header <
-                          dbc.Row([dbc.Col(
+    # Header <
+    dbc.Row([dbc.Col(
 
-                              # Background <
-                              html.Div(id = 'divHeaderId',
-                                       children = [
+        # Background <
+        html.Div(id = 'divHeaderBackgroundId',
+                 children = [
 
-                                           # Navigation Bar <
-                                           dbc.InputGroup([
+                     dbc.Row([dbc.Col(
 
-                                               # Start Spacer <
-                                               dbc.InputGroupText(style = style['startSpacerStyle']),
+                         # Navigation Bar <
+                         dbc.InputGroup([
 
-                                               # >
+                             # Start Spacer <
+                             dbc.InputGroupText(style = style['startSpacerStyle']),
 
-                                               # Username <
-                                               dbc.Button(id = 'usernameId',
-                                                          children = 'ala2q6',
-                                                          style = style['usernameStyle']),
+                             # >
 
-                                               # >
+                             # Username <
+                             dbc.Button(id = 'usernameId',
+                                        children = 'ala2q6',
+                                        style = style['usernameStyle']),
 
-                                               # Spacer <
-                                               dbc.InputGroupText(style = style['spacerStyle']),
+                             # >
 
-                                               # >
+                             # Spacer <
+                             dbc.InputGroupText(style = style['spacerStyle']),
 
-                                               # Calendar <
-                                               dbc.Button(id = 'calendarId',
-                                                          children = 'Calendar',
-                                                          style = style['calendarStyle']),
+                             # >
 
-                                               # >
+                             # Calendar <
+                             dbc.Button(id = 'calendarId',
+                                        children = 'Calendar',
+                                        style = style['calendarStyle']),
 
-                                               # Spacer <
-                                               dbc.InputGroupText(style = style['spacerStyle']),
+                             # >
 
-                                               # >
+                             # Spacer <
+                             dbc.InputGroupText(style = style['spacerStyle']),
 
-                                               # Event <
-                                               dcc.Dropdown(id = 'eventId',
-                                                            searchable = False,
-                                                            placeholder = 'Event',
-                                                            style = style['eventStyle'],
-                                                            options = [
+                             # >
 
-                                                                {'label' : l, 'value' : v}
+                             # Dashboard <
+                             dbc.Button(id = 'dashboardId',
+                                        children = 'Dashboard',
+                                        style = style['dashboardStyle']),
 
-                                                            for l, v in style['eventOptions'].items()]),
+                             # >
 
-                                               # >
+                             # Spacer <
+                             dbc.InputGroupText(style = style['spacerStyle']),
 
-                                               # Spacer <
-                                               dbc.InputGroupText(style = style['spacerStyle']),
+                             # >
 
-                                               # >
+                             # Event <
+                             dcc.Dropdown(id = 'eventId',
+                                          searchable = False,
+                                          placeholder = 'Event',
+                                          style = style['eventStyle'],
+                                          options = [
 
-                                               # Search <
-                                               dcc.Dropdown(id = 'searchId',
-                                                            placeholder = 'Search',
-                                                            style = style['searchStyle']),
-                                                            #options = [
+                                              {'label' : l, 'value' : v}
 
-                                                                #{'label' : name, 'value' : userId}
+                                          for l, v in style['eventOptions'].items()]),
 
-                                                            #for name, userId in ])
-                                                            # requirement: a method that returns all
-                                                            # names and userIds
+                             # >
 
-                                               # >
+                             # Spacer <
+                             dbc.InputGroupText(style = style['spacerStyle']),
 
-                                               # Spacer <
-                                               dbc.InputGroupText(style = style['spacerStyle']),
+                             # >
 
+                             # Search <
+                             dcc.Dropdown(id = 'searchId',
+                                          placeholder = 'Search',
+                                          style = style['searchStyle']),
+                                          #options = [
 
-                                               # >
+                                              #{'label' : name, 'value' : userId}
 
-                                               # Role <
-                                               dcc.Dropdown(id = 'roleId',
-                                                            searchable = False,
-                                                            placeholder = 'Role',
-                                                            style = style['roleStyle'],
-                                                            options = [
+                                          #for name, userId in ])
+                                          # requirement: a method that returns all
+                                          # names and userIds
 
-                                                                {'label' : l, 'value' : v}
+                             # >
 
-                                                            for l, v in style['roleOptions'].items()]),
+                             # Spacer <
+                             dbc.InputGroupText(style = style['spacerStyle']),
 
-                                               # >
+                              #>
 
-                                               # End Spacer <
-                                               dbc.InputGroupText(style = style['endSpacerStyle'])
+                             # Role <
+                             dcc.Dropdown(id = 'roleId',
+                                          searchable = False,
+                                          placeholder = 'Role',
+                                          style = style['roleStyle'],
+                                          options = [
 
-                                               # >
+                                              {'label' : l, 'value' : v}
 
-                                           ])
+                                          for l, v in style['roleOptions'].items()]),
 
-                                           # >
+                             # >
 
-                                       ], style = style['divHeaderStyle']),
+                             # End Spacer <
+                             dbc.InputGroupText(style = style['endSpacerStyle'])
 
-                              # >
+                             # >
 
-                          width = 'auto')], justify = 'center'),
+                         ]),
 
-                          # >
+                         # >
 
-                          # Main <
-                          dbc.Row([dbc.Col(
+                     width = 'auto')], justify = 'center')
 
-                              # Background <
-                              html.Div(id = 'divMainId',
-                                       children = [
+                 ], style = style['divHeaderBackgroundStyle']),
 
-                                           #
+        # >
 
-                                       ], style = style['divMainStyle'])
+        width = True)
 
-                              # >
+    ]),
 
-                          )])
+    # >
 
-                          # >
+    # Main <
+    dbc.Row([dbc.Col(
 
-                      ], style = style['homeLayoutStyle'])
+        html.Div(id = 'divMainId',
+                 children = [
+
+                     dbc.Row([
+
+                         dbc.Col(
+
+                             #
+
+                         )
+
+                     ])
+
+                 ], style = style['divMainBackgroundStyle'])
+
+    )])
+
+    # >
+
+], fluid = True)
