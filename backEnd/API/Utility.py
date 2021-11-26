@@ -258,7 +258,7 @@ def scrapeCourse(driver):
     return schedule
 
 
-# gets information from a child table based on single key input
+# gets information from a table based on single key input
 def parentQuery(cursor, tableName, columns, primary: tuple):
 
     cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName))
@@ -287,7 +287,7 @@ def parentQuery(cursor, tableName, columns, primary: tuple):
         return datalist
 
 
-# gets information from a child table based on double key input
+# gets information from a table based on double key input
 def childQuery(cursor, tableName, columns, primary: tuple, secondary: tuple):
 
     cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName))
