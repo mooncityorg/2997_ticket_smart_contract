@@ -78,7 +78,7 @@
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
   "divMainBackgroundStyle" : {
-    "height" : "91.5vh",
+    "height" : "90vh",
     "borderRadius" : 10,
     "marginLeft" : "1vh",
     "marginRight" : "1vh",
