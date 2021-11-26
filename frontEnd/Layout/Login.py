@@ -23,8 +23,9 @@ style = getJSON(file = '/frontEnd/Resource/Login.json')
 loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
 
-                           # Confirm Dialog <
-
+                           # Login Confirm Dialog <
+                           dcc.ConfirmDialog(id = 'loginConfirmDialog',
+                                             message = 'Login information was invalid.'),
 
                            # >
 
@@ -49,12 +50,24 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                html.Div(id = 'divInputId',
                                         children = [
 
+                                            # Logo <
+                                            html.H1(children = 'Connect++',
+                                                    className = 'display-3',
+                                                    style = style['logoH1Style']),
+
+                                            html.P(className = 'lead',
+                                                   children = 'by 3ASJW6',
+                                                   style = style['logoPStyle']),
+
+                                            # >
+
                                             # Username <
                                             dbc.Row([dbc.Col(
 
                                                 dbc.FormFloating([
 
-                                                    dbc.Input(id = 'inputUsernameId',
+                                                    dbc.Input(disabled = False,
+                                                              id = 'inputUsernameId',
                                                               placeholder = 'Username',
                                                               style = style['usernameStyle']),
                                                     dbc.Label('Username')
@@ -136,13 +149,20 @@ loginLayout = html.Div(id = 'loginLayoutId',
                        ], style = style['loginLayoutStyle'])
 
 
+'''@application.callback(Output('loginConfirmDialog', 'displayed'),
+                      Input('inputUsernameId', 'disabled'))
+def xx(arg):
+
+    print('me')
+    return True
+
+
 @application.callback(Output('loginLayoutId', 'children'),
-                      Input('submitId', 'n_clicks'),
-                      Input('inputPasswordId', 'n_submit'),
-                      State('loginLayoutId', 'children'))
-def submitFunction(click: int, submit: int, layout: list) -> list:
+                      State('loginLayoutId', 'children'),
+                      Input('submitId', 'n_clicks'))
+def loginFunction(arg, a):
     '''  '''
 
-    if (click or submit): return homeLayout
-    else: return layout
-
+    print('ok')
+    return arg
+'''

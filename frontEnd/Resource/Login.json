@@ -8,9 +8,20 @@
     "marginTop" : "6vh",
     "textAlign" : "center"
   },
+  "logoH1Style" : {
+    "color" : "#04487F",
+    "marginTop" : "5vh",
+    "textAlign" : "center",
+    "fontFamily" : "sans serif"
+  },
+  "logoPStyle" : {
+    "color" : "#04487F",
+    "textAlign" : "center",
+    "fontFamily" : "sans serif"
+  },
   "usernameStyle" : {
     "borderRadius" : 10,
-    "marginTop" : "20vh",
+    "marginTop" : "10vh",
     "fontFamily" : "sans serif"
   },
   "passwordStyle" : {
