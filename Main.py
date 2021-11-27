@@ -10,7 +10,7 @@ from frontEnd.Layout.Home import homeLayout # remove
 
 if (__name__ == '__main__'):
 
-    application.layout = homeLayout
+    application.layout = loginLayout
     application.run_server(debug = True)
 
 # >

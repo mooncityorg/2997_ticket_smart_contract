@@ -21,7 +21,7 @@
   },
   "usernameStyle" : {
     "borderRadius" : 10,
-    "marginTop" : "10vh",
+    "marginTop" : "7vh",
     "fontFamily" : "sans serif"
   },
   "passwordStyle" : {
