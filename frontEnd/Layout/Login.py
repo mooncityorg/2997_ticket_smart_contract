@@ -6,7 +6,7 @@ from frontEnd.Layout.Home import homeLayout
 from dash.dependencies import Input, Output, State
 from selenium.webdriver.chrome.options import Options
 #from webdriver_manager.chrome import ChromeDriverManager
-from backEnd.API.Utility import getJSON, application, Login, Verify
+from backEnd.API.Utility import getJSON, application, Submit
 
 # >
 
@@ -23,9 +23,15 @@ style = getJSON(file = '/frontEnd/Resource/Login.json')
 loginLayout = html.Div(id = 'loginLayoutId',
                        children = [
 
-                           # Login Confirm Dialog <
-                           dcc.ConfirmDialog(id = 'loginConfirmDialog',
-                                             message = 'Login information was invalid.'),
+                           # Submit Confirm Dialog <
+                           dcc.ConfirmDialog(id = 'submitConfirmDialog',
+                                             message = 'Error: Invalid Credentials.'),
+
+                           # >
+
+                           # Verify Confirm Dialog <
+                           dcc.ConfirmDialog(id = 'verifyConfirmDialog',
+                                             message = 'Error: Invalid Credentials.'),
 
                            # >
 
@@ -149,20 +155,49 @@ loginLayout = html.Div(id = 'loginLayoutId',
                        ], style = style['loginLayoutStyle'])
 
 
-'''@application.callback(Output('loginConfirmDialog', 'displayed'),
-                      Input('inputUsernameId', 'disabled'))
-def xx(arg):
-
-    print('me')
-    return True
-
-
-@application.callback(Output('loginLayoutId', 'children'),
-                      State('loginLayoutId', 'children'),
-                      Input('submitId', 'n_clicks'))
-def loginFunction(arg, a):
+@application.callback(Output('submitId', 'children'),
+                      Output('inputUsernameId', 'disabled'),
+                      Output('submitConfirmDialog', 'displayed'),
+                      Input('submitId', 'n_clicks'),
+                      Input('inputPasswordId', 'n_submit'),
+                      State('inputPasswordId', 'value'))
+def submitFunction(click: int, submit: int, password: str):
     '''  '''
 
-    print('ok')
-    return arg
-'''
+    # if (submit) <
+    if (click or submit):
+
+        print('1')
+
+        # if (valid) <
+        if (Submit(password)):
+
+            print('2')
+
+            return (dbc.Spinner(size = 'sm'), True, False)
+
+        # >
+
+        return ('Submit', False, True)
+
+    # >
+
+    return ('Submit', False, False)
+
+
+@application.callback(Output('verifyConfirmDialog', 'displayed'),
+                      Input('inputUsernameId', 'disabled'),
+                      State('inputUsernameId', 'value'),
+                      State('inputPasswordId', 'value'))
+def verifyFunction(disabled: bool, username: str, password: str):
+    '''  '''
+
+    # if (verify) <
+    if (disabled):
+
+        print('disabled', disabled)
+        return False
+
+    # >
+
+    return False
