@@ -1,13 +1,4 @@
 {
-  "startSpacerStyle" : {
-    "width" : "3vh",
-    "borderTopLeftRadius" : 10,
-    "borderTopRightRadius" : 0,
-    "backgroundColor" : "#0066cc",
-    "borderBottomLeftRadius" : 10,
-    "borderBottomRightRadius" : 0,
-    "border" : "5px solid #0066cc"
-  },
   "usernameStyle" : {
     "backgroundColor" : "#0066cc",
     "border" : "5px solid #0066cc"
@@ -54,15 +45,6 @@
     "Tutor" : "tutorId",
     "Advisor" : "advisorId",
     "Professor" : "professorId"
-  },
-  "endSpacerStyle" : {
-    "width" : "3vh",
-    "borderTopLeftRadius" : 0,
-    "borderTopRightRadius" : 10,
-    "borderBottomLeftRadius" : 0,
-    "backgroundColor" : "#0066cc",
-    "border" : "5px solid #0066cc",
-    "borderBottomRightRadius" : 10
   },
   "divHeaderBackgroundStyle" : {
     "margin" : "1vh",
