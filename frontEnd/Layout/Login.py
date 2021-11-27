@@ -90,6 +90,7 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                                 dbc.FormFloating([
 
                                                     dbc.Input(n_submit = 0,
+                                                              disabled = True,
                                                               debounce = True,
                                                               type = 'password',
                                                               id = 'inputPasswordId',
@@ -157,6 +158,7 @@ loginLayout = html.Div(id = 'loginLayoutId',
 
 @application.callback(Output('submitId', 'children'),
                       Output('inputUsernameId', 'disabled'),
+                      Output('inputPasswordId', 'disabled'),
                       Output('submitConfirmDialog', 'displayed'),
                       Input('submitId', 'n_clicks'),
                       Input('inputPasswordId', 'n_submit'),
@@ -167,22 +169,18 @@ def submitFunction(click: int, submit: int, password: str):
     # if (submit) <
     if (click or submit):
 
-        print('1')
-
         # if (valid) <
         if (Submit(password)):
 
-            print('2')
-
-            return (dbc.Spinner(size = 'sm'), True, False)
+            return (dbc.Spinner(size = 'sm'), True, True, False)
 
         # >
 
-        return ('Submit', False, True)
+        return ('Submit', False, False, True)
 
     # >
 
-    return ('Submit', False, False)
+    return ('Submit', False, False, False)
 
 
 @application.callback(Output('verifyConfirmDialog', 'displayed'),
