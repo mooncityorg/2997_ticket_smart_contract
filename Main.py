@@ -7,6 +7,7 @@ from frontEnd.Layout.Home import homeLayout # remove
 
 
 # Main <
+
 if (__name__ == '__main__'):
 
     application.layout = homeLayout

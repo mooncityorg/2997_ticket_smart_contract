@@ -30,11 +30,6 @@ homeLayout = dbc.Container([
                          # Navigation Bar <
                          dbc.InputGroup([
 
-                             # Start Spacer <
-                             dbc.InputGroupText(style = style['startSpacerStyle']),
-
-                             # >
-
                              # Username <
                              dbc.Button(id = 'usernameId',
                                         children = 'ala2q6',
@@ -121,16 +116,11 @@ homeLayout = dbc.Container([
 
                              # >
 
-                             # End Spacer <
-                             dbc.InputGroupText(style = style['endSpacerStyle'])
-
-                             # >
-
                          ]),
 
                          # >
 
-                     width = 'auto')], justify = 'center')
+                     width = 'auto')], justify = 'center', style = style['headerRowStyle'])
 
                  ], style = style['divHeaderBackgroundStyle']),
 
