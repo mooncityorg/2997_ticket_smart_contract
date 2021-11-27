@@ -6,12 +6,13 @@ from frontEnd.Layout.Home import homeLayout
 from dash.dependencies import Input, Output, State
 from selenium.webdriver.chrome.options import Options
 #from webdriver_manager.chrome import ChromeDriverManager
-from backEnd.API.Utility import getJSON, application, Submit
+from backEnd.API.Utility import getJSON, application, Submit, Verify
 
 # >
 
 
 # Declaration <
+loadLayout = None
 #options = Options()
 #options.headless = True
 style = getJSON(file = '/frontEnd/Resource/Login.json')
@@ -72,8 +73,7 @@ loginLayout = html.Div(id = 'loginLayoutId',
 
                                                 dbc.FormFloating([
 
-                                                    dbc.Input(disabled = False,
-                                                              id = 'inputUsernameId',
+                                                    dbc.Input(id = 'inputUsernameId',
                                                               placeholder = 'Username',
                                                               style = style['usernameStyle']),
                                                     dbc.Label('Username')
@@ -90,7 +90,6 @@ loginLayout = html.Div(id = 'loginLayoutId',
                                                 dbc.FormFloating([
 
                                                     dbc.Input(n_submit = 0,
-                                                              disabled = True,
                                                               debounce = True,
                                                               type = 'password',
                                                               id = 'inputPasswordId',
@@ -162,9 +161,12 @@ loginLayout = html.Div(id = 'loginLayoutId',
                       Output('submitConfirmDialog', 'displayed'),
                       Input('submitId', 'n_clicks'),
                       Input('inputPasswordId', 'n_submit'),
-                      State('inputPasswordId', 'value'))
-def submitFunction(click: int, submit: int, password: str):
+                      State('inputPasswordId', 'value'),
+                      State('loginLayoutId', 'children'))
+def submitFunction(click: int, submit: int, password: str, layout: list):
     '''  '''
+
+    global loadLayout
 
     # if (submit) <
     if (click or submit):
@@ -176,26 +178,35 @@ def submitFunction(click: int, submit: int, password: str):
 
         # >
 
-        return ('Submit', False, False, True)
+        else: return ('Submit', False, False, True)
 
     # >
 
+    loadLayout = layout
     return ('Submit', False, False, False)
 
 
-@application.callback(Output('verifyConfirmDialog', 'displayed'),
+@application.callback(Output('loginLayoutId', 'children'),
+                      Output('verifyConfirmDialog', 'displayed'),
                       Input('inputUsernameId', 'disabled'),
+                      State('loginLayoutId', 'children'),
                       State('inputUsernameId', 'value'),
                       State('inputPasswordId', 'value'))
-def verifyFunction(disabled: bool, username: str, password: str):
+def verifyFunction(disabled: bool, layout: list, username: str, password: str):
     '''  '''
 
     # if (verify) <
     if (disabled):
 
-        print('disabled', disabled)
-        return False
+        # if (valid) <
+        if (Verify(username, password)):
+
+            return homeLayout
+
+        # >
+
+        else: return (loadLayout, True)
 
     # >
 
-    return False
+    return (layout, False)

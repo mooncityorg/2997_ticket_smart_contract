@@ -61,3 +61,9 @@ def Submit(password: str) -> bool:
         else: return False
 
     except TypeError: return False
+
+
+def Verify(username: str, password: str) -> bool:
+    '''  '''
+
+    return False
