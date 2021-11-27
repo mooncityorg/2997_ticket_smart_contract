@@ -24,6 +24,7 @@ MarkupSafe==2.0.1
 outcome==1.1.0
 plotly==5.3.1
 pycparser==2.21
+pyodbc==4.0.32
 pyOpenSSL==21.0.0
 requests==2.26.0
 selenium==4.0.0
