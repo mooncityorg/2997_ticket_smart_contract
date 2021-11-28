@@ -125,7 +125,7 @@ def Verify(username: str, password: str) -> bool:
     # >
 
 
-def Authenticate(driver):
+def Authenticate(driver, code = None):
     '''  '''
 
     # Declaration <
@@ -133,10 +133,23 @@ def Authenticate(driver):
 
     # >
 
-    # Select <
-    driver.find_element_by_xpath(setting['Select']).click(), sleep(1)
+    # if (code) <
+    if (code):
+
+        # Code <
+        driver.find_element_by_xpath(setting['codeInput']).send_keys(code)
+        driver.find_element_by_xpath(setting['codeButton']).click(), sleep(5)
+
+        # >
 
     # >
+
+    else:
+
+        # Select <
+        driver.find_element_by_xpath(setting['textButton']).click(), sleep(1)
+
+        # >
 
     return driver
 
@@ -144,10 +157,113 @@ def Authenticate(driver):
 def scrapeUser(driver):
     '''  '''
 
-    pass
+    # Declaration <
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeUser']
+
+    # >
+
+    # a tab to check if user is a tutor in which case we return
+    # the driver and then a dictionary of if they are a tutor and
+    # their name. then if they are a tutor we execute future
+    # 'scrapeTutor' function to gather the classes they tutor in
+
+    # (-> Personal Information -> Names) <
+    driver.find_element_by_xpath(setting['personalInformationButton']).click(), sleep(1)
+    driver.find_element_by_xpath(setting['namesButton']).click(), sleep(1)
+
+    # >
+
+    # (-> Name) <
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
+    name = driver.find_element_by_xpath(setting['nameText']).text
+
+    # >
+
+    # (-> Back) <
+    driver.switch_to.default_content()
+    driver.find_element_by_xpath(setting['backButton']).click(), sleep(1)
+
+    # >
+
+    return (driver, {'name' : name})
 
 
 def scrapeSchedule(driver):
     '''  '''
 
-    pass
+    # Declaration <
+    schedule = []
+    month, year = strftime('%m %Y').split()
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeSchedule']
+    semester = [key for key, value in setting['Semester'].items() if (month in value)][0]
+
+    # >
+
+    # (-> Manage Classes -> My Class Schedule) <
+    driver.find_element_by_xpath(setting['manageClassesButton']).click(), sleep(1)
+    driver.find_element_by_xpath(setting['myClassScheduleButton']).click(), sleep(2)
+
+    # >
+
+    # (-> Select Term) <
+    termA = (f'{year} {semester} Semester')
+    driver.find_element_by_xpath(setting['menuButton']).click(), sleep(1)
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
+    for i in range(50):
+
+        # try (if term) <
+        try:
+
+            termB = driver.find_element_by_xpath(setting['termText'].replace('<>', str(i))).text
+
+            # if (termA is termB) <
+            if (termA == termB):
+
+                driver.find_element_by_xpath(setting['termButton'].replace('<>', str(i))).click()
+                driver.find_element_by_xpath(setting['continueButton']).click(), sleep(1)
+
+            # >
+
+        # except (then not term) <
+        except NoSuchElementException: pass
+
+        # >
+
+    # >
+
+    # Filter Schedule <
+    driver.find_element_by_xpath(setting['droppedButton']).click()
+    driver.find_element_by_xpath(setting['waitlistedButton']).click()
+    driver.find_element_by_xpath(setting['filterButton']).click(), sleep(0.25)
+
+    # >
+
+    # iterate (course) <
+    for i in range(0, 50, 2):
+
+        # try (if course) <
+        try:
+
+            course = {}
+            for k, v in setting['Course'].items():
+
+                course[k] = driver.find_element_by_xpath(v.replace('<>', str(i))).text
+
+            schedule.append(course)
+
+        # >
+
+        # except (then not course) <
+        except NoSuchElementException: pass
+
+        # >
+
+    # >
+
+    # (-> Back) <
+    driver.switch_to.default_content()
+    driver.find_element_by_xpath(setting['backButton']).click(), sleep(1)
+
+    # >
+
+    return (driver, {'schedule' : schedule})
