@@ -23,12 +23,12 @@ class Event:
 
     def getUpcoming(self, userId):
 
-        items = joinQuery(self.cursor, "Event_Info", "e", "locationId", "Location_Info", "l", "locationId", "*", ("userId", userId))
+        return joinQuery(self.cursor, "Event_Info", "e", "locationId", "Location_Info", "l", "locationId", "*", ("userId", userId))
 
     #this function gets the 10 most recent event actions (event creation, event updating, and event deletion)
     def getUpdates(self, userId):
 
-        items = joinQuery(self.cursor, "Event_Info", "e", "locationId", "Location_Info", "l", "locationId", "*", ("userId", userId), True)
+        return joinQuery(self.cursor, "Event_Info", "e", "locationId", "Location_Info", "l", "locationId", "*", ("userId", userId), True)
 
 
 
