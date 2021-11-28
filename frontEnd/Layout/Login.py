@@ -1,11 +1,8 @@
 # Import <
 from dash import dcc, html
-#from selenium import webdriver
 import dash_bootstrap_components as dbc
 from frontEnd.Layout.Home import homeLayout
 from dash.dependencies import Input, Output, State
-from selenium.webdriver.chrome.options import Options
-#from webdriver_manager.chrome import ChromeDriverManager
 from backEnd.API.Utility import getJSON, application, Submit, Verify
 
 # >
@@ -13,10 +10,7 @@ from backEnd.API.Utility import getJSON, application, Submit, Verify
 
 # Declaration <
 loadLayout = None
-#options = Options()
-#options.headless = True
 style = getJSON(file = '/frontEnd/Resource/Login.json')
-#driver = webdriver.Chrome(ChromeDriverManager().install(), options = options)
 
 # >
 
@@ -199,13 +193,13 @@ def verifyFunction(disabled: bool, layout: list, username: str, password: str):
     if (disabled):
 
         # if (valid) <
-        if (Verify(username, password)):
+        #if (Verify(username, password)):
 
-            return homeLayout
+            return (homeLayout, False)
 
         # >
 
-        else: return (loadLayout, True)
+        #else: return (loadLayout, True)
 
     # >
 

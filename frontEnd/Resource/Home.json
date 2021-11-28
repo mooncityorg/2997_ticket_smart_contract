@@ -63,10 +63,11 @@
     "borderRadius" : 10,
     "marginLeft" : "1vh",
     "marginRight" : "1vh",
-    "backgroundColor" : "#0066cc"
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #ffcd00"
   },
   "divMainBackgroundStyle" : {
-    "height" : "90vh",
+    "height" : "89vh",
     "borderRadius" : 10,
     "marginLeft" : "1vh",
     "marginRight" : "1vh",
