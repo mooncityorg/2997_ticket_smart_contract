@@ -5,7 +5,7 @@ from backEnd.API.Utility import parentQuery
 # >
 
 
-class Event:
+class Course:
 
     # Constructor <
 
@@ -25,8 +25,12 @@ class Event:
 
     # Methods <
 
-    def getEvent(self, eventId):
-        '''get all event info based on eventId'''
-        return parentQuery(self.cursor, "Event_Info", "*", ("eventId", eventId))
+    def getCourseList(self, userId) -> list:
+        '''get a list of courses based on userId'''
+        return parentQuery(self.cursor, "Course_Info", "*", ("userId", userId))
+
+    def getCourse(self, courseId) -> dict:
+        '''get course info'''
+        return parentQuery(self.cursor, "Course_Info", "*", ("courseId", courseId))
 
     # >

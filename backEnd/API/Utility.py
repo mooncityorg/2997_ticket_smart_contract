@@ -11,8 +11,9 @@ from selenium.common.exceptions import NoSuchElementException
 
 
 # Declaration <
-application = Dash(suppress_callback_exceptions = True)
+application = Dash(suppress_callback_exceptions=True)
 server = application.server
+
 
 # >
 
@@ -61,7 +62,7 @@ def Login(driver, username: str, password: str):
 
         # Declaration <
         username += '@umsystem.edu'
-        setting = getJSON(file = '/backEnd/Resource/Utility.json')['Login']
+        setting = getJSON(file='/backEnd/Resource/Utility.json')['Login']
 
         # >
 
@@ -91,14 +92,16 @@ def Login(driver, username: str, password: str):
         # >
 
         # except (then invalid) <
-        except NoSuchElementException: return None
+        except NoSuchElementException:
+            return None
 
         # >
 
     # >
 
     # else (invalid) <
-    else: return None
+    else:
+        return None
 
     # >
 
@@ -107,7 +110,7 @@ def Verify(driver, code: str):
     '''  '''
 
     # Declaration <
-    setting = getJSON(file = '/backEnd/Resource/Utility.json')['Verify']
+    setting = getJSON(file='/backEnd/Resource/Utility.json')['Verify']
 
     # >
 
@@ -135,7 +138,8 @@ def Verify(driver, code: str):
     # >
 
     # except (then invalid) <
-    except NoSuchElementException: return None
+    except NoSuchElementException:
+        return None
 
     # >
 
@@ -145,7 +149,7 @@ def scrapeUser(driver):
 
     # Declaration <
     schedule, isTutor = [], False
-    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeUser']
+    setting = getJSON(file='/backEnd/Resource/Utility.json')['scrapeUser']
 
     # >
 
@@ -174,13 +178,14 @@ def scrapeUser(driver):
         # >
 
         # except (then invalid) <
-        except NoSuchElementException: pass
+        except NoSuchElementException:
+            pass
 
         # >
 
     # >
 
-    return {'name' : name, 'isTutor' : isTutor, 'schedule' : schedule}
+    return {'name': name, 'isTutor': isTutor, 'schedule': schedule}
 
 
 def scrapeCourse(driver):
@@ -189,7 +194,7 @@ def scrapeCourse(driver):
     # Declaration <
     schedule = []
     month, year = strftime('%m %Y').split()
-    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeCourse']
+    setting = getJSON(file='/backEnd/Resource/Utility.json')['scrapeCourse']
     semester = [key for key, value in setting['Semester'].items() if (month in value)][0]
 
     # >
@@ -211,7 +216,6 @@ def scrapeCourse(driver):
 
             # if (match) <
             if (termA == termB):
-
                 driver.find_element_by_xpath(setting['Button'].replace('<>', str(i))).click()
                 driver.find_element_by_xpath(setting['Continue']).click(), sleep(1)
 
@@ -220,7 +224,8 @@ def scrapeCourse(driver):
         # >
 
         # except (then invalid) <
-        except NoSuchElementException: pass
+        except NoSuchElementException:
+            pass
 
         # >
 
@@ -241,7 +246,6 @@ def scrapeCourse(driver):
 
             course = {}
             for k, v in setting['Course'].items():
-
                 course[k] = driver.find_element_by_xpath(v.replace('<>', str(i))).text
 
             schedule.append(course)
@@ -249,10 +253,101 @@ def scrapeCourse(driver):
         # >
 
         # except (then invalid) <
-        except NoSuchElementException: pass
+        except NoSuchElementException:
+            pass
 
         # >
 
     # >
 
     return schedule
+
+
+def parentQuery(cursor, tableName, columns, primary: tuple):
+    '''gets information from a table based on single key input'''
+
+    # Declaration <
+    columnNames = list()
+    query = str()
+
+    # >
+
+    # Column Names <
+    query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName)
+    cursor.execute(query)
+    for x in cursor.fetchall(): columnNames.append(x[0])
+    # print(columnNames)
+
+    # >
+
+    # Build Query <
+    if primary[0] == "":
+        # if primary key argument is empty, get all column info from table
+        query = "SELECT {} FROM {}".format(columns, tableName)
+    else:
+        # if primary key argument is filled, get column info based on key
+        query = "SELECT {} FROM {} WHERE {}='{}'".format(columns, tableName, primary[0], primary[1])
+
+    # >
+
+    # Execute Query <
+    print('\n', "query = ", query)
+    cursor.execute(query)
+    columnsInfo = list(cursor.fetchall())
+    # print("\n", columnsInfo)
+
+    # >
+
+    # Format Output <
+    if len(columnsInfo) == 1:
+        # if list would only be one element, return just that element
+        return dict(zip(columnNames, columnsInfo[0]))
+    else:
+        # return list of dictionaries
+        datalist = list()
+        for i in range(len(columnsInfo)):
+            datalist.append(dict(zip(columnNames, columnsInfo[i])))
+        return datalist
+
+    # >
+
+
+def childQuery(cursor, tableName, columns, primary: tuple, secondary: tuple):
+    '''gets information from a table based on double key input'''
+
+    # Declaration <
+    columnNames = list()
+
+    # >
+
+    # Column Names <
+    cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName))
+    for x in cursor.fetchall(): columnNames.append(x[0])
+    # print("column names = ", columnNames)
+
+    # >
+
+    # Build Query <
+    query = "SELECT {} FROM {} WHERE {}='{}' AND {}='{}'".format(columns, tableName, primary[0], primary[1], secondary[0], secondary[1])
+    print('\n', "query = ", query)
+
+    # >
+
+    # Execute Query <
+    cursor.execute(query)
+    columnsInfo = list(cursor.fetchall())
+
+    # >
+
+    # Format Output <
+    if len(columnsInfo) == 1:
+        # if list would only be one element, return just that element
+        return dict(zip(columnNames, columnsInfo[0]))
+    else:
+        # return list of dictionaries
+        datalist = list()
+        for i in range(len(columnsInfo)):
+            datalist.append(dict(zip(columnNames, columnsInfo[i])))
+        return datalist
+
+    # >

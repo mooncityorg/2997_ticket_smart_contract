@@ -5,7 +5,7 @@ from backEnd.API.Utility import parentQuery
 # >
 
 
-class Event:
+class Location:
 
     # Constructor <
 
@@ -25,8 +25,12 @@ class Event:
 
     # Methods <
 
-    def getEvent(self, eventId):
-        '''get all event info based on eventId'''
-        return parentQuery(self.cursor, "Event_Info", "*", ("eventId", eventId))
+    def getLocationList(self, userId):
+        '''get all location options for a specific user'''
+        return parentQuery(self.cursor, "Location_Info", "*", ("userId", userId))
+
+    def getLocation(self, locationId):
+        '''get information about a location'''
+        return parentQuery(self.cursor, "Location_Info", "*", ("locationId", locationId))
 
     # >
