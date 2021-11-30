@@ -1,8 +1,8 @@
 # Import <
 from dash import dcc, html
 from selenium import webdriver
+from frontEnd.Layout.Home import homeLayout
 from dash.dependencies import Input, Output, State
-from frontEnd.Layout.Dashboard import dashboardLayout
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 from backEnd.API.Utility import getJSON, application, Login, Verify
@@ -187,9 +187,9 @@ def verifyFunction(submit: int, click: int, code: str, div: list):
         if (condition):
 
             # set data
-            # username dashboard element
-            dashboard = dashboardLayout
-            return (dashboardLayout, False)
+            # username home element
+            dashboard = homeLayout
+            return (homeLayout, False)
 
         # >
 

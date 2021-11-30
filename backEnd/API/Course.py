@@ -1,12 +1,16 @@
 # Import <
 import pyodbc
-from backEnd.API.Utility import parentQuery, childQuery
+from backEnd.API.Utility import parentQuery
+
 # >
 
 
 class Course:
 
+    # Constructor <
+
     def __init__(self):
+
         connection_string = pyodbc.connect(
             "Driver={SQL Server};"
             "Server=451project.database.windows.net;"
@@ -14,14 +18,19 @@ class Course:
             "UID=_db_;"
             "PWD=451Project;"
         )
+
         self.cursor = connection_string.cursor()
 
-    # get a list of courses based on userId
-    def getCourseList(self, userId) -> list:
+    # >
 
+    # Methods <
+
+    def getCourseList(self, userId) -> list:
+        '''get a list of courses based on userId'''
         return parentQuery(self.cursor, "Course_Info", "*", ("userId", userId))
 
-    # get course info
     def getCourse(self, courseId) -> dict:
-
+        '''get course info'''
         return parentQuery(self.cursor, "Course_Info", "*", ("courseId", courseId))
+
+    # >

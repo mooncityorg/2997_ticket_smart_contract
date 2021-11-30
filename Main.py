@@ -18,14 +18,18 @@ connection_string = pyodbc.connect(
 )
 cursor = connection_string.cursor()
 
+
 print("\n\*---------------------------------------------------------------*\ \nparent query test")
 temp = joinQuery(cursor, "Event_Info", "e", "locationId", "Location_Info", "l", "locationId", "*", ("userId", "JAD6TJ"))
 print("result = ")
 for i in temp: print(i)
+
 
 print("\n\*---------------------------------------------------------------*\ \nparent query test")
 temp = joinQuery(cursor, "Event_Info", "e", "locationId", "Location_Info", "l", "locationId", "*", ("userId", "JAD6TJ"), True)
 print("result = ")
 for i in temp: print(i)
 
+print("\n\*---------------------------------------------------------------*\ \nchild query test")
+print("result = \n", childQuery(cursor, "Course_Info", "*", ("courseId", "1234"), ("userId", "JAD6TJ")))
 
