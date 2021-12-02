@@ -10,8 +10,8 @@ from backEnd.API.Utility import Submit, Verify, Authenticate
 
 
 # Declaration <
+driver, backupLayout = None, None
 style = getJSON(file = '/frontEnd/Resource/Login.json')
-driver, backupLayout, backupSubLayout = None, None, None
 
 # >
 
@@ -320,13 +320,15 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                       Input('submitBadgeId', 'n_clicks'),
                       Input('passwordInputId', 'n_submit'),
                       State('passwordInputId', 'value'),
-                      State('divLoginLayoutId', 'children'),
-                      State('divDivLoginLayoutId', 'children'))
-def submitFunction(click: int, submit: int, password: str, layout: list, subLayout: list):
+                      State('divLoginLayoutId', 'children'))
+def submitFunction(click: int, submit: int, password: str, layout: list):
     '''  '''
 
     global backupLayout
-    global backupSubLayout
+
+    #for k, v in layout[2]['props'].items():
+        #print('k : ', k, 'v : ', v)
+    #input('; ') # remove
 
     # if (submit) <
     if (click or submit):
@@ -340,14 +342,12 @@ def submitFunction(click: int, submit: int, password: str, layout: list, subLayo
     # >
 
     backupLayout = layout
-    backupSubLayout = subLayout
     return (False, 'Submit', False)
 
 
 @application.callback(Output('verifyModalId', 'is_open'),
                       Output('passwordInputId', 'disabled'),
                       Output('divLoginLayoutId', 'children'),
-                      Output('authenticateModalId', 'is_open'),
                       Input('usernameInputId', 'disabled'),
                       State('usernameInputId', 'value'),
                       State('passwordInputId', 'value'),
@@ -365,23 +365,27 @@ def verifyFunction(disabled: bool, username: str, password: str, layout: list):
         # if (verify) <
         if (driver):
 
-            print('here')
-
             cond = True # *insert method to check is username exists in database *
+            layout[2]['props']['is_open'] = True
 
             # if (new) else (existing) <
-            if (cond): return (False, True, layout, True)
-            else: return (False, False, homeLayout, False)
+            if (cond):
+
+                return (False, True, layout)
+
+            else:
+
+                return (False, False, homeLayout)
 
             # >
 
         # >
 
-        else: return (True, False, layout, False)
+        else: return (True, False, layout)
 
     # >
 
-    else: return (False, False, layout, False)
+    else: return (False, False, layout)
 
 
 #@application.callback()
