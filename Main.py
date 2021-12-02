@@ -12,8 +12,8 @@ from backEnd.API.Utility import Verify, Authenticate, scrapeUser, scrapeSchedule
 
 if (__name__ == '__main__'):
 
-    #application.layout = loginLayout
-    #application.run_server(debug = True)
+    application.layout = loginLayout
+    application.run_server(debug = True)
 
     '''driver = Verify('', '')
     driver = Authenticate(driver)
@@ -21,7 +21,4 @@ if (__name__ == '__main__'):
     driver, name = scrapeUser(driver)
     driver, schedule = scrapeSchedule(driver)'''
 
-    pass
-
 # >
-

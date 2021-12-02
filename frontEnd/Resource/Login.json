@@ -1,10 +1,59 @@
 {
-  "logoSrc" : "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/kansas-city-roos-logo.png",
-  "logoStyle" : {
+  "submitH4Style" : {
+    "color" : "#ffcd00",
+    "fontFamily" : "sans serif"
+  },
+  "submitFormTextStyle" : {
+    "color" : "#ffcd00",
+    "fontFamily" : "sans serif"
+  },
+  "verifyH4Style" : {
+    "color" : "#ffcd00",
+    "fontFamily" : "sans serif"
+  },
+  "verifyFormTextStyle" : {
+    "color" : "#ffcd00",
+    "fontFamily" : "sans serif"
+  },
+  "headerH3Style" : {
+    "color" : "#ffcd00",
+    "textAlign" : "center",
+    "fontFamily" : "sans serif"
+  },
+  "headerH6Style" : {
+    "fontSize" : 14,
+    "color" : "#ffcd00",
+    "textAlign" : "center"
+  },
+  "textHrStyle" : {
+    "color" : "#ffcd00"
+  },
+  "bodyH6Style" : {
+    "fontSize" : 14,
+    "color" : "#ffcd00",
+    "fontWeight" : "bold",
+    "textAlign" : "center"
+  },
+  "authenticationInputStyle" : {
+    "borderRadius" : 10,
+    "fontFamily" : "sans serif"
+  },
+  "authenticationButtonStyle" : {
+    "borderRadius" : 10,
+    "fontFamily" : "sans serif",
+    "backgroundColor" : "#04487F"
+  },
+  "modalStyle" : {
+    "borderRadius" : 10,
+    "border" : "5px solid #ffcd00",
+    "background" : "linear-gradient(to bottom, #0066cc 90%, #04487F 10%"
+  },
+  "logoImgSrc" : "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/kansas-city-roos-logo.png",
+  "logoImgStyle" : {
     "width" : "20vh",
     "height" : "20vh"
   },
-  "divLogoStyle" : {
+  "logoDivStyle" : {
     "marginTop" : "6vh",
     "textAlign" : "center"
   },
@@ -19,32 +68,32 @@
     "textAlign" : "center",
     "fontFamily" : "sans serif"
   },
-  "usernameStyle" : {
-    "borderRadius" : 10,
+  "usernameInputStyle" : {
     "marginTop" : "7vh",
+    "borderRadius" : 10,
     "fontFamily" : "sans serif"
   },
-  "passwordStyle" : {
+  "passwordInputStyle" : {
     "marginTop" : "1vh",
     "borderRadius" : 10,
     "fontFamily" : "sans serif"
   },
-  "forgotPasswordHref" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-  "forgotPasswordColor" : "#ffcd00",
-  "forgotPasswordStyle" : {
+  "forgotPasswordBadgeHref" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "forgotPasswordBadgeColor" : "#ffcd00",
+  "forgotPasswordBadgeStyle" : {
     "color" : "#04487F",
     "marginTop" : "1vh",
     "fontFamily" : "sans serif"
   },
-  "submitColor" : "#ffcd00",
-  "submitStyle" : {
+  "submitBadgeColor" : "#ffcd00",
+  "submitBadgeStyle" : {
     "fontSize" : 15,
     "paddingTop" : 6,
     "color" : "#04487F",
     "marginTop" : "5vh",
     "fontFamily" : "sans serif"
   },
-  "divInputStyle" : {
+  "inputDivStyle" : {
     "height" : "50vh",
     "marginTop" : "10vh",
     "borderTopLeftRadius" : 10,
@@ -55,20 +104,20 @@
     "borderRight" : "5px solid #ffcd00",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
-  "redirectColor" : "#0066cc",
-  "redirectHref" : "https://github.com/3ASJW6",
-  "redirectStyle" : {
+  "redirectBadgeHref" : "https://github.com/3ASJW6",
+  "redirectBadgeColor" : "#0066cc",
+  "redirectBadgeStyle" : {
     "color" : "#ffcd00",
     "fontFamily" : "sans serif"
   },
-  "divRedirectStyle" : {
+  "redirectDivStyle" : {
     "paddingLeft" : 5,
     "paddingBottom" : 5,
     "backgroundColor" : "#ffcd00",
     "borderBottomLeftRadius" : 10,
     "borderBottomRightRadius" : 10
   },
-  "loginLayoutStyle" : {
+  "divDivLoginLayoutStyle" : {
     "top" : 0,
     "left" : 0,
     "right" : 0,
