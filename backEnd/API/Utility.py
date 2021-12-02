@@ -380,6 +380,7 @@ def joinQuery(table1, table1Alias, table1JoinCol, table2, table2Alias, table2Joi
     columnsInfo = list(cursor.fetchall())
 
     if sort:
+
         columnsInfo.sort(key=lambda x : x.updateTime, reverse=False)
     # print("\n", columnsInfo)
 
