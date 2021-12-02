@@ -3,7 +3,8 @@ from dash import dcc, html
 import dash_bootstrap_components as dbc
 from frontEnd.Layout.Home import homeLayout
 from dash.dependencies import Input, Output, State
-from backEnd.API.Utility import getJSON, application, Submit, Verify
+from backEnd.API.Utility import getJSON, application
+from backEnd.API.Utility import Submit, Verify, Authenticate
 
 # >
 
@@ -19,7 +20,8 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                        children = [
 
                            # Submit Modal <
-                           dbc.Modal(centered = True,
+                           dbc.Modal(is_open = False,
+                                     centered = True,
                                      id = 'submitModalId',
                                      children = [
 
@@ -38,7 +40,8 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                            # >
 
                            # Verify Modal <
-                           dbc.Modal(centered = True,
+                           dbc.Modal(is_open = False,
+                                     centered = True,
                                      id = 'verifyModalId',
                                      children = [
 
@@ -57,7 +60,7 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                            # >
 
                            # Authenticate Modal <
-                           dbc.Modal(is_open = True,
+                           dbc.Modal(is_open = False,
                                      centered = True,
                                      id = 'authenticateModalId',
                                      children = [
@@ -234,6 +237,8 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
 
                                                                                      ]),
 
+                                                                             # >
+
                                                                              # Forgot Password <
                                                                              dbc.Row(justify = 'center',
                                                                                      children = [
@@ -270,6 +275,8 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
 
                                                                                      ])
 
+                                                                             # >
+
                                                                          ], style = style['inputDivStyle'])
 
                                                             ])
@@ -304,3 +311,32 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                                     ], style = style['divDivLoginLayoutStyle'])
 
                        ])
+
+
+@application.callback(Output('submitModalId', 'is_open'),
+                      Output('submitBadgeId', 'children'),
+                      Output('usernameInputId', 'disabled'),
+                      Input('submitBadgeId', 'n_clicks'),
+                      Input('passwordInputId', 'n_submit'),
+                      State('passwordInputId', 'value'),
+                      State('divLoginLayoutId', 'children'))
+def submitFunction(click: int, submit: int, password: str, layout: list):
+    '''  '''
+
+    global backupLayout
+
+    # if (submit) <
+    if (click or submit):
+
+        # if (valid) else (invalid) <
+        if (Submit(password)): return (False, dbc.Spinner(size = 'sm'), True)
+        else: return (True, 'Submit', False)
+
+        # >
+
+    # >
+
+    backupLayout = layout
+    return (False, 'Submit', False)
+
+
