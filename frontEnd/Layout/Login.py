@@ -57,7 +57,8 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                            # >
 
                            # Authenticate Modal <
-                           dbc.Modal(centered = True,
+                           dbc.Modal(is_open = True,
+                                     centered = True,
                                      id = 'authenticateModalId',
                                      children = [
 

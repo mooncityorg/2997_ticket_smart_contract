@@ -35,18 +35,22 @@
     "textAlign" : "center"
   },
   "authenticationInputStyle" : {
+    "fontSize" : 15,
     "borderRadius" : 10,
     "fontFamily" : "sans serif"
   },
   "authenticationButtonStyle" : {
-    "borderRadius" : 10,
+    "fontSize" : 15,
+    "borderRadius" : 5,
+    "color" : "#04487F",
+    "fontWeight" : "bold",
     "fontFamily" : "sans serif",
-    "backgroundColor" : "#04487F"
+    "backgroundColor" : "#ffcd00"
   },
   "modalStyle" : {
     "borderRadius" : 10,
     "border" : "5px solid #ffcd00",
-    "background" : "linear-gradient(to bottom, #0066cc 90%, #04487F 10%"
+    "background" : "linear-gradient(to bottom, #04487F 80%, #0066cc 20%"
   },
   "logoImgSrc" : "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/kansas-city-roos-logo.png",
   "logoImgStyle" : {
