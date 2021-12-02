@@ -10,8 +10,8 @@ from backEnd.API.Utility import Submit, Verify, Authenticate
 
 
 # Declaration <
-backupLayout, backupSubLayout = None, None
 style = getJSON(file = '/frontEnd/Resource/Login.json')
+driver, backupLayout, backupSubLayout = None, None, None
 
 # >
 
@@ -344,4 +344,44 @@ def submitFunction(click: int, submit: int, password: str, layout: list, subLayo
     return (False, 'Submit', False)
 
 
-# Output(
+@application.callback(Output('verifyModalId', 'is_open'),
+                      Output('passwordInputId', 'disabled'),
+                      Output('divLoginLayoutId', 'children'),
+                      Output('authenticateModalId', 'is_open'),
+                      Input('usernameInputId', 'disabled'),
+                      State('usernameInputId', 'value'),
+                      State('passwordInputId', 'value'),
+                      State('divLoginLayoutId', 'children'))
+def verifyFunction(disabled: bool, username: str, password: str, layout: list):
+    '''  '''
+
+    global driver
+
+    # if (locked) <
+    if (disabled):
+
+        driver = Verify(username, password)
+
+        # if (verify) <
+        if (driver):
+
+            print('here')
+
+            cond = True # *insert method to check is username exists in database *
+
+            # if (new) else (existing) <
+            if (cond): return (False, True, layout, True)
+            else: return (False, False, homeLayout, False)
+
+            # >
+
+        # >
+
+        else: return (True, False, layout, False)
+
+    # >
+
+    else: return (False, False, layout, False)
+
+
+#@application.callback()
