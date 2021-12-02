@@ -10,7 +10,7 @@ from backEnd.API.Utility import Submit, Verify, Authenticate
 
 
 # Declaration <
-backupLayout = None
+backupLayout, backupSubLayout = None, None
 style = getJSON(file = '/frontEnd/Resource/Login.json')
 
 # >
@@ -20,7 +20,8 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                        children = [
 
                            # Submit Modal <
-                           dbc.Modal(is_open = False,
+                           dbc.Modal(fade = True,
+                                     is_open = False,
                                      centered = True,
                                      id = 'submitModalId',
                                      children = [
@@ -319,11 +320,13 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                       Input('submitBadgeId', 'n_clicks'),
                       Input('passwordInputId', 'n_submit'),
                       State('passwordInputId', 'value'),
-                      State('divLoginLayoutId', 'children'))
-def submitFunction(click: int, submit: int, password: str, layout: list):
+                      State('divLoginLayoutId', 'children'),
+                      State('divDivLoginLayoutId', 'children'))
+def submitFunction(click: int, submit: int, password: str, layout: list, subLayout: list):
     '''  '''
 
     global backupLayout
+    global backupSubLayout
 
     # if (submit) <
     if (click or submit):
@@ -337,6 +340,8 @@ def submitFunction(click: int, submit: int, password: str, layout: list):
     # >
 
     backupLayout = layout
+    backupSubLayout = subLayout
     return (False, 'Submit', False)
 
 
+# Output(
