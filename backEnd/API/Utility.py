@@ -1,4 +1,5 @@
 # Import <
+import pyodbc
 from os import path
 from json import load
 from dash import Dash
@@ -14,6 +15,14 @@ from selenium.common.exceptions import NoSuchElementException
 application = Dash(suppress_callback_exceptions=True)
 server = application.server
 
+connection_string = pyodbc.connect(
+            "Driver={SQL Server};"
+            "Server=451project.database.windows.net;"
+            "Database=451_DB;"
+            "UID=_db_;"
+            "PWD=451Project;"
+        )
+cursor = connection_string.cursor()
 
 # >
 
@@ -263,7 +272,7 @@ def scrapeCourse(driver):
     return schedule
 
 
-def parentQuery(cursor, tableName, columns, primary: tuple):
+def parentQuery(tableName, columns, primary: tuple):
     '''gets information from a table based on single key input'''
 
     # Declaration <
@@ -312,7 +321,7 @@ def parentQuery(cursor, tableName, columns, primary: tuple):
     # >
 
 
-def childQuery(cursor, tableName, columns, primary: tuple, secondary: tuple):
+def childQuery(tableName, columns, primary: tuple, secondary: tuple):
     '''gets information from a table based on double key input'''
 
     # Declaration <
@@ -350,8 +359,9 @@ def childQuery(cursor, tableName, columns, primary: tuple, secondary: tuple):
             datalist.append(dict(zip(columnNames, columnsInfo[i])))
         return datalist
 
-#gets information from two joined tables
-def joinQuery(cursor, table1, table1Alias, table1JoinCol, table2, table2Alias, table2JoinCol, columns, primary: tuple, sort = False):
+
+def joinQuery(table1, table1Alias, table1JoinCol, table2, table2Alias, table2JoinCol, columns, primary: tuple, sort = False):
+    '''gets information from two joined tables'''
 
     cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}' OR TABLE_NAME = '{}'".format(table1, table2))
     temp = cursor.fetchall()
@@ -369,7 +379,8 @@ def joinQuery(cursor, table1, table1Alias, table1JoinCol, table2, table2Alias, t
     cursor.execute(query)
     columnsInfo = list(cursor.fetchall())
 
-    if sort == True:
+    if sort:
+
         columnsInfo.sort(key=lambda x : x.updateTime, reverse=False)
     # print("\n", columnsInfo)
 
