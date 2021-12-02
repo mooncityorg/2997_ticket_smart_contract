@@ -350,4 +350,37 @@ def childQuery(cursor, tableName, columns, primary: tuple, secondary: tuple):
             datalist.append(dict(zip(columnNames, columnsInfo[i])))
         return datalist
 
+#gets information from two joined tables
+def joinQuery(cursor, table1, table1Alias, table1JoinCol, table2, table2Alias, table2JoinCol, columns, primary: tuple, sort = False):
+
+    cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}' OR TABLE_NAME = '{}'".format(table1, table2))
+    temp = cursor.fetchall()
+    columnNames = list()
+    for x in temp:
+        columnNames.append(x[0])
+    # print(columnNames)
+
+    if primary[0] == "":
+        query = "SELECT {} FROM {} {} INNER JOIN {} {} ON {}.{} = {}.{}".format(columns, table1, table1Alias, table2, table2Alias, table1Alias, table1JoinCol, table2Alias, table2JoinCol)
+    else:
+        query = "SELECT {} FROM {} {} INNER JOIN {} {} ON {}.{} = {}.{} WHERE {}='{}'".format(columns, table1, table1Alias, table2, table2Alias, table1Alias, table1JoinCol, table2Alias, table2JoinCol, primary[0], primary[1])
+
+    print('\n', "query = ", query)
+    cursor.execute(query)
+    columnsInfo = list(cursor.fetchall())
+
+    if sort == True:
+        columnsInfo.sort(key=lambda x : x.updateTime, reverse=False)
+    # print("\n", columnsInfo)
+
+    if len(columnsInfo) == 1:
+        return dict(zip(columnNames, columnsInfo[0]))
+    else:
+        count = 0
+        datalist = list()
+        while count < 10 and count < len(columnsInfo):
+            datalist.append(dict(zip(columnNames, columnsInfo[count])))
+            count += 1
+        return datalist
+
     # >
