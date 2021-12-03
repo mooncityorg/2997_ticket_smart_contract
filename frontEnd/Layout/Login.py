@@ -326,9 +326,13 @@ def submitFunction(click: int, submit: int, password: str, layout: list):
 
     global backupLayout
 
-    #for k, v in layout[2]['props'].items():
-        #print('k : ', k, 'v : ', v)
-    #input('; ') # remove
+    x = homeLayout
+    print(type(x))
+    for k, v in x.items():
+
+        print('k: ', k, ' v: ', v)
+
+    input('; ')
 
     # if (submit) <
     if (click or submit):
@@ -365,14 +369,18 @@ def verifyFunction(disabled: bool, username: str, password: str, layout: list):
         # if (verify) <
         if (driver):
 
-            cond = True # *insert method to check is username exists in database *
             layout[2]['props']['is_open'] = True
+            condition = False # *replace True with method from back end *
 
-            # if (new) else (existing) <
-            if (cond):
+            # if (new) <
+            if (condition):
 
+                driver = Authenticate(driver)
                 return (False, True, layout)
 
+            # >
+
+            # else <
             else:
 
                 return (False, False, homeLayout)

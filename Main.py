@@ -15,10 +15,12 @@ if (__name__ == '__main__'):
     application.layout = loginLayout
     application.run_server(debug = True)
 
-    '''driver = Verify('', '')
+    '''
+    driver = Verify('', '')
     driver = Authenticate(driver)
     driver = Authenticate(driver, code = input('Code: '))
     driver, name = scrapeUser(driver)
-    driver, schedule = scrapeSchedule(driver)'''
+    driver, schedule = scrapeSchedule(driver)
+    '''
 
 # >
