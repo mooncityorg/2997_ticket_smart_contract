@@ -12,7 +12,7 @@ from backEnd.API.Utility import Verify, Authenticate, scrapeUser, scrapeSchedule
 
 if (__name__ == '__main__'):
 
-    application.layout = loginLayout
+    application.layout = loginLayout()
     application.run_server(debug = True)
 
     '''
@@ -24,3 +24,4 @@ if (__name__ == '__main__'):
     '''
 
 # >
+

@@ -1,4 +1,9 @@
 {
+  "modalStyle" : {
+    "borderRadius" : 10,
+    "border" : "5px solid #ffcd00",
+    "background" : "linear-gradient(to bottom, #04487F 80%, #0066cc 20%"
+  },
   "submitH4Style" : {
     "color" : "#ffcd00",
     "fontFamily" : "sans serif"
@@ -25,7 +30,7 @@
     "color" : "#ffcd00",
     "textAlign" : "center"
   },
-  "textHrStyle" : {
+  "textBodyStyle" : {
     "color" : "#ffcd00"
   },
   "bodyH6Style" : {
@@ -34,12 +39,12 @@
     "fontWeight" : "bold",
     "textAlign" : "center"
   },
-  "authenticationInputStyle" : {
+  "authenticateInputStyle" : {
     "fontSize" : 15,
     "borderRadius" : 10,
     "fontFamily" : "sans serif"
   },
-  "authenticationButtonStyle" : {
+  "authenticateButtonStyle" : {
     "fontSize" : 15,
     "borderRadius" : 5,
     "color" : "#04487F",
@@ -47,19 +52,33 @@
     "fontFamily" : "sans serif",
     "backgroundColor" : "#ffcd00"
   },
-  "modalStyle" : {
-    "borderRadius" : 10,
-    "border" : "5px solid #ffcd00",
-    "background" : "linear-gradient(to bottom, #04487F 80%, #0066cc 20%"
+  "loginLayoutDivDivStyle" : {
+    "top" : 0,
+    "left" : 0,
+    "right" : 0,
+    "bottom" : 0,
+    "position" : "fixed",
+    "background" : "linear-gradient(to bottom, #0066cc 80%, #04487F 20%"
+  },
+  "logoDivStyle" : {
+    "marginTop" : "6vh",
+    "textAlign" : "center"
   },
   "logoImgSrc" : "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/kansas-city-roos-logo.png",
   "logoImgStyle" : {
     "width" : "20vh",
     "height" : "20vh"
   },
-  "logoDivStyle" : {
-    "marginTop" : "6vh",
-    "textAlign" : "center"
+  "inputDivStyle" : {
+    "height" : "50vh",
+    "marginTop" : "10vh",
+    "borderTopLeftRadius" : 10,
+    "borderTopRightRadius" : 10,
+    "backgroundPosition" : "bottom",
+    "borderTop" : "5px solid #ffcd00",
+    "borderLeft" : "5px solid #ffcd00",
+    "borderRight" : "5px solid #ffcd00",
+    "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
   "logoH1Style" : {
     "color" : "#04487F",
@@ -97,23 +116,6 @@
     "marginTop" : "5vh",
     "fontFamily" : "sans serif"
   },
-  "inputDivStyle" : {
-    "height" : "50vh",
-    "marginTop" : "10vh",
-    "borderTopLeftRadius" : 10,
-    "borderTopRightRadius" : 10,
-    "backgroundPosition" : "bottom",
-    "borderTop" : "5px solid #ffcd00",
-    "borderLeft" : "5px solid #ffcd00",
-    "borderRight" : "5px solid #ffcd00",
-    "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
-  },
-  "redirectBadgeHref" : "https://github.com/3ASJW6",
-  "redirectBadgeColor" : "#0066cc",
-  "redirectBadgeStyle" : {
-    "color" : "#ffcd00",
-    "fontFamily" : "sans serif"
-  },
   "redirectDivStyle" : {
     "paddingLeft" : 5,
     "paddingBottom" : 5,
@@ -121,12 +123,10 @@
     "borderBottomLeftRadius" : 10,
     "borderBottomRightRadius" : 10
   },
-  "divDivLoginLayoutStyle" : {
-    "top" : 0,
-    "left" : 0,
-    "right" : 0,
-    "bottom" : 0,
-    "position" : "fixed",
-    "background" : "linear-gradient(to bottom, #0066cc 80%, #04487F 20%"
+  "redirectBadgeHref" : "https://github.com/3ASJW6",
+  "redirectBadgeColor" : "#0066cc",
+  "redirectBadgeStyle" : {
+    "color" : "#ffcd00",
+    "fontFamily" : "sans serif"
   }
 }

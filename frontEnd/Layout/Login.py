@@ -16,302 +16,308 @@ style = getJSON(file = '/frontEnd/Resource/Login.json')
 # >
 
 
-loginLayout = html.Div(id = 'divLoginLayoutId',
-                       children = [
+def loginLayout():
+    '''  '''
 
-                           # Submit Modal <
-                           dbc.Modal(fade = True,
-                                     is_open = False,
-                                     centered = True,
-                                     id = 'submitModalId',
-                                     children = [
+    return html.Div(id = 'loginLayoutDivId',
+                    children = [
 
-                                         dbc.ModalBody([
+                        # Submit Modal <
+                        dbc.Modal(is_open = False,
+                                  centered = True,
+                                  id = 'submitModalId',
+                                  children = [
 
-                                             html.H4(style = style['submitH4Style'],
-                                                     children = 'There was an error.'),
+                                      dbc.ModalBody(style = style['modalStyle'],
+                                                    children = [
 
-                                             dbc.FormText(style = style['submitFormTextStyle'],
-                                                          children = 'The information you input was invalid.')
+                                                        html.H4(style = style['submitH4Style'],
+                                                                children = 'There was an error.'),
 
-                                         ], style = style['modalStyle'])
+                                                        dbc.FormText(style = style['submitFormTextStyle'],
+                                                                     children = 'The information you input was invalid.')
 
-                                     ]),
+                                                    ])
 
-                           # >
+                                  ]),
 
-                           # Verify Modal <
-                           dbc.Modal(is_open = False,
-                                     centered = True,
-                                     id = 'verifyModalId',
-                                     children = [
+                        # >
 
-                                         dbc.ModalBody([
+                        # Verify Modal <
+                        dbc.Modal(is_open = False,
+                                  centered = True,
+                                  id = 'verifyModalId',
+                                  children = [
 
-                                             html.H4(style = style['verifyH4Style'],
-                                                     children = 'There was an error.'),
+                                      dbc.ModalBody(style = style['modalStyle'],
+                                                    children = [
 
-                                             dbc.FormText(style = style['verifyFormTextStyle'],
-                                                          children = 'The information you input was invalid.')
+                                                        html.H4(style = style['verifyH4Style'],
+                                                                children = 'There was an error.'),
 
-                                         ], style = style['modalStyle'])
+                                                        dbc.FormText(style = style['verifyFormTextStyle'],
+                                                                    children = 'The information you input was invalid.')
 
-                                     ]),
+                                                    ])
 
-                           # >
+                                  ]),
 
-                           # Authenticate Modal <
-                           dbc.Modal(is_open = False,
-                                     centered = True,
-                                     id = 'authenticateModalId',
-                                     children = [
+                        # >
 
-                                         dbc.ModalBody([
+                        # Authenticate Modal <
+                        dbc.Modal(is_open = False,
+                                  centered = True,
+                                  id = 'authenticateModalId',
+                                  children = [
 
-                                             # Header <
-                                             dbc.Row(children = [
+                                      dbc.ModalBody(style = style['modalStyle'],
+                                                    children = [
 
-                                                 # Text <
-                                                 dbc.Col(children = [
+                                                        # Header <
+                                                        dbc.Row(children = [
 
-                                                     # Header <
-                                                     html.H3(style = style['headerH3Style'],
-                                                             children = 'Welcome to Connect++'),
+                                                            # Text <
+                                                            dbc.Col(children = [
 
-                                                     html.H6(style = style['headerH6Style'],
-                                                             children = 'You just received a code.'),
+                                                                # Header <
+                                                                html.H3(style = style['headerH3Style'],
+                                                                        children = 'Welcome to Connect++'),
 
-                                                     # >
+                                                                html.H6(style = style['headerH6Style'],
+                                                                        children = 'You just received a code.'),
 
-                                                     # Body <
-                                                     html.Hr(style = style['textHrStyle']),
+                                                                # >
 
-                                                     html.H6(style = style['bodyH6Style'],
-                                                             children = 'We use the code you give us to log into '
-                                                                        'your UMKC Pathway account so we can get '
-                                                                        'your name and current class schedule.'),
+                                                                # Body <
+                                                                html.Hr(style = style['textBodyStyle']),
 
-                                                     html.H6(style = style['bodyH6Style'],
-                                                             children = 'This can take up to twenty seconds.'),
+                                                                html.H6(style = style['bodyH6Style'],
+                                                                        children = 'We use the code you received to log into '
+                                                                                   'your UMKC Pathway account in order to get '
+                                                                                   'your name and current class schedule.'),
 
-                                                     html.Hr(style = style['textHrStyle']),
+                                                                html.H6(style = style['bodyH6Style'],
+                                                                        children = 'This can take up to twenty seconds.'),
 
-                                                     # >
+                                                                html.Hr(style = style['textBodyStyle']),
 
-                                                 ])
+                                                                # >
 
-                                                 # >
+                                                            ])
+
+                                                            # >
+
+                                                        ]),
+
+                                                        # >
+
+                                                        # Footer <
+                                                        dbc.Row(justify = 'between',
+                                                                children = [
+
+                                                                    # Input <
+                                                                    dbc.Col(width = 'auto',
+                                                                            children = [
+
+                                                                                dbc.Input(n_submit = 0,
+                                                                                          debounce = True,
+                                                                                          type = 'password',
+                                                                                          placeholder = 'Code',
+                                                                                          id = 'authenticateInputId',
+                                                                                          style = style['authenticateInputStyle'])
+
+                                                                            ]),
+
+                                                                    dbc.Col(width = 'auto',
+                                                                            children = [
+
+                                                                                dbc.Button(n_clicks = 0,
+                                                                                           children = 'Authenticate',
+                                                                                           id = 'authenticateButtonId',
+                                                                                           style = style['authenticateButtonStyle'])
+
+                                                                            ])
+
+                                                                    # >
+
+                                                                ])
+
+                                                        # >
+
+                                                    ])
+
+                                  ]),
+
+                        # >
+
+                        html.Div(id = 'loginLayoutDivDivId',
+                                 style = style['loginLayoutDivDivStyle'],
+                                 children = [
+
+                                     # Logo <
+                                     dbc.Row(justify = 'center',
+                                             children = [
+
+                                                 dbc.Col(width = 4,
+                                                         children = [
+
+                                                             html.Div(id = 'logoDivId',
+                                                                      style = style['logoDivStyle'],
+                                                                      children = [
+
+                                                                          html.Img(src = style['logoImgSrc'],
+                                                                                   style = style['logoImgStyle'])
+
+                                                                      ])
+
+                                                         ])
 
                                              ]),
 
-                                             # >
+                                     # >
 
-                                             # Footer <
-                                             dbc.Row(justify = 'between',
-                                                     children = [
+                                     # Input <
+                                     dbc.Row(justify = 'center',
+                                             children = [
 
-                                                         # Input <
-                                                         dbc.Col(width = 'auto',
-                                                                 children = [
+                                                 dbc.Col(width = 10,
+                                                         children = [
 
-                                                                     dbc.Input(n_submit = 0,
-                                                                               debounce = True,
-                                                                               type = 'password',
-                                                                               placeholder = 'Code',
-                                                                               id = 'authenticationInputId',
-                                                                               style = style['authenticationInputStyle'])
+                                                             html.Div(id = 'inputDivId',
+                                                                      style = style['inputDivStyle'],
+                                                                      children = [
 
-                                                                 ]),
+                                                                          # Logo <
+                                                                          html.H1(children = 'Connect++',
+                                                                                  className = 'display-3',
+                                                                                  style = style['logoH1Style']),
 
-                                                         # >
+                                                                          html.P(className = 'lead',
+                                                                                 children = 'by 3ASJW6',
+                                                                                 style = style['logoPStyle']),
 
-                                                         # Button <
-                                                         dbc.Col(width = 'auto',
-                                                                 children = [
+                                                                          # >
 
-                                                                     dbc.Button(n_clicks = 0,
-                                                                                children = 'Authenticate',
-                                                                                id = 'authenticateButtonId',
-                                                                                style = style['authenticationButtonStyle'])
+                                                                          # Username <
+                                                                          dbc.Row(justify = 'center',
+                                                                                  children = [
 
-                                                                 ])
+                                                                                      dbc.Col(width = 3,
+                                                                                              children = [
 
-                                                         # >
+                                                                                                  dbc.FormFloating(children = [
 
-                                                     ])
+                                                                                                      dbc.Input(id = 'usernameInputId',
+                                                                                                                placeholder = 'Username',
+                                                                                                                style = style['usernameInputStyle']),
+                                                                                                      dbc.Label('Username')
 
-                                             # >
+                                                                                                  ])
 
-                                         ], style = style['modalStyle'])
+                                                                                              ])
 
-                                     ]),
+                                                                                  ]),
 
-                           # >
+                                                                          # >
 
-                           html.Div(id = 'divDivLoginLayoutId',
-                                    children = [
+                                                                          # Password <
+                                                                          dbc.Row(justify = 'center',
+                                                                                  children = [
 
-                                        # Logo <
-                                        dbc.Row(justify = 'center',
-                                                children = [
+                                                                                      dbc.Col(width = 3,
+                                                                                              children = [
 
-                                                    dbc.Col(width = 4,
-                                                            children = [
+                                                                                                  dbc.FormFloating(children = [
 
-                                                                html.Div(id = 'logoDivStyle',
-                                                                         children = [
+                                                                                                      dbc.Input(n_submit = 0,
+                                                                                                                debounce = True,
+                                                                                                                type = 'password',
+                                                                                                                id = 'passwordInputId',
+                                                                                                                placeholder = 'Password',
+                                                                                                                style = style['passwordInputStyle']),
+                                                                                                      dbc.Label('Password')
 
-                                                                             html.Img(src = style['logoImgSrc'],
-                                                                                      style = style['logoImgStyle'])
+                                                                                                  ])
 
-                                                                         ], style = style['logoDivStyle'])
+                                                                                              ])
 
-                                                            ])
+                                                                                  ]),
 
-                                                ]),
+                                                                          # >
 
-                                        # >
+                                                                          # Forgot Password <
+                                                                          dbc.Row(justify = 'center',
+                                                                                  children = [
 
-                                        # Input <
-                                        dbc.Row(justify = 'center',
-                                                children = [
+                                                                                      dbc.Col(width = 'auto',
+                                                                                              children = [
 
-                                                    dbc.Col(width = 10,
-                                                            children = [
+                                                                                                  dbc.Badge(children = 'Forgot Password',
+                                                                                                            href = style['forgotPasswordBadgeHref'],
+                                                                                                            color = style['forgotPasswordBadgeColor'],
+                                                                                                            style = style['forgotPasswordBadgeStyle'])
 
-                                                                html.Div(id = 'inputDivId',
-                                                                         children = [
+                                                                                              ])
 
-                                                                             # Logo <
-                                                                             html.H1(children = 'Connect++',
-                                                                                     className = 'display-3',
-                                                                                     style = style['logoH1Style']),
+                                                                                  ]),
 
-                                                                             html.P(className = 'lead',
-                                                                                    children = 'by 3ASJW6',
-                                                                                    style = style['logoPStyle']),
+                                                                          # >
 
-                                                                             # >
+                                                                          # Submit <
+                                                                          dbc.Row(justify = 'center',
+                                                                                  children = [
 
-                                                                             # Username <
-                                                                             dbc.Row(justify = 'center',
-                                                                                     children = [
+                                                                                      dbc.Col(width = 'auto',
+                                                                                              children = [
 
-                                                                                         dbc.Col(width = 3,
-                                                                                                 children = [
+                                                                                                  dbc.Badge(href = '#',
+                                                                                                            n_clicks = 0,
+                                                                                                            children = 'Submit',
+                                                                                                            id = 'submitBadgeId',
+                                                                                                            color = style['submitBadgeColor'],
+                                                                                                            style = style['submitBadgeStyle'])
 
-                                                                                                     dbc.FormFloating(children = [
+                                                                                              ])
 
-                                                                                                         dbc.Input(id = 'usernameInputId',
-                                                                                                                   placeholder = 'Username',
-                                                                                                                   style = style['usernameInputStyle']),
-                                                                                                         dbc.Label('Username')
+                                                                                  ])
 
-                                                                                                     ])
+                                                                          # >
 
-                                                                                                 ])
+                                                                      ])
 
-                                                                                     ]),
+                                                         ])
 
-                                                                             # >
+                                             ]),
 
-                                                                             # Password <
-                                                                             dbc.Row(justify = 'center',
-                                                                                     children = [
+                                     # >
 
-                                                                                         dbc.Col(width = 3,
-                                                                                                 children = [
+                                     # Redirect <
+                                     dbc.Row(justify = 'center',
+                                             children = [
 
-                                                                                                     dbc.FormFloating(children = [
+                                                 dbc.Col(width = 10,
+                                                         children = [
 
-                                                                                                         dbc.Input(n_submit = 0,
-                                                                                                                   debounce = True,
-                                                                                                                   type = 'password',
-                                                                                                                   id = 'passwordInputId',
-                                                                                                                   placeholder = 'Password',
-                                                                                                                   style = style['passwordInputStyle']),
-                                                                                                         dbc.Label('Password')
+                                                             html.Div(id = 'redirectDivId',
+                                                                      style = style['redirectDivStyle'],
+                                                                      children = [
 
-                                                                                                     ])
+                                                                          dbc.Badge(children = '3ASJW6',
+                                                                                    href = style['redirectBadgeHref'],
+                                                                                    color = style['redirectBadgeColor'],
+                                                                                    style = style['redirectBadgeStyle'])
 
-                                                                                                 ])
+                                                                      ])
 
-                                                                                     ]),
+                                                         ])
 
-                                                                             # >
+                                             ])
 
-                                                                             # Forgot Password <
-                                                                             dbc.Row(justify = 'center',
-                                                                                     children = [
+                                     # >
 
-                                                                                         dbc.Col(width = 'auto',
-                                                                                                 children = [
+                                 ])
 
-                                                                                                     dbc.Badge(children = 'Forgot Password',
-                                                                                                               href = style['forgotPasswordBadgeHref'],
-                                                                                                               color = style['forgotPasswordBadgeColor'],
-                                                                                                               style = style['forgotPasswordBadgeStyle'])
-
-                                                                                                 ])
-
-                                                                                     ]),
-
-                                                                             # >
-
-                                                                             # Submit <
-                                                                             dbc.Row(justify = 'center',
-                                                                                     children = [
-
-                                                                                         dbc.Col(width = 'auto',
-                                                                                                 children = [
-
-                                                                                                     dbc.Badge(href = '#',
-                                                                                                               n_clicks = 0,
-                                                                                                               children = 'Submit',
-                                                                                                               id = 'submitBadgeId',
-                                                                                                               color = style['submitBadgeColor'],
-                                                                                                               style = style['submitBadgeStyle'])
-
-                                                                                                 ])
-
-                                                                                     ])
-
-                                                                             # >
-
-                                                                         ], style = style['inputDivStyle'])
-
-                                                            ])
-
-                                                ]),
-
-                                        # >
-
-                                        # Redirect <
-                                        dbc.Row(justify = 'center',
-                                                children = [
-
-                                                    dbc.Col(width = 10,
-                                                            children = [
-
-                                                                html.Div(id = 'redirectDivId',
-                                                                         children = [
-
-                                                                             dbc.Badge(children = '3ASJW6',
-                                                                                       href = style['redirectBadgeHref'],
-                                                                                       color = style['redirectBadgeColor'],
-                                                                                       style = style['redirectBadgeStyle'])
-
-                                                                         ], style = style['redirectDivStyle'])
-
-                                                            ])
-
-                                                ])
-
-                                        # >
-
-                                    ], style = style['divDivLoginLayoutStyle'])
-
-                       ])
+                    ])
 
 
 @application.callback(Output('submitModalId', 'is_open'),
@@ -320,19 +326,11 @@ loginLayout = html.Div(id = 'divLoginLayoutId',
                       Input('submitBadgeId', 'n_clicks'),
                       Input('passwordInputId', 'n_submit'),
                       State('passwordInputId', 'value'),
-                      State('divLoginLayoutId', 'children'))
+                      State('loginLayoutDivId', 'children'))
 def submitFunction(click: int, submit: int, password: str, layout: list):
     '''  '''
 
     global backupLayout
-
-    x = homeLayout
-    print(type(x))
-    for k, v in x.items():
-
-        print('k: ', k, ' v: ', v)
-
-    input('; ')
 
     # if (submit) <
     if (click or submit):
@@ -351,11 +349,11 @@ def submitFunction(click: int, submit: int, password: str, layout: list):
 
 @application.callback(Output('verifyModalId', 'is_open'),
                       Output('passwordInputId', 'disabled'),
-                      Output('divLoginLayoutId', 'children'),
+                      Output('loginLayoutDivId', 'children'),
                       Input('usernameInputId', 'disabled'),
                       State('usernameInputId', 'value'),
                       State('passwordInputId', 'value'),
-                      State('divLoginLayoutId', 'children'))
+                      State('loginLayoutDivId', 'children'))
 def verifyFunction(disabled: bool, username: str, password: str, layout: list):
     '''  '''
 
@@ -369,21 +367,20 @@ def verifyFunction(disabled: bool, username: str, password: str, layout: list):
         # if (verify) <
         if (driver):
 
-            layout[2]['props']['is_open'] = True
-            condition = False # *replace True with method from back end *
-
             # if (new) <
-            if (condition):
+            if (1 in [1]): # * method to check if new *
 
+                layout[2]['props']['is_open'] = True
                 driver = Authenticate(driver)
                 return (False, True, layout)
 
             # >
 
-            # else <
+            # else (existing) <
             else:
 
-                return (False, False, homeLayout)
+                layout = homeLayout(username)
+                return (False, False, layout)
 
             # >
 
@@ -394,6 +391,3 @@ def verifyFunction(disabled: bool, username: str, password: str, layout: list):
     # >
 
     else: return (False, False, layout)
-
-
-#@application.callback()
