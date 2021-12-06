@@ -203,73 +203,81 @@ def scrapeCourse(driver):
     # Declaration <
     schedule = []
     month, year = strftime('%m %Y').split()
-    setting = getJSON(file='/backEnd/Resource/Utility.json')['scrapeCourse']
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeSchedule']
     semester = [key for key, value in setting['Semester'].items() if (month in value)][0]
 
     # >
 
-    # Website <
-    driver.get(setting['Website']), sleep(1)
-    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
+    # (-> Manage Classes -> My Class Schedule) <
+    driver.find_element_by_xpath(setting['manageClassesButton']).click(), sleep(1)
+    driver.find_element_by_xpath(setting['myClassScheduleButton']).click(), sleep(2)
 
     # >
 
-    # Select <
+    # (-> Select Term) <
+    termA = (f'{year} {semester} Semester')
+    driver.find_element_by_xpath(setting['menuButton']).click(), sleep(1)
+    driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
     for i in range(50):
 
-        # try (if valid) <
+        # try (if term) <
         try:
 
-            termA = f'{year} {semester} Semester'
-            termB = driver.find_element_by_xpath(setting['Term'].replace('<>', str(i))).text
+            termB = driver.find_element_by_xpath(setting['termText'].replace('<>', str(i))).text
 
-            # if (match) <
+            # if (termA is termB) <
             if (termA == termB):
-                driver.find_element_by_xpath(setting['Button'].replace('<>', str(i))).click()
-                driver.find_element_by_xpath(setting['Continue']).click(), sleep(1)
+
+                driver.find_element_by_xpath(setting['termButton'].replace('<>', str(i))).click()
+                driver.find_element_by_xpath(setting['continueButton']).click(), sleep(1)
 
             # >
 
-        # >
-
-        # except (then invalid) <
-        except NoSuchElementException:
-            pass
+        # except (then not term) <
+        except NoSuchElementException: pass
 
         # >
 
     # >
 
     # Filter Schedule <
-    driver.find_element_by_xpath(setting['Dropped']).click()
-    driver.find_element_by_xpath(setting['Waitlisted']).click()
-    driver.find_element_by_xpath(setting['Filter']).click()
+    driver.find_element_by_xpath(setting['droppedButton']).click()
+    driver.find_element_by_xpath(setting['waitlistedButton']).click()
+    driver.find_element_by_xpath(setting['filterButton']).click(), sleep(0.25)
 
     # >
 
     # iterate (course) <
     for i in range(0, 50, 2):
 
-        # try (if valid) <<
+        # try (if course) <
         try:
 
             course = {}
             for k, v in setting['Course'].items():
+
                 course[k] = driver.find_element_by_xpath(v.replace('<>', str(i))).text
 
             schedule.append(course)
 
         # >
 
-        # except (then invalid) <
-        except NoSuchElementException:
-            pass
+        # except (then not course) <
+        except NoSuchElementException: pass
 
         # >
 
     # >
 
-    return schedule
+    # (-> Back) <
+    driver.switch_to.default_content()
+    driver.find_element_by_xpath(setting['backButton']).click(), sleep(1)
+
+    # >
+
+    return (driver, {'schedule' : schedule})
+    # what you want:
+      # return (driver, schedule)
 
 
 def parentQuery(tableName, columns, primary: tuple):
@@ -359,6 +367,8 @@ def childQuery(tableName, columns, primary: tuple, secondary: tuple):
             datalist.append(dict(zip(columnNames, columnsInfo[i])))
         return datalist
 
+    # >
+
 
 def joinQuery(table1, table1Alias, table1JoinCol, table2, table2Alias, table2JoinCol, columns, primary: tuple, sort = False):
     '''gets information from two joined tables'''
@@ -393,4 +403,27 @@ def joinQuery(table1, table1Alias, table1JoinCol, table2, table2Alias, table2Joi
             count += 1
         return datalist
 
-    # >
+
+def setQuery(tableName, input: list):
+    print("\nqueries to be executed\n-----")
+    for i in input:
+        # Declaration <
+        columnList = list(i.keys())
+        valueList = list(i.values())
+        # >
+
+        # Column Names <
+        columnStr = "(" + ", ".join(columnList) + ")"
+        # >
+
+        # Values <
+        valueStr = "(\'" + "\', \'".join(valueList) + "\')"
+        # >
+
+        # Build Query <
+        query = "INSERT INTO {} {}\n VALUES {}".format(tableName, columnStr, valueStr)
+        print("query = ", query)
+        # >
+
+        cursor.execute(query)
+

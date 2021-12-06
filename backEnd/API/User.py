@@ -1,5 +1,5 @@
 # Import <
-from backEnd.API.Utility import parentQuery
+from backEnd.API.Utility import parentQuery, setQuery
 
 # >
 
@@ -22,4 +22,9 @@ class User:
         '''get all users'''
         return parentQuery("User_Info", "*", ("", ""))
 
+    def setUser(self, userDict):
+        '''insert a new user into the database'''
+        userList = list()
+        userList.append(userDict)
+        setQuery("User_Info", userList)
     # >
