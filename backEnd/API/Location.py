@@ -1,5 +1,5 @@
 # Import <
-from backEnd.API.Utility import parentQuery
+from backEnd.API.Utility import parentQuery, setQuery
 
 # >
 
@@ -23,4 +23,7 @@ class Location:
         '''get information about a location'''
         return parentQuery("Location_Info", "*", ("locationId", locationId))
 
+    def setLocation(self, input: list):
+        '''insert a new location into the database'''
+        setQuery("Location_Info", input)
     # >
