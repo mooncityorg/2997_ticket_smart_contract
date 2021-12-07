@@ -1,5 +1,5 @@
 # Import <
-from backEnd.API.Utility import parentQuery, childQuery
+from backEnd.API.Utility import parentQuery, childQuery, setQuery
 
 # >
 
@@ -29,4 +29,7 @@ class Member:
         hostdata = childQuery("Member_Info", "*", ("eventId", eventId), ("isHost", True))
         return hostdata['userId']
 
+    def setMember(self, input: list):
+        '''insert a new member into the database'''
+        setQuery("Member_Info", input)
     # >
