@@ -32,6 +32,7 @@ def homeLayout(username):
                                                       children = [
 
                                                           dbc.Row(justify = 'center',
+                                                                  style = style['backgroundRowStyle'],
                                                                   children = [
 
                                                                       dbc.Col(width = 'auto',

@@ -188,7 +188,7 @@ def scrapeUser(driver):
     return (driver, {'name' : name})
 
 
-def scrapeSchedule(driver):
+def scrapeCourse(driver):
     '''  '''
 
     # Declaration <
