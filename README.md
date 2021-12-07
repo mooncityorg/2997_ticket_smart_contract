@@ -11,6 +11,11 @@ cd CS451RC
 pip3 install -r requirements.txt
 pip3 install selenium
 ```
+
+[Iteration 1]()
+[Iteration 2]()
+[Iteration 3]()
+
 ### Documentation
 - [Estimated Efforts](https://docs.google.com/spreadsheets/d/1_ktrDKYRLrQg5ytMyFj78w5QKksiKWad/edit?usp=sharing&ouid=112710811472575331481&rtpof=true&sd=true)
 
