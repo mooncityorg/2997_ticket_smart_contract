@@ -128,12 +128,16 @@ def Login(username: str, password: str) -> bool:
 
         # >
 
+        print('here')
         return driver
 
     # >
 
     # except (then invalid) <
-    except NoSuchElementException: return None
+    except NoSuchElementException:
+
+        print('ok')
+        return None
 
     # >
 

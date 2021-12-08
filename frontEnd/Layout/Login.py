@@ -269,9 +269,10 @@ def loginCallback(usernameDisabled: bool,
                       Input('codeInputId', 'n_submit'),
                       Input('authenticateBadgeId', 'n_clicks'),
                       State('codeInputId', 'value'),
-                      State('usernameInputId', 'value'))
+                      State('usernameInputId', 'value'),
+                      State('loginLayoutDivId', 'children'))
 def authenticateCallback(submit: int, click: int,
-                         codeInput: str, usernameInput: str):
+                         codeInput: str, usernameInput: str, children: list):
     '''  '''
 
     global driver
@@ -298,6 +299,6 @@ def authenticateCallback(submit: int, click: int,
     # >
 
     # else (default) <
-    else: return loginLayout()
+    else: return children
 
     # >
