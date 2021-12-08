@@ -227,7 +227,7 @@ def loginCallback(usernameDisabled: bool,
     # if (login) <
     if (usernameDisabled):
 
-        isUser = 1 in [11] # * method *
+        isUser = 1 in [1] # * method *
         isDisabled = True if (isUser) else False
         driver = Login(usernameInput, passwordInput)
         if ((driver) and (not isUser)): driver = Authenticate(driver)
@@ -249,7 +249,7 @@ def loginCallback(usernameDisabled: bool,
                           debounce = True,
                           id = 'codeInputId',
                           placeholder = 'Code',
-                          disabled = False, #isDisabled
+                          disabled = isDisabled,
                           style = style['passwordInputStyle']),
                 dbc.Label('Code')
 
@@ -269,10 +269,11 @@ def loginCallback(usernameDisabled: bool,
                       Input('codeInputId', 'n_submit'),
                       Input('authenticateBadgeId', 'n_clicks'),
                       State('codeInputId', 'value'),
+                      State('codeInputId', 'disabled'),
                       State('usernameInputId', 'value'),
                       State('loginLayoutDivId', 'children'))
 def authenticateCallback(submit: int, click: int,
-                         codeInput: str, usernameInput: str, children: list):
+                         codeInput: str, codeDisabled: bool, usernameInput: str, children: list):
     '''  '''
 
     global driver
@@ -295,6 +296,11 @@ def authenticateCallback(submit: int, click: int,
         else: return loginLayout()
 
         # >
+
+    # >
+
+    # elif (not new) <
+    elif (codeDisabled): return homeLayout(usernameInput)
 
     # >
 
