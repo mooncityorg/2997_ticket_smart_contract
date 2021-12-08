@@ -1,4 +1,5 @@
 # Import <
+import pyodbc
 from os import path
 from json import load
 from dash import Dash
@@ -15,9 +16,20 @@ from selenium.common.exceptions import NoSuchElementException
 
 
 # Declaration <
+
 application = Dash(suppress_callback_exceptions = True,
                    external_stylesheets = [dbc.themes.BOOTSTRAP])
+
 server = application.server
+
+connection_string = pyodbc.connect(
+            "Driver={SQL Server};"
+            "Server=451project.database.windows.net;"
+            "Database=451_DB;"
+            "UID=_db_;"
+            "PWD=451Project;"
+        )
+cursor = connection_string.cursor()
 
 # >
 
@@ -90,6 +102,7 @@ def Verify(username: str, password: str) -> bool:
     # Website <
     driver.get(setting['Website'])
 
+
     # >
 
     # try (if valid) <
@@ -118,7 +131,7 @@ def Verify(username: str, password: str) -> bool:
 
     # except (then invalid) <
     except NoSuchElementException:
-
+-
         driver.quit()
         return None
 
@@ -129,6 +142,7 @@ def Authenticate(driver, code = None):
     '''  '''
 
     # Declaration <
+
     setting = getJSON(file = '/backEnd/Resource/Utility.json')['Authenticate']
 
     # >
@@ -176,7 +190,6 @@ def scrapeUser(driver):
     # (-> Name) <
     driver.switch_to.frame(driver.find_element_by_tag_name('iframe'))
     name = driver.find_element_by_xpath(setting['nameText']).text
-
     # >
 
     # (-> Back) <
@@ -184,8 +197,9 @@ def scrapeUser(driver):
     driver.find_element_by_xpath(setting['backButton']).click(), sleep(1)
 
     # >
-
+    
     return (driver, {'name' : name})
+
 
 
 def scrapeCourse(driver):
@@ -266,4 +280,154 @@ def scrapeCourse(driver):
 
     # >
 
-    return (driver, {'schedule' : schedule})
+    return (driver, schedule)
+
+
+def parentQuery(tableName, columns, primary: tuple):
+    '''gets information from a table based on single key input'''
+
+    # Declaration <
+    columnNames = list()
+    query = str()
+
+    # >
+
+    # Column Names <
+    query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName)
+    cursor.execute(query)
+    for x in cursor.fetchall(): columnNames.append(x[0])
+    # print(columnNames)
+
+    # >
+
+    # Build Query <
+    if primary[0] == "":
+        # if primary key argument is empty, get all column info from table
+        query = "SELECT {} FROM {}".format(columns, tableName)
+    else:
+        # if primary key argument is filled, get column info based on key
+        query = "SELECT {} FROM {} WHERE {}='{}'".format(columns, tableName, primary[0], primary[1])
+
+    # >
+
+    # Execute Query <
+    print('\n', "query = ", query)
+    cursor.execute(query)
+    columnsInfo = list(cursor.fetchall())
+    # print("\n", columnsInfo)
+
+    # >
+
+    # Format Output <
+    if len(columnsInfo) == 1:
+        # if list would only be one element, return just that element
+        return dict(zip(columnNames, columnsInfo[0]))
+    else:
+        # return list of dictionaries
+        datalist = list()
+        for i in range(len(columnsInfo)):
+            datalist.append(dict(zip(columnNames, columnsInfo[i])))
+        return datalist
+
+    # >
+
+
+def childQuery(tableName, columns, primary: tuple, secondary: tuple):
+    '''gets information from a table based on double key input'''
+
+    # Declaration <
+    columnNames = list()
+
+    # >
+
+    # Column Names <
+    cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}'".format(tableName))
+    for x in cursor.fetchall(): columnNames.append(x[0])
+    # print("column names = ", columnNames)
+
+    # >
+
+    # Build Query <
+    query = "SELECT {} FROM {} WHERE {}='{}' AND {}='{}'".format(columns, tableName, primary[0], primary[1], secondary[0], secondary[1])
+    print('\n', "query = ", query)
+
+    # >
+
+    # Execute Query <
+    cursor.execute(query)
+    columnsInfo = list(cursor.fetchall())
+
+    # >
+
+    # Format Output <
+    if len(columnsInfo) == 1:
+        # if list would only be one element, return just that element
+        return dict(zip(columnNames, columnsInfo[0]))
+    else:
+        # return list of dictionaries
+        datalist = list()
+        for i in range(len(columnsInfo)):
+            datalist.append(dict(zip(columnNames, columnsInfo[i])))
+        return datalist
+
+    # >
+
+
+def joinQuery(table1, table1Alias, table1JoinCol, table2, table2Alias, table2JoinCol, columns, primary: tuple, sort = False):
+    '''gets information from two joined tables'''
+
+    cursor.execute("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{}' OR TABLE_NAME = '{}'".format(table1, table2))
+    temp = cursor.fetchall()
+    columnNames = list()
+    for x in temp:
+        columnNames.append(x[0])
+    # print(columnNames)
+
+    if primary[0] == "":
+        query = "SELECT {} FROM {} {} INNER JOIN {} {} ON {}.{} = {}.{}".format(columns, table1, table1Alias, table2, table2Alias, table1Alias, table1JoinCol, table2Alias, table2JoinCol)
+    else:
+        query = "SELECT {} FROM {} {} INNER JOIN {} {} ON {}.{} = {}.{} WHERE {}='{}'".format(columns, table1, table1Alias, table2, table2Alias, table1Alias, table1JoinCol, table2Alias, table2JoinCol, primary[0], primary[1])
+
+    print('\n', "query = ", query)
+    cursor.execute(query)
+    columnsInfo = list(cursor.fetchall())
+
+    if sort:
+
+        columnsInfo.sort(key=lambda x : x.updateTime, reverse=False)
+    # print("\n", columnsInfo)
+
+    if len(columnsInfo) == 1:
+        return dict(zip(columnNames, columnsInfo[0]))
+    else:
+        count = 0
+        datalist = list()
+        while count < 10 and count < len(columnsInfo):
+            datalist.append(dict(zip(columnNames, columnsInfo[count])))
+            count += 1
+        return datalist
+
+
+def setQuery(tableName, input: list):
+    print("\nqueries to be executed\n-----")
+    for i in input:
+        # Declaration <
+        columnList = list(i.keys())
+        valueList = list(i.values())
+        # >
+
+        # Column Names <
+        columnStr = "(" + ", ".join(columnList) + ")"
+        # >
+
+        # Values <
+        valueStr = "(\'" + "\', \'".join(valueList) + "\')"
+        # >
+
+        # Build Query <
+        query = "INSERT INTO {} {}\n VALUES {}".format(tableName, columnStr, valueStr)
+        print("query = ", query)
+        # >
+
+        cursor.execute(query)
+
