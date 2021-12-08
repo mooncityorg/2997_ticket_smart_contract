@@ -5,7 +5,7 @@ from frontEnd.Layout.Home import homeLayout
 from dash.dependencies import Input, Output, State
 from backEnd.API.Utility import getJSON, application
 from backEnd.API.Utility import scrapeUser, scrapeCourse
-from backEnd.API.Utility import Submit, Verify, Authenticate
+from backEnd.API.Utility import Verify, Login, Authenticate
 
 # >
 
@@ -82,7 +82,6 @@ def loginLayout():
                                                                                                    placeholder = 'Username',
                                                                                                    style = style['usernameInputStyle']),
                                                                                          dbc.Label('Username')
-
                                                                                      ])
 
                                                                                  ])
@@ -102,6 +101,7 @@ def loginLayout():
 
                                                                                          dbc.Input(n_submit = 0,
                                                                                                    debounce = True,
+                                                                                                   disabled = False,
                                                                                                    type = 'password',
                                                                                                    id = 'passwordInputId',
                                                                                                    placeholder = 'Password',
@@ -140,6 +140,7 @@ def loginLayout():
                                                                      children = [
 
                                                                          dbc.Col(width = 'auto',
+                                                                                 id = 'submitColId',
                                                                                  children = [
 
                                                                                      dbc.Badge(href = '#',
@@ -192,44 +193,111 @@ def loginLayout():
 
 @application.callback(Output('submitBadgeId', 'children'),
                       Output('usernameInputId', 'disabled'),
-                      Output('passwordInputId', 'disabled'),
-                      Output('forgotPasswordColId', 'children'),
                       Input('submitBadgeId', 'n_clicks'),
-                      Input('usernameInputId', 'disabled'),
-                      Input('passwordInputId', 'disabled'),
                       Input('passwordInputId', 'n_submit'),
+                      State('passwordInputId', 'value'))
+def verifyCallback(click: int, submit: int,
+                   passwordInput: str):
+    '''  '''
+
+    isValid = Verify(passwordInput)
+
+    # if ((verify) and (valid)) else (default) <
+    if ((click or submit) and (isValid)): return (dbc.Spinner(size = 'sm'), True)
+    else: return ('Submit', False)
+
+    # >
+
+
+@application.callback(Output('submitColId', 'children'),
+                      Output('passwordInputId', 'disabled'),
+                      Output('forgotPasswordColId', 'width'),
+                      Output('forgotPasswordColId', 'children'),
+                      Input('usernameInputId', 'disabled'),
+                      State('submitColId', 'children'),
                       State('usernameInputId', 'value'),
                       State('passwordInputId', 'value'),
                       State('forgotPasswordColId', 'children'))
-def submitFunction(click: int, usernameDisabled: bool, passwordDisabled: bool, submit: int,
-                   usernameInput: str, passwordInput: str, children: list):
+def loginCallback(usernameDisabled: bool,
+                  submitChildren: list, usernameInput: str, passwordInput: str, forgotPasswordChildren: list):
     '''  '''
 
     global driver
 
-    # if (Submit) <
-    if (click or submit):
+    # if (login) <
+    if (usernameDisabled):
 
-        if (passwordDisabled):
+        isUser = 1 in [11] # * method *
+        isDisabled = True if (isUser) else False
+        driver = Login(usernameInput, passwordInput)
+        if ((driver) and (not isUser)): driver = Authenticate(driver)
+        return (
 
-            pass
+            dbc.Badge(href = '#',
+                      n_clicks = 0,
+                      children = 'Authenticate',
+                      id = 'authenticateBadgeId',
+                      color = style['submitBadgeColor'],
+                      style = style['submitBadgeStyle']),
 
-        elif (usernameDisabled):
+            True,
+            3,
 
-            pass
+            dbc.FormFloating(children = [
 
-        else:
+                dbc.Input(n_submit = 0,
+                          debounce = True,
+                          id = 'codeInputId',
+                          placeholder = 'Code',
+                          disabled = False, #isDisabled
+                          style = style['passwordInputStyle']),
+                dbc.Label('Code')
 
-            pass
+            ])
+
+        )
+
+    # >
+
+    # else (default) <
+    else: return (submitChildren, False, 'auto', forgotPasswordChildren)
 
     # >
 
 
 @application.callback(Output('loginLayoutDivId', 'children'),
                       Input('codeInputId', 'n_submit'),
-                      Input('codeInputId', 'disabled'),
-                      Input('submitBadgeId', 'n_clicks'))
-def codeFunction(submit: int, disabled: bool, click: int):
+                      Input('authenticateBadgeId', 'n_clicks'),
+                      State('codeInputId', 'value'),
+                      State('usernameInputId', 'value'))
+def authenticateCallback(submit: int, click: int,
+                         codeInput: str, usernameInput: str):
     '''  '''
 
-    pass
+    global driver
+
+    # if (submit) <
+    if (submit or click):
+
+        driver = Authenticate(driver, code = codeInput)
+
+        # if (passed) <
+        if (driver):
+
+            # setUser(usernameInput, scrapeUser)
+            # setCourse(usernameInput, scrapeCourse)
+            return (homeLayout(usernameInput))
+
+        # >
+
+        # else (not passed) <
+        else: return loginLayout()
+
+        # >
+
+    # >
+
+    # else (default) <
+    else: return loginLayout()
+
+    # >

@@ -69,7 +69,6 @@ def homeLayout(username):
                                                                                       dbc.Button(children = 'Dashboard',
                                                                                                  id = 'dashboardButtonId',
                                                                                                  style = style['dashboardButtonStyle']),
-
                                                                                       # >
 
                                                                                       # Spacer <
@@ -120,7 +119,6 @@ def homeLayout(username):
                                                                                   ])
 
                                                                                   # >
-
                                                                               ])
 
                                                                   ])

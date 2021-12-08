@@ -22,13 +22,16 @@ application = Dash(suppress_callback_exceptions = True,
 
 server = application.server
 
+# "Driver=ODBC Driver 17 for SQL Server;" # Linux
+# "Driver={SQL Server};" # Windows
 connection_string = pyodbc.connect(
-            "Driver={SQL Server};"
+            "Driver=ODBC Driver 17 for SQL Server;"
             "Server=451project.database.windows.net;"
             "Database=451_DB;"
             "UID=_db_;"
             "PWD=451Project;"
         )
+
 cursor = connection_string.cursor()
 
 # >
@@ -60,7 +63,7 @@ def getJSON(file: str) -> dict:
         # >
 
 
-def Submit(password: str) -> bool:
+def Verify(password: str) -> bool:
     '''  '''
 
     # try (if password) <
@@ -87,7 +90,7 @@ def Submit(password: str) -> bool:
     # >
 
 
-def Verify(username: str, password: str) -> bool:
+def Login(username: str, password: str) -> bool:
     '''  '''
 
     # Declaration <
@@ -130,10 +133,7 @@ def Verify(username: str, password: str) -> bool:
     # >
 
     # except (then invalid) <
-    except NoSuchElementException:
--
-        driver.quit()
-        return None
+    except NoSuchElementException: return None
 
     # >
 
@@ -147,25 +147,35 @@ def Authenticate(driver, code = None):
 
     # >
 
-    # if (code) <
-    if (code):
+    # try (if valid) <
+    try:
 
-        # Code <
-        driver.find_element_by_xpath(setting['codeInput']).send_keys(code)
-        driver.find_element_by_xpath(setting['codeButton']).click(), sleep(5)
+        # if (code) <
+        if (code):
+
+            # Code <
+            driver.find_element_by_xpath(setting['codeInput']).send_keys(code)
+            driver.find_element_by_xpath(setting['codeButton']).click(), sleep(5)
+
+            # >
 
         # >
+
+        else:
+
+            # Select <
+            driver.find_element_by_xpath(setting['textButton']).click(), sleep(1)
+
+            # >
+
+        return driver
 
     # >
 
-    else:
+    # except (then invalid) <
+    except NoSuchElementException: return None
 
-        # Select <
-        driver.find_element_by_xpath(setting['textButton']).click(), sleep(1)
-
-        # >
-
-    return driver
+    # >
 
 
 def scrapeUser(driver):
@@ -175,7 +185,6 @@ def scrapeUser(driver):
     setting = getJSON(file = '/backEnd/Resource/Utility.json')['scrapeUser']
 
     # >
-
     # a tab to check if user is a tutor in which case we return
     # the driver and then a dictionary of if they are a tutor and
     # their name. then if they are a tutor we execute future
@@ -197,9 +206,8 @@ def scrapeUser(driver):
     driver.find_element_by_xpath(setting['backButton']).click(), sleep(1)
 
     # >
-    
-    return (driver, {'name' : name})
 
+    return (driver, {'name' : name})
 
 
 def scrapeCourse(driver):
