@@ -12,10 +12,6 @@ pip3 install -r requirements.txt
 pip3 install selenium
 ```
 
-[Iteration 1]()
-[Iteration 2]()
-[Iteration 3]()
-
 ### Documentation
 - [Project Tasks](https://docs.google.com/spreadsheets/d/1rk1D6glzpyutGslDa5x_9msDrRLtPADTG6zyg1uvzUY/edit?usp=sharing)
 
