@@ -1,4 +1,5 @@
-## CS451RC
+# Connect++
+## by 3ASJW6
 > [University of Missouri - Kansas City](https://www.umkc.edu): [CS451R](https://catalog.umkc.edu/search/?P=COMP-SCI%20451R): Capstone
 ##
 
