@@ -1,93 +1,79 @@
 {
-  "imgSrc" : "https://2.bp.blogspot.com/-0Dy52Hi8_Kw/UXAZK8YX9uI/AAAAAAAAB34/57cWrXS6uXU/s320/UMKC-logo.png",
-  "imgStyle" : {
-    "width" : 350,
-    "height" : 150
-  },
-  "divImageStyle" : {
-    "marginTop" : 10,
-    "textAlign" : "center"
-  },
-  "usernameStyle" : {
-    "padding" : 16,
-    "borderRadius" : 10,
-    "textAlign" : "center",
-    "fontFamily" : "sans serif",
-    "border" : "5px solid #FFD52F"
-  },
-  "divUsernameStyle" : {
-    "left" : 80,
-    "right" : 80,
-    "top" : "44%",
-    "position" : "fixed"
-  },
-  "passwordStyle" : {
-    "padding" : 16,
-    "borderRadius" : 10,
-    "textAlign" : "center",
-    "fontFamily" : "sans serif",
-    "border" : "5px solid #FFD52F"
-  },
-  "divPasswordStyle" : {
-    "left" : 80,
-    "right" : 80,
-    "top" : "50%",
-    "position" : "fixed"
-  },
-  "submitStyle" : {
-    "paddingTop" : 5,
-    "paddingLeft" : 20,
-    "borderRadius" : 10,
-    "paddingRight" : 20,
-    "paddingBottom" : 5,
-    "fontFamily" : "sans serif",
-    "border" : "5px solid #FFD52F"
-  },
-  "divSubmitStyle" : {
-    "left" : 80,
-    "right" : 80,
-    "top" : "58%",
-    "position" : "fixed"
-  },
-  "divInputStyle" : {
-    "top" : "50%",
-    "position" : "fixed",
-    "textAlign" : "center"
-  },
-  "redirectChildren" : [
-    "[Pathway](https://umkc.umsystem.edu/) &nbsp; &nbsp; ",
-    "[Webmail](https://www.umkc.edu/email/) &nbsp; &nbsp; ",
-    "[Canvas](https://umsystem.instructure.com/) &nbsp; &nbsp; ",
-    "[UMKC Roo News](https://info.umkc.edu/unews/) &nbsp; &nbsp; ",
-    "[UMKC Connect](https://umkc.starfishsolutions.com/starfish-ops/support/login.html) &nbsp; &nbsp; "
-  ],
-  "markdownRedirectStyle" : {
-    "left" : 80,
-    "right" : 80,
-    "bottom" : 87,
-    "position" : "fixed",
-    "textAlign" : "center",
-    "fontFamily" : "sans serif"
-  },
-  "divLoginStyle" : {
-    "top" : 60,
-    "left"  : 80,
-    "right" : 80,
-    "bottom" : 100,
-    "borderRadius" : 10,
-    "position" : "fixed",
-    "borderBottomWidth" : 35,
-    "borderBottomStyle" : "solid",
-    "border" : "5px solid #FFD52F",
-    "backgroundPosition" : "center",
-    "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
-  },
-  "loginLayoutStyle" : {
+  "loginLayoutDivStyle" : {
     "top" : 0,
-    "left"  : 0,
+    "left" : 0,
     "right" : 0,
     "bottom" : 0,
     "position" : "fixed",
-    "backgroundColor" : "#04487F"
+    "background" : "linear-gradient(to bottom, #0066cc 80%, #04487F 20%"
+  },
+  "logoDivStyle" : {
+    "marginTop" : "6vh",
+    "textAlign" : "center"
+  },
+  "logoImgSrc" : "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/kansas-city-roos-logo.png",
+  "logoImgStyle" : {
+    "width" : "20vh",
+    "height" : "20vh"
+  },
+  "inputDivStyle" : {
+    "height" : "50vh",
+    "marginTop" : "10vh",
+    "borderTopLeftRadius" : 10,
+    "borderTopRightRadius" : 10,
+    "backgroundPosition" : "bottom",
+    "borderTop" : "5px solid #ffcd00",
+    "borderLeft" : "5px solid #ffcd00",
+    "borderRight" : "5px solid #ffcd00",
+    "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
+  },
+  "logoH1Style" : {
+    "color" : "#04487F",
+    "marginTop" : "5vh",
+    "textAlign" : "center",
+    "fontFamily" : "sans serif"
+  },
+  "logoPStyle" : {
+    "color" : "#04487F",
+    "textAlign" : "center",
+    "fontFamily" : "sans serif"
+  },
+  "usernameInputStyle" : {
+    "marginTop" : "7vh",
+    "borderRadius" : 10,
+    "fontFamily" : "sans serif"
+  },
+  "passwordInputStyle" : {
+    "marginTop" : "1vh",
+    "borderRadius" : 10,
+    "fontFamily" : "sans serif"
+  },
+  "forgotPasswordBadgeHref" : "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  "forgotPasswordBadgeColor" : "#ffcd00",
+  "forgotPasswordBadgeStyle" : {
+    "color" : "#04487F",
+    "marginTop" : "1vh",
+    "fontFamily" : "sans serif"
+  },
+  "submitBadgeColor" : "#ffcd00",
+  "submitBadgeStyle" : {
+    "fontSize" : 15,
+    "paddingTop" : 6,
+    "color" : "#04487F",
+    "marginTop" : "5vh",
+    "fontFamily" : "sans serif"
+  },
+  "redirectDivStyle" : {
+    "paddingLeft" : 5,
+    "paddingBottom" : 5,
+    "backgroundColor" : "#ffcd00",
+    "borderBottomLeftRadius" : 10,
+    "borderBottomRightRadius" : 10
+  },
+  "redirectBadgeHref" : "https://github.com/3ASJW6",
+  "redirectBadgeColor" : "#0066cc",
+  "redirectBadgeStyle" : {
+    "color" : "#ffcd00",
+    "fontFamily" : "sans serif"
   }
 }

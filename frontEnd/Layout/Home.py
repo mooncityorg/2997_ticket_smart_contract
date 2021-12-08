@@ -1,59 +1,153 @@
 # Import <
 from dash import html, dcc
-from backEnd.API.Utility import getJSON
+import dash_bootstrap_components as dbc
+from dash.dependencies import Input, Output, State
+from backEnd.API.Utility import getJSON, application
 
 # >
 
 
 # Declaration <
-# note: we get a user's data in here
-# and not in Login.py. in Login.py we
-# set the data for a user.
+# * method to get user data *
 style = getJSON(file = '/frontEnd/Resource/Home.json')
 
 # >
 
 
-homeLayout = html.Div(id = 'homeLayoutId',
-                      children = [
+def homeLayout(username):
+    '''  '''
 
-                          # Header <
-                          html.Div(id = 'divHeaderId',
-                                   children = [
+    return dbc.Container(fluid = True,
+                         children = [
 
-                                       # Logo <
-                                       html.Div(id = 'divLogoId',
-                                                children = [
+                             # Header <
+                             dbc.Row(children = [
 
-                                                    html.H1(children = 'Connect++',
-                                                            style = style['h1Style'])
+                                 dbc.Col(width = True,
+                                         children = [
 
-                                                ], style = style['divLogoStyle']),
+                                             # Background <
+                                             html.Div(id = 'backgroundDivId',
+                                                      style = style['headerBackgroundDivStyle'],
+                                                      children = [
 
-                                       # >
+                                                          dbc.Row(justify = 'center',
+                                                                  style = style['backgroundRowStyle'],
+                                                                  children = [
 
-                                       # Search <
-                                       html.Div(id = 'divSearchId',
-                                                children = [
+                                                                      dbc.Col(width = 'auto',
+                                                                              children = [
 
-                                                    dcc.Dropdown(id = 'dropdownId',
-                                                                 options = [
+                                                                                  # Navigation Bar <
+                                                                                  dbc.InputGroup(children = [
 
+                                                                                      # Username <
+                                                                                      dbc.Button(children = username,
+                                                                                                 id = 'usernameButtonId',
+                                                                                                 style = style['usernameButtonStyle']),
 
+                                                                                      # >
 
-                                                                 ])
+                                                                                      # Spacer <
+                                                                                      dbc.InputGroupText(style = style['spacerStyle']),
 
-                                                ], style = style['divSearchStyle'])
+                                                                                      # >
 
-                                       # >
+                                                                                      # Calendar <
+                                                                                      dbc.Button(children = 'Calendar',
+                                                                                                 id = 'calendarButtonId',
+                                                                                                 style = style['calendarButtonStyle']),
 
-                                   ], style = style['divHeaderStyle'])
+                                                                                      # >
 
-                          # >
+                                                                                      # Spacer <
+                                                                                      dbc.InputGroupText(style = style['spacerStyle']),
 
-                          # Navigation Bar <
+                                                                                      # >
 
+                                                                                      # Dashboard <
+                                                                                      dbc.Button(children = 'Dashboard',
+                                                                                                 id = 'dashboardButtonId',
+                                                                                                 style = style['dashboardButtonStyle']),
 
-                          # >
+                                                                                      # >
 
-                      ], style = style['homeLayoutStyle'])
+                                                                                      # Spacer <
+                                                                                      dbc.InputGroupText(style = style['spacerStyle']),
+
+                                                                                      # >
+
+                                                                                      # Event <
+                                                                                      dcc.Dropdown(searchable = False,
+                                                                                                   placeholder = 'Event',
+                                                                                                   id = 'eventDropdownId',
+                                                                                                   style = style['eventDropdownStyle'],
+                                                                                                   options = [
+
+                                                                                                       {'label' : l, 'value' : v}
+
+                                                                                                   for l, v in style['eventDropdownOptions'].items()]),
+
+                                                                                      # >
+
+                                                                                      # Spacer <
+                                                                                      dbc.InputGroupText(style = style['spacerStyle']),
+
+                                                                                      # >
+
+                                                                                      # Search <
+                                                                                      dcc.Dropdown(placeholder = 'Search',
+                                                                                                   id = 'searchDropdownId',
+                                                                                                   style = style['searchDropdownStyle']),
+                                                                                                   # options =
+                                                                                                      # a method that gets all (name, userId)
+
+                                                                                      # >
+
+                                                                                      # Role <
+                                                                                      dcc.Dropdown(searchable = False,
+                                                                                                   placeholder = 'Role',
+                                                                                                   id = 'roleDropdownId',
+                                                                                                   style = style['roleDropdownStyle'],
+                                                                                                   options = [
+
+                                                                                                       {'label' : l, 'value' : v}
+
+                                                                                                   for l, v in style['roleDropdownOptions'].items()])
+
+                                                                                      # >
+
+                                                                                  ])
+
+                                                                                  # >
+
+                                                                              ])
+
+                                                                  ])
+
+                                                      ])
+
+                                             # >
+
+                                         ])
+
+                             ]),
+
+                             # >
+
+                             # Body <
+                             dbc.Row(children = [
+
+                                 dbc.Col(children = [
+
+                                     html.Div(children = None,
+                                              id = 'bodyDivId',
+                                              style = style['bodyDivStyle'])
+
+                                 ])
+
+                             ])
+
+                             # >
+
+                         ])

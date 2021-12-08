@@ -1,209 +1,235 @@
 # Import <
 from dash import dcc, html
-from selenium import webdriver
+import dash_bootstrap_components as dbc
 from frontEnd.Layout.Home import homeLayout
 from dash.dependencies import Input, Output, State
-from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
-from backEnd.API.Utility import getJSON, application, Login, Verify
+from backEnd.API.Utility import getJSON, application
+from backEnd.API.Utility import scrapeUser, scrapeCourse
+from backEnd.API.Utility import Submit, Verify, Authenticate
 
 # >
 
 
 # Declaration <
-options = Options()
-options.headless = True
+driver = None
 style = getJSON(file = '/frontEnd/Resource/Login.json')
-driver = webdriver.Chrome(ChromeDriverManager().install(), options = options)
 
 # >
 
 
-loginLayout = html.Div(id = 'loginLayoutId',
-                       children = [
-
-                           # Login Confirm Dialog <
-                           dcc.ConfirmDialog(id = 'loginConfirmDialogId',
-                                             message = 'Login information was invalid.'),
-
-                           # >
-
-                           # Verify Confirm Dialog <
-                           dcc.ConfirmDialog(id = 'verifyConfirmDialog',
-                                             message = 'Verify information was invalid.'),
-
-                           # >
-
-                           # Login <
-                           html.Div(id = 'divLoginId',
-                                    children = [
-
-                                        # Image <
-                                        html.Div(id = 'divImageId',
-                                                 children = [
-
-                                                     html.Img(src = style['imgSrc'],
-                                                              style = style['imgStyle'])
-
-                                                 ], style = style['divImageStyle']),
-
-                                        # >
-
-                                        # Input <
-                                        html.Div(id = 'divInputId',
-                                                 children = [
-
-                                                     # Username <
-                                                     html.Div(id = 'divUsernameId',
-                                                              children = [
-
-                                                                  dcc.Input(value = '',
-                                                                            id = 'inputUsernameId',
-                                                                            placeholder = 'Username',
-                                                                            style = style['usernameStyle'])
-
-                                                              ], style = style['divUsernameStyle']),
-
-                                                     # >
-
-                                                     # Password <
-                                                     html.Div(id = 'divPasswordId',
-                                                              children = [
-
-                                                                  dcc.Input(value = '',
-                                                                            n_submit = 0,
-                                                                            debounce = True,
-                                                                            type = 'password',
-                                                                            id = 'inputPasswordId',
-                                                                            placeholder = 'Password',
-                                                                            style = style['passwordStyle'])
-
-                                                              ], style = style['divPasswordStyle']),
-
-                                                     # >
-
-                                                     # Submit <
-                                                     html.Div(id = 'divSubmitId',
-                                                              children = [
-
-                                                                  html.Button(n_clicks = 0,
-                                                                              children = 'Submit',
-                                                                              id = 'buttonSubmitId',
-                                                                              style = style['submitStyle'])
-
-                                                              ], style = style['divSubmitStyle']),
-
-                                                     # >
-
-                                                 ], style = style['divInputStyle']),
-
-                                        # >
-
-                                        # Redirect <
-                                        dcc.Markdown(id = 'markdownRedirectId',
-                                                     children = [
-
-                                                         ('### ' + ''.join(i for i in style['redirectChildren']))
-
-                                                     ], style = style['markdownRedirectStyle'])
-
-                                        # >
-
-                                    ], style = style['divLoginStyle'])
-
-                           # >
-
-                       ], style = style['loginLayoutStyle'])
-
-
-@application.callback(Output('divPasswordId', 'children'),
-                      Output('buttonSubmitId', 'n_clicks'),
-                      Output('inputUsernameId', 'disabled'),
-                      Output('loginConfirmDialogId', 'displayed'),
-                      Input('buttonSubmitId', 'n_clicks'),
-                      Input('inputPasswordId', 'n_submit'),
-                      State('inputUsernameId', 'value'),
-                      State('inputPasswordId', 'value'),
-                      State('divPasswordId', 'children'))
-def loginFunction(click: int, submit: int, username: str, password: str, div: list):
+def loginLayout():
     '''  '''
 
-    # if (login) <
+    return html.Div(id = 'loginLayoutDivId',
+                    style = style['loginLayoutDivStyle'],
+                    children = [
+
+                        # Logo <
+                        dbc.Row(justify = 'center',
+                                children = [
+
+                                    dbc.Col(width = 4,
+                                            children = [
+
+                                                html.Div(id = 'logoDivId',
+                                                         style = style['logoDivStyle'],
+                                                         children = [
+
+                                                             html.Img(src = style['logoImgSrc'],
+                                                                      style = style['logoImgStyle'])
+
+                                                         ])
+
+                                            ])
+
+                                ]),
+
+                        # >
+
+                        # Input <
+                        dbc.Row(justify = 'center',
+                                children = [
+
+                                    dbc.Col(width = 10,
+                                            children = [
+
+                                                html.Div(id = 'inputDivId',
+                                                         style = style['inputDivStyle'],
+                                                         children = [
+
+                                                             # Logo <
+                                                             html.H1(children = 'Connect++',
+                                                                     className = 'display-3',
+                                                                     style = style['logoH1Style']),
+
+                                                             html.P(className = 'lead',
+                                                                    children = 'by 3ASJW6',
+                                                                    style = style['logoPStyle']),
+
+                                                             # >
+
+                                                             # Username <
+                                                             dbc.Row(justify = 'center',
+                                                                     children = [
+
+                                                                         dbc.Col(width = 3,
+                                                                                 children = [
+
+                                                                                     dbc.FormFloating(children = [
+
+                                                                                         dbc.Input(disabled = False,
+                                                                                                   id = 'usernameInputId',
+                                                                                                   placeholder = 'Username',
+                                                                                                   style = style['usernameInputStyle']),
+                                                                                         dbc.Label('Username')
+
+                                                                                     ])
+
+                                                                                 ])
+
+                                                                     ]),
+
+                                                             # >
+
+                                                             # Password <
+                                                             dbc.Row(justify = 'center',
+                                                                     children = [
+
+                                                                         dbc.Col(width = 3,
+                                                                                 children = [
+
+                                                                                     dbc.FormFloating(children = [
+
+                                                                                         dbc.Input(n_submit = 0,
+                                                                                                   debounce = True,
+                                                                                                   type = 'password',
+                                                                                                   id = 'passwordInputId',
+                                                                                                   placeholder = 'Password',
+                                                                                                   style = style['passwordInputStyle']),
+                                                                                         dbc.Label('Password')
+
+                                                                                     ])
+
+                                                                                 ])
+
+                                                                     ]),
+
+                                                             # >
+
+                                                             # Forgot Password <
+                                                             dbc.Row(justify = 'center',
+                                                                     children = [
+
+                                                                         dbc.Col(width = 'auto',
+                                                                                 id = 'forgotPasswordColId',
+                                                                                 children = [
+
+                                                                                     dbc.Badge(children = 'Forgot Password',
+                                                                                               href = style['forgotPasswordBadgeHref'],
+                                                                                               color = style['forgotPasswordBadgeColor'],
+                                                                                               style = style['forgotPasswordBadgeStyle'])
+
+                                                                                 ])
+
+                                                                     ]),
+
+                                                             # >
+
+                                                             # Submit <
+                                                             dbc.Row(justify = 'center',
+                                                                     children = [
+
+                                                                         dbc.Col(width = 'auto',
+                                                                                 children = [
+
+                                                                                     dbc.Badge(href = '#',
+                                                                                               n_clicks = 0,
+                                                                                               children = 'Submit',
+                                                                                               id = 'submitBadgeId',
+                                                                                               color = style['submitBadgeColor'],
+                                                                                               style = style['submitBadgeStyle'])
+
+                                                                                 ])
+
+                                                                     ])
+
+                                                             # >
+
+                                                         ])
+
+                                            ])
+
+                                ]),
+
+                        # >
+
+                        # Redirect <
+                        dbc.Row(justify = 'center',
+                                children = [
+
+                                    dbc.Col(width = 10,
+                                            children = [
+
+                                                html.Div(id = 'redirectDivId',
+                                                         style = style['redirectDivStyle'],
+                                                         children = [
+
+                                                             dbc.Badge(children = '3ASJW6',
+                                                                       href = style['redirectBadgeHref'],
+                                                                       color = style['redirectBadgeColor'],
+                                                                       style = style['redirectBadgeStyle'])
+
+                                                         ])
+
+                                            ])
+
+                                ])
+
+                        # >
+
+                    ])
+
+
+@application.callback(Output('submitBadgeId', 'children'),
+                      Output('usernameInputId', 'disabled'),
+                      Output('passwordInputId', 'disabled'),
+                      Output('forgotPasswordColId', 'children'),
+                      Input('submitBadgeId', 'n_clicks'),
+                      Input('usernameInputId', 'disabled'),
+                      Input('passwordInputId', 'disabled'),
+                      Input('passwordInputId', 'n_submit'),
+                      State('usernameInputId', 'value'),
+                      State('passwordInputId', 'value'),
+                      State('forgotPasswordColId', 'children'))
+def submitFunction(click: int, usernameDisabled: bool, passwordDisabled: bool, submit: int,
+                   usernameInput: str, passwordInput: str, children: list):
+    '''  '''
+
+    global driver
+
+    # if (Submit) <
     if (click or submit):
 
-        # global driver # < UNCOMMENT AFTER NOVEMBER 20th < #
-        # condition = Login(driver, username, password) # < UNCOMMENT AFTER NOVEMBER 20th < #
-        # driver = condition if (condition) else (driver) # < UNCOMMENT AFTER NOVEMBER 20th < #
-        condition = True # < REMOVE AFTER NOVEMBER 20th < #
+        if (passwordDisabled):
 
-        if (condition):
+            pass
 
-            # if (existing user): call custom dashboard
-            # else (new user): push to verify
+        elif (usernameDisabled):
 
-            return ((html.Div(id = 'divCodeId',
-                             children = [
+            pass
 
-                                 dcc.Input(value = '',
-                                           n_submit = 0,
-                                           debounce = True,
-                                           type = 'password',
-                                           id = 'inputCodeId',
-                                           placeholder = '6-Digit Code',
-                                           style = style['passwordStyle'])
+        else:
 
-                             ], style = style['divPasswordStyle'])
-
-                    ), 0, True, False)
-
-        # >
-
-        # else (not passed) <
-        else: return (div, click, False, True)
-
-        # >
+            pass
 
     # >
 
-    else: return (div, click, False, False)
 
-
-@application.callback(Output('loginLayoutId', 'children'),
-                      Output('verifyConfirmDialog', 'displayed'),
-                      Input('inputCodeId', 'n_submit'),
-                      Input('buttonSubmitId', 'n_clicks'),
-                      State('inputCodeId', 'value'),
-                      State('loginLayoutId', 'children'))
-def verifyFunction(submit: int, click: int, code: str, div: list):
+@application.callback(Output('loginLayoutDivId', 'children'),
+                      Input('codeInputId', 'n_submit'),
+                      Input('codeInputId', 'disabled'),
+                      Input('submitBadgeId', 'n_clicks'))
+def codeFunction(submit: int, disabled: bool, click: int):
     '''  '''
 
-    # if (verify) <
-    if (submit or click):
-
-        # condition = Verify(driver, code) # < UNCOMMENT AFTER NOVEMBER 20th < #
-        condition = True # < REMOVE AFTER NOVEMBER 20th < #
-
-        # if (passed) <
-        if (condition):
-
-            # set data
-            # username home element
-            dashboard = homeLayout
-            return (homeLayout, False)
-
-        # >
-
-        # else (not passed) <
-        else: return (div, True)
-
-        # >
-
-    # >
-
-    else:
-
-        # Send Code <
-        # Verify(driver, code) # < UNCOMMENT AFTER NOVEMBER 20th < #
-        return (div, False)
-
-        # >
+    pass
