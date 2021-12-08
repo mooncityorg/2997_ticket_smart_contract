@@ -1,37 +1,24 @@
-## Welcome to GitHub Pages
+## CS451RC
+> [University of Missouri - Kansas City](https://www.umkc.edu): [CS451R](https://catalog.umkc.edu/search/?P=COMP-SCI%20451R): Capstone
+##
 
-You can use the [editor on GitHub](https://github.com/3ASJW6/CS451RC/edit/Main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+### Installation
+```
+cd
+git clone https://github.com/ala2q6/CS451RC.git
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+cd CS451RC
+pip3 install -r requirements.txt
+pip3 install selenium
 ```
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+### Documentation
+- [Project Tasks](https://docs.google.com/spreadsheets/d/1rk1D6glzpyutGslDa5x_9msDrRLtPADTG6zyg1uvzUY/edit?usp=sharing)
 
-### Jekyll Themes
+##
+[`Alex Arbuckle`](https://github.com/orgs/3ACWJ6/people/ala2q6)&nbsp; [`Alex Omorodion`](https://github.com/orgs/3ACWJ6/people/alexanderomorodion)&nbsp; [`Alec Ivy`](https://github.com/orgs/3ACWJ6/people/awiy87)&nbsp; [`Ben Garver`](https://github.com/orgs/3ACWJ6/people/BLGFQY)&nbsp; [`Saum Yazdani`](https://github.com/orgs/3ACWJ6/people/SaumYazdani)&nbsp; [`Will Scheer`](https://github.com/orgs/3ACWJ6/people/willscheer1)&nbsp;
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/3ASJW6/CS451RC/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+##
+[`dash`](https://pypi.org/project/dash/)&nbsp; [`plotly`](https://pypi.org/project/plotly/)&nbsp; [`gunicorn`]()&nbsp;  [`dash-core-components`](https://pypi.org/project/dash-core-components/)&nbsp; [`dash-html-components`](https://pypi.org/project/dash-html-components/)&nbsp;
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+[`asyncio`](https://pypi.org/project/asyncio/)&nbsp; [`mysql-connector`](https://pypi.org/project/mysql-connector/)&nbsp; [`selenium`](https://pypi.org/project/selenium/)&nbsp; [`webdriver-manager`](https://pypi.org/project/webdriver-manager/)
