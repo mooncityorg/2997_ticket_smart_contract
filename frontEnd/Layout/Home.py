@@ -149,3 +149,13 @@ def homeLayout(username):
                              # >
 
                          ])
+
+
+'''@application.callback(Output(),
+                      Input(),
+                      State())
+def homeCallback():
+    '''  '''
+
+    pass
+'''
