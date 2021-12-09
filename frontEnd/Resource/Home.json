@@ -80,5 +80,7 @@
     "backgroundRepeat" : "no-repeat",
     "backgroundAttachment" : "fixed",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
-  }
+  },
+  "selected" : "#0066cc",
+  "notSelected" : "#04487F"
 }

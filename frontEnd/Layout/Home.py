@@ -8,7 +8,6 @@ from backEnd.API.Utility import getJSON, application
 
 
 # Declaration <
-# * method to get user data *
 style = getJSON(file = '/frontEnd/Resource/Home.json')
 
 # >
@@ -36,13 +35,15 @@ def homeLayout(username):
                                                                   children = [
 
                                                                       dbc.Col(width = 'auto',
+                                                                              id = 'backgroundRowColId',
                                                                               children = [
 
                                                                                   # Navigation Bar <
                                                                                   dbc.InputGroup(children = [
 
                                                                                       # Username <
-                                                                                      dbc.Button(children = username,
+                                                                                      dbc.Button(n_clicks = 0,
+                                                                                                 children = username,
                                                                                                  id = 'usernameButtonId',
                                                                                                  style = style['usernameButtonStyle']),
 
@@ -54,7 +55,8 @@ def homeLayout(username):
                                                                                       # >
 
                                                                                       # Calendar <
-                                                                                      dbc.Button(children = 'Calendar',
+                                                                                      dbc.Button(n_clicks = 0,
+                                                                                                 children = 'Calendar',
                                                                                                  id = 'calendarButtonId',
                                                                                                  style = style['calendarButtonStyle']),
 
@@ -66,7 +68,8 @@ def homeLayout(username):
                                                                                       # >
 
                                                                                       # Dashboard <
-                                                                                      dbc.Button(children = 'Dashboard',
+                                                                                      dbc.Button(n_clicks = 0,
+                                                                                                 children = 'Dashboard',
                                                                                                  id = 'dashboardButtonId',
                                                                                                  style = style['dashboardButtonStyle']),
                                                                                       # >
@@ -97,9 +100,8 @@ def homeLayout(username):
                                                                                       # Search <
                                                                                       dcc.Dropdown(placeholder = 'Search',
                                                                                                    id = 'searchDropdownId',
-                                                                                                   style = style['searchDropdownStyle']),
-                                                                                                   # options =
-                                                                                                      # a method that gets all (name, userId)
+                                                                                                   style = style['searchDropdownStyle'],
+                                                                                                   options = [{'label' : 'temp', 'value' : 'ok'}]),
 
                                                                                       # >
 
@@ -151,11 +153,36 @@ def homeLayout(username):
                          ])
 
 
-'''@application.callback(Output(),
-                      Input(),
-                      State())
-def homeCallback():
+@application.callback(output = [Output('usernameButtonId', 'style'),
+                                Output('calendarButtonId', 'style'),
+                                Output('dashboardButtonId', 'style'),
+                                Output('eventDropdownId', 'style'),
+                                Output('searchDropdownId', 'style'),
+                                Output('roleDropdownId', 'style'),
+
+                                Output('roleDropdownId', 'value'),
+                                Output('eventDropdownId', 'value'),
+                                Output('searchDropdownId', 'value'),
+                                Output('usernameButtonId', 'n_clicks'),
+                                Output('calendarButtonId', 'n_clicks'),
+                                Output('dashboardButtonId', 'n_clicks'),
+
+                                Output('bodyDivId', 'children')],
+
+                      inputs = [Input('usernameButtonId', 'n_clicks'),
+                                Input('calendarButtonId', 'n_clicks'),
+                                Input('dashboardButtonId', 'n_clicks'),
+                                Input('eventDropdownId', 'value'),
+                                Input('searchDropdownId', 'value'),
+                                Input('roleDropdownId', 'value')],
+
+                      state = [State('usernameButtonId', 'style'),
+                               State('calendarButtonId', 'style'),
+                               State('dashboardButtonId', 'style'),
+                               State('eventDropdownId', 'style'),
+                               State('searchDropdownId', 'style'),
+                               State('roleDropdownId', 'style')])
+def headerCallback(*args):
     '''  '''
 
-    pass
-'''
+    return [{}, {}, {}, {}, {}, {}, None, None, None, 0, 0, 0, None]
