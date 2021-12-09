@@ -190,7 +190,7 @@ def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dash
     '''  '''
 
     # Declaration <
-    output = []
+    output = [None, None, 0, 0, 0]
     inputs = (preferenceClick, calendarClick, dashboardClick, eventValue, searchValue)
     states = (preferenceStyle, calendarStyle, dashboardStyle, eventStyle, searchStyle)
 
@@ -203,7 +203,7 @@ def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dash
         if (type(i) is int):
 
             #
-            break
+            pass
 
         # >
 
@@ -211,15 +211,8 @@ def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dash
         if (type(i) is str):
 
             #
-            break
+            pass
 
         # >
-
-    # >
-
-    # else (default) <
-    else:
-
-        print()
 
     # >
