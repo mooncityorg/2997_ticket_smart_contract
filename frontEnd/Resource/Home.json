@@ -19,7 +19,7 @@
     "backgroundColor" : "#0066cc",
     "border" : "5px solid #ffcd00"
   },
-  "usernameButtonStyle" : {
+  "preferenceButtonStyle" : {
     "fontFamily" : "sans serif",
     "backgroundColor" : "#0066cc",
     "border" : "5px solid #0066cc"

@@ -1,8 +1,14 @@
 # Import <
 from dash import html, dcc
 import dash_bootstrap_components as dbc
+from frontEnd.Layout.Search import searchLayout
 from dash.dependencies import Input, Output, State
+from frontEnd.Layout.Calendar import calendarLayout
 from backEnd.API.Utility import getJSON, application
+from frontEnd.Layout.Dashboard import dashboardLayout
+from frontEnd.Layout.Preference import preferenceLayout
+from frontEnd.Layout.Event import eventCancelLayout, eventViewLayout
+from frontEnd.Layout.Event import eventCreateLayout, eventUpdateLayout
 
 # >
 
@@ -161,7 +167,7 @@ def homeLayout(username):
 
                                 Output('eventDropdownId', 'value'),
                                 Output('searchDropdownId', 'value'),
-                                Output('preferencceButtonId', 'n_clicks'),
+                                Output('preferenceButtonId', 'n_clicks'),
                                 Output('calendarButtonId', 'n_clicks'),
                                 Output('dashboardButtonId', 'n_clicks'),
 
@@ -190,3 +196,4 @@ def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dash
 
     # >
 
+    print(states[0])

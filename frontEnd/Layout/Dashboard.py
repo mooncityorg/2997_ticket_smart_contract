@@ -4,7 +4,7 @@
 # >
 
 
-def dashbordLayout():
+def dashboardLayout():
     '''  '''
 
     pass
