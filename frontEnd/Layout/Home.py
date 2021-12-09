@@ -41,11 +41,11 @@ def homeLayout(username):
                                                                                   # Navigation Bar <
                                                                                   dbc.InputGroup(children = [
 
-                                                                                      # Username <
+                                                                                      # Preference <
                                                                                       dbc.Button(n_clicks = 0,
                                                                                                  children = username,
-                                                                                                 id = 'usernameButtonId',
-                                                                                                 style = style['usernameButtonStyle']),
+                                                                                                 id = 'preferenceButtonId',
+                                                                                                 style = style['preferenceButtonStyle']),
 
                                                                                       # >
 
@@ -153,36 +153,39 @@ def homeLayout(username):
                          ])
 
 
-@application.callback(output = [Output('usernameButtonId', 'style'),
+@application.callback(output = [Output('eventDropdownId', 'style'),
+                                Output('preferenceButtonId', 'style'),
                                 Output('calendarButtonId', 'style'),
-                                Output('dashboardButtonId', 'style'),
-                                Output('eventDropdownId', 'style'),
                                 Output('searchDropdownId', 'style'),
-                                Output('roleDropdownId', 'style'),
+                                Output('dashboardButtonId', 'style'),
 
-                                Output('roleDropdownId', 'value'),
                                 Output('eventDropdownId', 'value'),
                                 Output('searchDropdownId', 'value'),
-                                Output('usernameButtonId', 'n_clicks'),
+                                Output('preferencceButtonId', 'n_clicks'),
                                 Output('calendarButtonId', 'n_clicks'),
                                 Output('dashboardButtonId', 'n_clicks'),
 
                                 Output('bodyDivId', 'children')],
 
-                      inputs = [Input('usernameButtonId', 'n_clicks'),
-                                Input('calendarButtonId', 'n_clicks'),
-                                Input('dashboardButtonId', 'n_clicks'),
-                                Input('eventDropdownId', 'value'),
+                      inputs = [Input('eventDropdownId', 'value'),
                                 Input('searchDropdownId', 'value'),
-                                Input('roleDropdownId', 'value')],
+                                Input('calendarButtonId', 'n_clicks'),
+                                Input('preferenceButtonId', 'n_clicks'),
+                                Input('dashboardButtonId', 'n_clicks')],
 
-                      state = [State('usernameButtonId', 'style'),
+                      state = [State('roleDropdownId', 'value'),
+                               State('eventDropdownId', 'style'),
+                               State('preferenceButtonId', 'style'),
                                State('calendarButtonId', 'style'),
                                State('dashboardButtonId', 'style'),
-                               State('eventDropdownId', 'style'),
-                               State('searchDropdownId', 'style'),
-                               State('roleDropdownId', 'style')])
-def headerCallback(*args):
+                               State('searchDropdownId', 'style')])
+def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dashboardClick,
+                   roleValue, eventStyle, preferenceStyle, calendarStyle, dashboardStyle, searchStyle):
     '''  '''
 
-    return [{}, {}, {}, {}, {}, {}, None, None, None, 0, 0, 0, None]
+    # Declaration <
+    output = []
+    inputs = (preferenceClick, calendarClick, dashboardClick, eventValue, searchValue)
+    states = (preferenceStyle, calendarStyle, dashboardStyle, eventStyle, searchStyle)
+
+    # >

@@ -200,7 +200,10 @@ def verifyCallback(click: int, submit: int,
                    passwordInput: str):
     '''  '''
 
+    # Declaration <
     isValid = Verify(passwordInput)
+
+    # >
 
     # if ((verify) and (valid)) else (default) <
     if ((click or submit) and (isValid)): return (dbc.Spinner(size = 'sm'), True)
@@ -227,10 +230,14 @@ def loginCallback(usernameDisabled: bool,
     # if (login) <
     if (usernameDisabled):
 
+        # Declaration <
         isUser = 1 in [1] # * method *
         isDisabled = True if (isUser) else False
         driver = Login(usernameInput, passwordInput)
         if ((driver) and (not isUser)): driver = Authenticate(driver)
+
+        # >
+
         return (
 
             dbc.Badge(href = '#',

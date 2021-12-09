@@ -47,7 +47,8 @@
   "eventDropdownOptions" : {
     "Create" : "createId",
     "Update" : "updateId",
-    "Cancel" : "cancelId"
+    "Cancel" : "cancelId",
+    "View" : "viewId"
   },
   "searchDropdownStyle" : {
     "width" : 250,
