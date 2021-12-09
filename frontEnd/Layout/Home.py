@@ -196,4 +196,30 @@ def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dash
 
     # >
 
-    print(states[0])
+    # iterate (inputs) <
+    for c, i in enumerate(inputs):
+
+        # if (button) <
+        if (type(i) is int):
+
+            #
+            break
+
+        # >
+
+        # if (value) <
+        if (type(i) is str):
+
+            #
+            break
+
+        # >
+
+    # >
+
+    # else (default) <
+    else:
+
+        print()
+
+    # >
