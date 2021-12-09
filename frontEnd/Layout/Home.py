@@ -190,4 +190,3 @@ def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dash
 
     # >
 
-
