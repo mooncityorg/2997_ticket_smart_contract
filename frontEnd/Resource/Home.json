@@ -19,7 +19,7 @@
     "backgroundColor" : "#0066cc",
     "border" : "5px solid #ffcd00"
   },
-  "usernameButtonStyle" : {
+  "preferenceButtonStyle" : {
     "fontFamily" : "sans serif",
     "backgroundColor" : "#0066cc",
     "border" : "5px solid #0066cc"
@@ -82,6 +82,8 @@
     "backgroundAttachment" : "fixed",
     "background" : "url(https://www.umkc.edu/global-assets/images/Womens-Soccer-at-the-Liberty-Memorial.jpg)"
   },
-  "selected" : "#0066cc",
-  "notSelected" : "#04487F"
+  "borderSelected" : "5px solid #04487F",
+  "borderNotSelected" : "5px solid #0066cc",
+  "backgroundColorSelected" : "#04487F",
+  "backgroundColorNotSelected" : "#0066cc"
 }

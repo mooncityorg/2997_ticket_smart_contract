@@ -1,10 +1,10 @@
 # Import <
-
+from dash import html, dcc
 
 # >
 
 
-def dashbordLayout():
+def dashboardLayout(userId):
     '''  '''
 
-    pass
+    return html.H1('dashboard')

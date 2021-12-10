@@ -1,8 +1,14 @@
 # Import <
 from dash import html, dcc
 import dash_bootstrap_components as dbc
+from frontEnd.Layout.Search import searchLayout
 from dash.dependencies import Input, Output, State
+from frontEnd.Layout.Calendar import calendarLayout
 from backEnd.API.Utility import getJSON, application
+from frontEnd.Layout.Dashboard import dashboardLayout
+from frontEnd.Layout.Preference import preferenceLayout
+from frontEnd.Layout.Event import eventCancelLayout, eventViewLayout
+from frontEnd.Layout.Event import eventCreateLayout, eventUpdateLayout
 
 # >
 
@@ -153,40 +159,58 @@ def homeLayout(username):
                          ])
 
 
-@application.callback(output = [Output('eventDropdownId', 'style'),
-                                Output('preferenceButtonId', 'style'),
-                                Output('calendarButtonId', 'style'),
-                                Output('searchDropdownId', 'style'),
-                                Output('dashboardButtonId', 'style'),
+@application.callback(Output('bodyDivId', 'children'),
+                      Output('roleDropdownId', 'value'),
+                      Output('eventDropdownId', 'value'),
+                      Output('searchDropdownId', 'value'),
+                      Output('calendarButtonId', 'n_clicks'),
+                      Output('dashboardButtonId', 'n_clicks'),
+                      Output('preferenceButtonId', 'n_clicks'),
 
-                                Output('eventDropdownId', 'value'),
-                                Output('searchDropdownId', 'value'),
-                                Output('preferencceButtonId', 'n_clicks'),
-                                Output('calendarButtonId', 'n_clicks'),
-                                Output('dashboardButtonId', 'n_clicks'),
+                      Input('eventDropdownId', 'value'),
+                      Input('searchDropdownId', 'value'),
+                      Input('preferenceButtonId', 'value'),
+                      Input('calendarButtonId', 'n_clicks'),
+                      Input('dashboardButtonId', 'n_clicks'),
+                      Input('preferenceButtonId', 'n_clicks'),
 
-                                Output('bodyDivId', 'children')],
-
-                      inputs = [Input('eventDropdownId', 'value'),
-                                Input('searchDropdownId', 'value'),
-                                Input('calendarButtonId', 'n_clicks'),
-                                Input('preferenceButtonId', 'n_clicks'),
-                                Input('dashboardButtonId', 'n_clicks')],
-
-                      state = [State('roleDropdownId', 'value'),
-                               State('eventDropdownId', 'style'),
-                               State('preferenceButtonId', 'style'),
-                               State('calendarButtonId', 'style'),
-                               State('dashboardButtonId', 'style'),
-                               State('searchDropdownId', 'style')])
-def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dashboardClick,
-                   roleValue, eventStyle, preferenceStyle, calendarStyle, dashboardStyle, searchStyle):
+                      State('roleDropdownId', 'value'))
+def headerCallback(eventValue, searchValue, userId, calendarClick, dashboardClick, preferenceClick,
+                   roleValue):
     '''  '''
 
-    # Declaration <
-    output = []
-    inputs = (preferenceClick, calendarClick, dashboardClick, eventValue, searchValue)
-    states = (preferenceStyle, calendarStyle, dashboardStyle, eventStyle, searchStyle)
+    # if (header) <
+    if (eventValue or searchValue or calendarClick or dashboardClick or preferenceClick):
+
+        # Declaration <
+        name = searchValue if (searchValue) else None
+        inputs = [eventValue] if (eventValue) else []
+        keys = ('searchId', 'calendarId', 'dashboardId', 'preferenceId')
+
+        # >
+
+        for c, i in enumerate([searchValue, calendarClick, dashboardClick, preferenceClick]):
+
+            if (i not in [0, None]): inputs.append(keys[c])
+
+        callbacks = {
+
+            'createId' : eventCreateLayout(userId),
+            'cancelId' : eventCancelLayout(userId),
+            'updateId' : eventUpdateLayout(userId),
+            'viewId' : eventViewLayout(userId),
+            'preferenceId' : preferenceLayout(userId),
+            'dashboardId' : dashboardLayout(userId),
+            'calendarId' : calendarLayout(userId),
+            'searchId' : searchLayout(userId, name, roleValue)
+
+        }[inputs[0]]
+
+        return (callbacks, None, None, None, 0, 0, 0)
 
     # >
 
+    # else (default) <
+    else: return (dashboardLayout(userId), None, None, None, 0, 0, 0)
+
+    # >
