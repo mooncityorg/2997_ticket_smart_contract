@@ -57,5 +57,15 @@
       "Start/End Date" : "/html/body/form/div[5]/table/tbody/tr/td/div/table/tbody/tr[8]/td[2]/div/table/tbody/tr[<>]/td[2]/div/table/tbody/tr[2]/td/table/tbody/tr[3]/td[2]/div/table/tbody/tr/td/table/tbody/tr[2]/td[7]/div/span"
     },
     "backButton" : "/html/body/form/div[2]/div[1]/div/div/div/div[2]/div[1]/div[1]/div[1]/span/a"
+  },
+  "umkcRooNews" : {
+    "Website" : "https://info.umkc.edu/unews/category/news/",
+    "Article" : {
+      "Link" : "/html/body/div[6]/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div[1]/div[<>]/div/div[1]/div/a",
+      "Picture" : "/html/body/div[6]/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div[1]/div[<>]/div/div[1]/div/a/span",
+      "Title" : "/html/body/div[6]/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div[1]/div[<>]/div/div[2]/h3/a",
+      "Author" : "/html/body/div[6]/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div[1]/div[<>]/div/div[2]/div/span/span[1]/a",
+      "Date" : "/html/body/div[6]/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div[1]/div[<>]/div/div[2]/div/span/span[2]/time"
+    }
   }
 }

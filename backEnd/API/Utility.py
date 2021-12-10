@@ -142,7 +142,6 @@ def Authenticate(driver, code = None):
     '''  '''
 
     # Declaration <
-
     setting = getJSON(file = '/backEnd/Resource/Utility.json')['Authenticate']
 
     # >
@@ -289,6 +288,58 @@ def scrapeCourse(driver):
     # >
 
     return (driver, schedule)
+
+
+def scrapeUMKCRooNews(driver):
+    '''  '''
+
+    # Declaration <
+    #options = Options()
+    #options.headless = True
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['umkcRooNews']
+    driver = webdriver.Chrome(ChromeDriverManager().install())#, options = options)
+
+    # >
+
+    # Website <
+    driver.get(setting['Website'])
+
+    # >
+
+    # iterate (articles)
+    articles = []
+    for i in range(1, 13):
+
+        article = {}
+        for key, value in setting['Article'].items():
+
+            value = value.replace('<>', str(i))
+
+            # if (link) <
+            if (key == 'Link'):
+
+                link = driver.find_element_by_xpath(value).get_attribute('href')
+                article[key] = link
+
+            # >
+
+            # elif (picture) <
+            elif (key == 'Picture'):
+
+                picture = driver.find_element_by_xpath(value).value_of_css_property('background-image')
+                article[key] = picture
+
+            # >
+
+            # else (title, author, date) <
+            else:
+
+                other = driver.find_element_by_xpath(value).text
+                article[key] = other
+
+            # >
+
+        articles.append(article)
 
 
 def parentQuery(tableName, columns, primary: tuple):
