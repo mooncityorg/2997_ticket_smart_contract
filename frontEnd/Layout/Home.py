@@ -193,8 +193,6 @@ def headerCallback(eventValue, searchValue, userId, calendarClick, dashboardClic
 
             if (i not in [0, None]): inputs.append(keys[c])
 
-        print(inputs)
-
         callbacks = {
 
             'createId' : eventCreateLayout(userId),
