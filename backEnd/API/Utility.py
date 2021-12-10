@@ -341,6 +341,8 @@ def scrapeUMKCRooNews(driver):
 
         articles.append(article)
 
+    return articles
+
 
 def parentQuery(tableName, columns, primary: tuple):
     '''gets information from a table based on single key input'''
