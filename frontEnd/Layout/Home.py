@@ -160,6 +160,7 @@ def homeLayout(username):
 
 
 @application.callback(Output('bodyDivId', 'children'),
+                      Output('roleDropdownId', 'value'),
                       Output('eventDropdownId', 'value'),
                       Output('searchDropdownId', 'value'),
                       Output('calendarButtonId', 'n_clicks'),
@@ -207,11 +208,11 @@ def headerCallback(eventValue, searchValue, userId, calendarClick, dashboardClic
 
         }[inputs[0]]
 
-        return (callbacks, None, None, 0, 0, 0)
+        return (callbacks, None, None, None, 0, 0, 0)
 
     # >
 
     # else (default) <
-    else: return (dashboardLayout(userId), None, None, 0, 0, 0)
+    else: return (dashboardLayout(userId), None, None, None, 0, 0, 0)
 
     # >
