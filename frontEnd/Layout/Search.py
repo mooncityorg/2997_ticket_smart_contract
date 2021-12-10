@@ -1,10 +1,10 @@
 # Import <
-
+from dash import html, dcc
 
 # >
 
 
-def searchLayout():
+def searchLayout(userId, name, role):
     '''  '''
 
-    pass
+    return html.H1('search')

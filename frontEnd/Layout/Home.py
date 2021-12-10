@@ -159,60 +159,88 @@ def homeLayout(username):
                          ])
 
 
-@application.callback(output = [Output('eventDropdownId', 'style'),
-                                Output('preferenceButtonId', 'style'),
+@application.callback(output = [Output('eventDropdownId', 'value'),
+                                Output('searchDropdownId', 'value'),
+                                Output('calendarButtonId', 'n_clicks'),
+                                Output('dashboardButtonId', 'n_clicks'),
+                                Output('preferenceButtonId', 'n_clicks'),
+
+                                Output('eventDropdownId', 'style'),
                                 Output('calendarButtonId', 'style'),
                                 Output('searchDropdownId', 'style'),
                                 Output('dashboardButtonId', 'style'),
-
-                                Output('eventDropdownId', 'value'),
-                                Output('searchDropdownId', 'value'),
-                                Output('preferenceButtonId', 'n_clicks'),
-                                Output('calendarButtonId', 'n_clicks'),
-                                Output('dashboardButtonId', 'n_clicks'),
+                                Output('preferenceButtonId', 'style'),
 
                                 Output('bodyDivId', 'children')],
 
                       inputs = [Input('eventDropdownId', 'value'),
                                 Input('searchDropdownId', 'value'),
+                                Input('preferenceButtonId', 'value'),
                                 Input('calendarButtonId', 'n_clicks'),
-                                Input('preferenceButtonId', 'n_clicks'),
-                                Input('dashboardButtonId', 'n_clicks')],
+                                Input('dashboardButtonId', 'n_clicks'),
+                                Input('preferenceButtonId', 'n_clicks')],
 
                       state = [State('roleDropdownId', 'value'),
                                State('eventDropdownId', 'style'),
-                               State('preferenceButtonId', 'style'),
                                State('calendarButtonId', 'style'),
+                               State('searchDropdownId', 'style'),
                                State('dashboardButtonId', 'style'),
-                               State('searchDropdownId', 'style')])
-def headerCallback(eventValue, searchValue, calendarClick, preferenceClick, dashboardClick,
-                   roleValue, eventStyle, preferenceStyle, calendarStyle, dashboardStyle, searchStyle):
+                               State('preferenceButtonId', 'style')])
+def headerCallback(eventValue, searchValue, userId, calendarClick, dashboardClick, preferenceClick,
+                   roleValue, eventStyle, calendarStyle, searchStyle, dashboardStyle, preferenceStyle):
     '''  '''
 
     # Declaration <
-    output = [None, None, 0, 0, 0]
-    inputs = (preferenceClick, calendarClick, dashboardClick, eventValue, searchValue)
-    states = (preferenceStyle, calendarStyle, dashboardStyle, eventStyle, searchStyle)
+    name = searchValue if (searchValue) else None
+    outputs, bodyLayout = [None, None, 0, 0, 0], None
+    searchValue = 'searchId' if (searchValue) else None
+    calendarClick = 'calendarId' if (calendarClick) else None
+    dashboardClick = 'dashboardId' if (dashboardClick) else None
+    preferenceClick = 'preferenceId' if (preferenceClick) else None
+    inputs = [eventValue, searchValue, calendarClick, dashboardClick, preferenceClick]
+    states = [eventStyle, calendarStyle, searchStyle, dashboardStyle, preferenceStyle]
+    callbacks = {'createId' : eventCreateLayout(userId),
+                 'cancelId' : eventCancelLayout(userId),
+                 'updateId' : eventUpdateLayout(userId),
+                 'viewId' : eventViewLayout(userId),
+                 'preferenceId' : preferenceLayout(userId),
+                 'dashboardId' : dashboardLayout(userId),
+                 'calendarId' : calendarLayout(userId),
+                 'searchId' : searchLayout(userId, name, roleValue)}
 
     # >
 
     # iterate (inputs) <
     for c, i in enumerate(inputs):
 
-        # if (button) <
-        if (type(i) is int):
+        # if (selected) <
+        if (i in callbacks.keys()):
 
-            #
-            pass
+            bodyLayout = callbacks[i]
+            states[c]['border'] = style['borderSelected']
+            states[c]['backgroundColor'] = style['backgroundColorSelected']
 
         # >
 
-        # if (value) <
-        if (type(i) is str):
+        # else (not selected) <
+        else:
 
-            #
-            pass
+            states[c]['border'] = style['borderNotSelected']
+            states[c]['backgroundColor'] = style['backgroundColorNotSelected']
 
         # >
 
     # >
+
+    # if (default) <
+    if (bodyLayout is None):
+
+        bodyLayout = callbacks['dashboardId']
+        states[3]['border'] = style['borderSelected']
+        states[3]['backgroundColor'] = style['backgroundColorSelected']
+
+    # >
+
+    states.append(bodyLayout)
+    outputs.extend(states)
+    return outputs

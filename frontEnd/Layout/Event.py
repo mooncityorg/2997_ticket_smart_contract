@@ -1,28 +1,28 @@
 # Import <
-
+from dash import html, dcc
 
 # >
 
 
-def eventCreateLayout():
+def eventCreateLayout(userId):
     '''  '''
 
-    pass
+    return html.H1('create')
 
 
-def eventUpdateLayout():
+def eventUpdateLayout(username):
     '''  '''
 
-    pass
+    return html.H1('update')
 
 
-def eventCancelLayout():
+def eventCancelLayout(username):
     '''  '''
 
-    pass
+    return html.H1('cancel')
 
 
-def eventViewLayout():
+def eventViewLayout(username):
     '''  '''
 
-    pass
+    return html.H1('view')

@@ -1,10 +1,10 @@
 # Import <
-
+from dash import html, dcc
 
 # >
 
 
-def preferenceLayout():
+def preferenceLayout(userId):
     '''  '''
 
-    pass
+    return html.H1('preference')
