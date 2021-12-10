@@ -19,12 +19,10 @@ def dashboardLayout(userId):
 
         dbc.Col(children = [
 
-            dbc.Row(html.H1('1'), style = {'backgroundColor' : '#0066cc',
-                                           'height' : '28vh'}),
-            dbc.Row(html.H1('2'), style = {'backgroundColor' : '#0066cc',
-                                           'height' : '28vh'}),
-            dbc.Row(html.H1('3'), style = {'backgroundColor' : '#0066cc',
-                                           'height' : '28vh'})
+            dbc.Row(html.H1('5'), style = {'backgroundColor' : '#0066cc',
+                                            'height' : '42vh'}),
+            dbc.Row(html.H1('6'), style = {'backgroundColor' : '#0066cc',
+                                           'height' : '42vh'})
 
         ]),
 
@@ -37,10 +35,12 @@ def dashboardLayout(userId):
 
         dbc.Col(children = [
 
-            dbc.Row(html.H1('5'), style = {'backgroundColor' : '#0066cc',
-                                            'height' : '42vh'}),
-            dbc.Row(html.H1('6'), style = {'backgroundColor' : '#0066cc',
-                                           'height' : '42vh'})
+            dbc.Row(html.H1('1'), style = {'backgroundColor' : '#0066cc',
+                                           'height' : '28vh'}),
+            dbc.Row(html.H1('2'), style = {'backgroundColor' : '#0066cc',
+                                           'height' : '28vh'}),
+            dbc.Row(html.H1('3'), style = {'backgroundColor' : '#0066cc',
+                                           'height' : '28vh'})
 
         ])
 
