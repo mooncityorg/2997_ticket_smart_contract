@@ -20,83 +20,88 @@ def dashboardLayout(userId):
     return dbc.Row(children = [
 
         # Left <
-        dbc.Col(children = [
+        dbc.Col(style = style['leftColStyle'],
+                children = [
 
-            # Calendar <
-            dbc.Row(style = style['calendarStyle'],
-                    children = [
+                    #
 
-                        #
+                    # Calendar <
+                    dbc.Row(style = style['calendarStyle'],
+                            children = [
 
-                    ]),
+                                html.H1('calendar')
 
-            # >
+                            ]),
 
-            # UMKC Roo News <
-            dbc.Row(style = style['umkcRooNewsStyle'],
-                    children = [
+                    # >
 
-                        #
+                    # UMKC Roo News <
+                    dbc.Row(style = style['umkcRooNewsStyle'],
+                            children = [
 
-                    ])
+                                html.H1('roo news')
 
-            # >
+                            ])
 
-        ]),
+                    # >
+
+                ]),
 
         # >
 
         # Center <
-        dbc.Col(children = [
+        dbc.Col(style = style['centerColStyle'],
+                children = [
 
-            # Agenda <
-            dbc.Row(style = style['agendaStyle'],
-                    children = [
+                    # Agenda <
+                    dbc.Row(style = style['agendaStyle'],
+                            children = [
 
-                        #
+                                html.H1('agenda')
 
-                    ])
+                            ])
 
-            # >
+                    # >
 
-        ]),
+                ]),
 
         # >
 
         # Right <
-        dbc.Col(children = [
+        dbc.Col(style = style['rightColStyle'],
+                children = [
 
-            # Event Create <
-            dbc.Row(style = style['eventCreateStyle'],
-                    children = [
+                    # Event Create <
+                    dbc.Row(style = style['eventCreateStyle'],
+                            children = [
 
-                        #
+                                html.H1('create')
 
-                    ]),
+                            ]),
 
-            # >
+                    # >
 
-            # Event Update <
-            dbc.Row(style = style['eventUpdateStyle'],
-                    children = [
+                    # Event Update <
+                    dbc.Row(style = style['eventUpdateStyle'],
+                            children = [
 
-                        #
+                                html.H1('update')
 
-                    ]),
+                            ]),
 
-            # >
+                    # >
 
-            # Event Cancel <
-            dbc.Row(style = style['eventCancelStyle'],
-                    children = [
+                    # Event Cancel <
+                    dbc.Row(style = style['eventCancelStyle'],
+                            children = [
 
-                        #
+                                html.H1('cancel')
 
-                    ])
+                            ])
 
-            # >
+                    # >
 
-        ])
+                ])
 
         # >
 

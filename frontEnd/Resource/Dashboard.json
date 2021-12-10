@@ -1,20 +1,67 @@
 {
+  "leftColStyle" : {
+    "marginTop" : "1vh",
+    "marginLeft" : "2vh"
+  },
   "calendarStyle" : {
-
+    "height" : "42.5vh",
+    "borderRadius" : 10,
+    "overflow" : "scroll",
+    "marginBottom" : "1vh",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #ffcd00"
   },
   "umkcRooNewsStyle" : {
+    "height" : "42.5vh",
+    "borderRadius" : 10,
+    "overflow" : "scroll",
+    "marginBottom" : "1vh",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #ffcd00"
 
+  },
+  "centerColStyle" : {
+    "marginTop" : "1vh",
+    "marginLeft" : "1vh",
+    "marginRight" : "1vh"
   },
   "agendaStyle" : {
+    "height" : "86vh",
+    "borderRadius" : 10,
+    "overflow" : "scroll",
+    "marginBottom" : "1vh",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #ffcd00"
 
   },
+  "rightColStyle" : {
+    "marginTop" : "1vh",
+    "marginRight" : "2vh"
+  },
   "eventCreateStyle" : {
+    "height" : "28vh",
+    "borderRadius" : 10,
+    "overflow" : "scroll",
+    "marginBottom" : "1vh",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #ffcd00"
 
   },
   "eventUpdateStyle" : {
+    "height" : "28vh",
+    "borderRadius" : 10,
+    "overflow" : "scroll",
+    "marginBottom" : "1vh",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #ffcd00"
 
   },
   "eventCancelStyle" : {
-
+    "height" : "28vh",
+    "borderRadius" : 10,
+    "overflow" : "scroll",
+    "marginBottom" : "1vh",
+    "backgroundColor" : "#0066cc",
+    "border" : "5px solid #ffcd00"
   }
 }
