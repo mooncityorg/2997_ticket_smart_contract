@@ -1,3 +1,20 @@
 {
+  "calendarStyle" : {
 
+  },
+  "umkcRooNewsStyle" : {
+
+  },
+  "agendaStyle" : {
+
+  },
+  "eventCreateStyle" : {
+
+  },
+  "eventUpdateStyle" : {
+
+  },
+  "eventCancelStyle" : {
+
+  }
 }

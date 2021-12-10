@@ -1,13 +1,15 @@
 # Import <
 from dash import html, dcc
 import dash_bootstrap_components as dbc
+from dash.dependencies import Input, Output, State
+from backEnd.API.Utility import getJSON, application
 
 
 # >
 
 
 # Declaration <
-
+style = getJSON(file = '/frontEnd/Resource/Dashboard.json')
 
 # >
 
@@ -17,31 +19,85 @@ def dashboardLayout(userId):
 
     return dbc.Row(children = [
 
+        # Left <
         dbc.Col(children = [
 
-            dbc.Row(html.H1('5'), style = {'backgroundColor' : '#0066cc',
-                                            'height' : '42vh'}),
-            dbc.Row(html.H1('6'), style = {'backgroundColor' : '#0066cc',
-                                           'height' : '42vh'})
+            # Calendar <
+            dbc.Row(style = style['calendarStyle'],
+                    children = [
+
+                        #
+
+                    ]),
+
+            # >
+
+            # UMKC Roo News <
+            dbc.Row(style = style['umkcRooNewsStyle'],
+                    children = [
+
+                        #
+
+                    ])
+
+            # >
 
         ]),
 
+        # >
+
+        # Center <
         dbc.Col(children = [
 
-            dbc.Row(html.H1('4'), style = {'backgroundColor' : '#0066cc',
-                                            'height' : '84vh'})
+            # Agenda <
+            dbc.Row(style = style['agendaStyle'],
+                    children = [
+
+                        #
+
+                    ])
+
+            # >
 
         ]),
 
+        # >
+
+        # Right <
         dbc.Col(children = [
 
-            dbc.Row(html.H1('1'), style = {'backgroundColor' : '#0066cc',
-                                           'height' : '28vh'}),
-            dbc.Row(html.H1('2'), style = {'backgroundColor' : '#0066cc',
-                                           'height' : '28vh'}),
-            dbc.Row(html.H1('3'), style = {'backgroundColor' : '#0066cc',
-                                           'height' : '28vh'})
+            # Event Create <
+            dbc.Row(style = style['eventCreateStyle'],
+                    children = [
+
+                        #
+
+                    ]),
+
+            # >
+
+            # Event Update <
+            dbc.Row(style = style['eventUpdateStyle'],
+                    children = [
+
+                        #
+
+                    ]),
+
+            # >
+
+            # Event Cancel <
+            dbc.Row(style = style['eventCancelStyle'],
+                    children = [
+
+                        #
+
+                    ])
+
+            # >
 
         ])
+
+        # >
 
     ])
