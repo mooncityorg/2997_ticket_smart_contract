@@ -169,14 +169,14 @@ def homeLayout(username):
 
                       Input('eventDropdownId', 'value'),
                       Input('searchDropdownId', 'value'),
-                      Input('preferenceButtonId', 'value'),
                       Input('calendarButtonId', 'n_clicks'),
                       Input('dashboardButtonId', 'n_clicks'),
                       Input('preferenceButtonId', 'n_clicks'),
 
-                      State('roleDropdownId', 'value'))
-def headerCallback(eventValue, searchValue, userId, calendarClick, dashboardClick, preferenceClick,
-                   roleValue):
+                      State('roleDropdownId', 'value'),
+                      State('preferenceButtonId', 'children'))
+def headerCallback(eventValue, searchValue, calendarClick, dashboardClick, preferenceClick,
+                   roleValue, userId):
     '''  '''
 
     # Declaration <
@@ -201,7 +201,6 @@ def headerCallback(eventValue, searchValue, userId, calendarClick, dashboardClic
     # else (default) <
     else:
 
-        #
         return ([dashboardLayout(userId)] + outputs)
 
     # >
