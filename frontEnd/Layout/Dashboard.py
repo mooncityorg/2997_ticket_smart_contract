@@ -43,7 +43,8 @@ def dashboardLayout(userId):
                             children = [
 
                                 dbc.Card(style = {'border' : 0,
-                                                  'height' : '15vh',
+                                                  'height' : 'auto',
+                                                  'borderRadius' : 10,
                                                   'backgroundSize' : 'cover',
                                                   'backgroundPosition' : 'center',
                                                   'background' : 'url({})'.format(article['Picture'])},
