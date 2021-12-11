@@ -13,9 +13,6 @@ pip3 install selenium
 ```
 
 ##
-[`Alex Arbuckle`](https://github.com/orgs/3ACWJ6/people/ala2q6)&nbsp; [`Alex Omorodion`](https://github.com/orgs/3ACWJ6/people/alexanderomorodion)&nbsp; [`Alec Ivy`](https://github.com/orgs/3ACWJ6/people/awiy87)&nbsp; [`Ben Garver`](https://github.com/orgs/3ACWJ6/people/BLGFQY)&nbsp; [`Saum Yazdani`](https://github.com/orgs/3ACWJ6/people/SaumYazdani)&nbsp; [`Will Scheer`](https://github.com/orgs/3ACWJ6/people/willscheer1)&nbsp;
-
-##
 [`dash`](https://pypi.org/project/dash/)&nbsp; [`plotly`](https://pypi.org/project/plotly/)&nbsp; [`gunicorn`]()&nbsp;  [`dash-core-components`](https://pypi.org/project/dash-core-components/)&nbsp; [`dash-html-components`](https://pypi.org/project/dash-html-components/)&nbsp;
 
 [`asyncio`](https://pypi.org/project/asyncio/)&nbsp; [`mysql-connector`](https://pypi.org/project/mysql-connector/)&nbsp; [`selenium`](https://pypi.org/project/selenium/)&nbsp; [`webdriver-manager`](https://pypi.org/project/webdriver-manager/)
