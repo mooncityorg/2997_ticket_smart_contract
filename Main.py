@@ -3,6 +3,7 @@ from backEnd.API.Utility import application
 from frontEnd.Layout.Login import loginLayout
 
 from frontEnd.Layout.Home import homeLayout # remove
+from backEnd.API.Event import Event
 
 # >
 
@@ -10,7 +11,7 @@ from frontEnd.Layout.Home import homeLayout # remove
 # Main <
 if (__name__ == '__main__'):
 
-    application.layout = homeLayout('ala2q6')
+    application.layout = homeLayout('JAD6TJ')
     application.run_server(debug = True)
 
 # >
