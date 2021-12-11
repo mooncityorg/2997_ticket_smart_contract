@@ -7,7 +7,7 @@
     "height" : "22.5vh",
     "borderRadius" : 10,
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204, 0.5)",
     "border" : "5px solid #ffcd00"
   },
   "umkcRooNewsStyle" : {
@@ -16,19 +16,20 @@
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "border" : "5px solid #ffcd00"
+    "border" : "5px solid #ffcd00",
+    "background" : "rgba(4, 72, 127, 0.5)"
   },
   "umkcRooNewsCardH4Style" : {
     "padding" : 5,
     "color" : "#ffcd00",
     "borderRadius" : 10,
-    "background" : "rgba(0, 102, 204, 0.5)"
+    "background" : "rgba(4, 72, 127, 0.5)"
   },
   "umkcRooNewsCardPStyle" : {
     "padding" : 5,
     "color" : "#ffcd00",
     "borderRadius" : 10,
-    "background" : "rgba(0, 102, 204, 0.5)"
+    "background" : "rgba(4, 72, 127, 0.5)"
 
   },
   "umkcRooNewsCardBadgeStyle" : {
@@ -46,7 +47,7 @@
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204, 0.5)",
     "border" : "5px solid #ffcd00"
 
   },
@@ -60,7 +61,7 @@
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204, 0.5)",
     "border" : "5px solid #ffcd00"
 
   },
@@ -70,7 +71,7 @@
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204, 0.5)",
     "border" : "5px solid #ffcd00"
 
   },
@@ -80,7 +81,7 @@
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204, 0.5)",
     "border" : "5px solid #ffcd00"
   }
 }
