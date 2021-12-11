@@ -21,6 +21,7 @@ application = Dash(suppress_callback_exceptions = True,
                    external_stylesheets = [dbc.themes.BOOTSTRAP])
 
 server = application.server
+articles = []
 
 # "Driver=ODBC Driver 17 for SQL Server;" # Linux
 # "Driver={SQL Server};" # Windows
@@ -293,6 +294,8 @@ def scrapeCourse(driver):
 def scrapeUMKCRooNews(driver):
     '''  '''
 
+    global articles
+
     # Declaration <
     #options = Options()
     #options.headless = True
@@ -303,44 +306,52 @@ def scrapeUMKCRooNews(driver):
 
     # Website <
     driver.get(setting['Website'])
+    driver.execute_script('window.scrollTo(0,document.body.scrollHeight);')
+    sleep(0.5)
 
     # >
 
-    # iterate (articles)
-    articles = []
-    for i in range(1, 13):
+    print(articles)
 
-        article = {}
-        for key, value in setting['Article'].items():
+    # if (not articles) <
+    if (articles == []):
 
-            value = value.replace('<>', str(i))
+        # iterate (articles)
+        for i in range(1, 13):
 
-            # if (link) <
-            if (key == 'Link'):
+            article = {}
+            for key, value in setting['Article'].items():
 
-                link = driver.find_element_by_xpath(value).get_attribute('href')
-                article[key] = link
+                value = value.replace('<>', str(i))
 
-            # >
+                # if (link) <
+                if (key == 'Link'):
 
-            # elif (picture) <
-            elif (key == 'Picture'):
+                    link = driver.find_element_by_xpath(value).get_attribute('href')
+                    article[key] = link
 
-                picture = driver.find_element_by_xpath(value).value_of_css_property('background-image')
-                article[key] = picture
+                # >
 
-            # >
+                # elif (picture) <
+                elif (key == 'Picture'):
 
-            # else (title, author, date) <
-            else:
+                    picture = driver.find_element_by_xpath(value).value_of_css_property('background-image')
+                    picture = picture.split('"')[1]
+                    article[key] = picture
 
-                other = driver.find_element_by_xpath(value).text
-                article[key] = other
+                # >
 
-            # >
+                # else (title, author, date) <
+                else:
 
-        articles.append(article)
+                    other = driver.find_element_by_xpath(value).text
+                    article[key] = other
 
+                # >
+
+            articles.append(article)
+
+    articles = articles
     return articles
 
 

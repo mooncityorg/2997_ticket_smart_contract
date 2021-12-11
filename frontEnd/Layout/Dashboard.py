@@ -1,14 +1,15 @@
 # Import <
 from dash import html, dcc
 import dash_bootstrap_components as dbc
+from backEnd.API.Utility import scrapeUMKCRooNews
 from dash.dependencies import Input, Output, State
 from backEnd.API.Utility import getJSON, application
-
 
 # >
 
 
 # Declaration <
+driver = None
 style = getJSON(file = '/frontEnd/Resource/Dashboard.json')
 
 # >
@@ -16,6 +17,8 @@ style = getJSON(file = '/frontEnd/Resource/Dashboard.json')
 
 def dashboardLayout(userId):
     '''  '''
+
+    global driver
 
     return dbc.Row(children = [
 
@@ -39,9 +42,48 @@ def dashboardLayout(userId):
                     dbc.Row(style = style['umkcRooNewsStyle'],
                             children = [
 
-                                html.H1('roo news')
+                                dbc.Card(style = {'border' : 0,
+                                                  'height' : '15vh',
+                                                  'backgroundSize' : 'cover',
+                                                  'backgroundPosition' : 'center',
+                                                  'background' : 'url({})'.format(article['Picture'])},
 
-                            ])
+                                         children = [
+
+                                             dbc.CardBody(children = [
+
+                                                 # Header <
+                                                 html.H4(className = 'card-title',
+                                                         children = article['Title']),
+
+                                                 # >
+
+                                                 # Author & Date <
+                                                 html.P(className = 'card-text',
+                                                        children = [
+
+                                                            'by {}'.format(article['Author']),
+                                                            'on {}'.format(article['Date'])
+
+                                                        ]),
+
+                                                 # >
+
+                                                 # Redirect <
+                                                 dbc.Badge(children = 'Redirect',
+                                                           href = article['Link'],
+                                                           color = style['umkcRooNewsCardBadgeColor'],
+                                                           style = style['umkcRooNewsCardBadgeStyle'])
+
+                                                 # >
+
+                                             ])
+
+                                             # >
+
+                                         ])
+
+                            for article in scrapeUMKCRooNews(driver)])
 
                     # >
 

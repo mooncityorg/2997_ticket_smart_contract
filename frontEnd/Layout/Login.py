@@ -12,6 +12,7 @@ from backEnd.API.Utility import Verify, Login, Authenticate
 
 # Declaration <
 driver = None
+
 style = getJSON(file = '/frontEnd/Resource/Login.json')
 
 # >
