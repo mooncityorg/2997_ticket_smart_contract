@@ -29,7 +29,7 @@ def loginLayout():
                         dbc.Row(justify = 'center',
                                 children = [
 
-                                    dbc.Col(width = 4,
+                                    dbc.Col(width = 'auto',
                                             children = [
 
                                                 html.Div(id = 'logoDivId',
@@ -57,17 +57,6 @@ def loginLayout():
                                                 html.Div(id = 'inputDivId',
                                                          style = style['inputDivStyle'],
                                                          children = [
-
-                                                             # Logo <
-                                                             html.H1(children = 'Connect++',
-                                                                     className = 'display-3',
-                                                                     style = style['logoH1Style']),
-
-                                                             html.P(className = 'lead',
-                                                                    children = 'by 3ASJW6',
-                                                                    style = style['logoPStyle']),
-
-                                                             # >
 
                                                              # Username <
                                                              dbc.Row(justify = 'center',

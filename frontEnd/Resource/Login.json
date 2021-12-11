@@ -8,17 +8,16 @@
     "background" : "linear-gradient(to bottom, #0066cc 80%, #04487F 20%"
   },
   "logoDivStyle" : {
-    "marginTop" : "6vh",
+    "marginTop" : "1vh",
     "textAlign" : "center"
   },
-  "logoImgSrc" : "https://cdn.freelogovectors.net/wp-content/uploads/2020/10/kansas-city-roos-logo.png",
+  "logoImgSrc" : "https://cdn.discordapp.com/attachments/688944264901951529/919057426425212969/ConnectLogo-removebg-preview.png",
   "logoImgStyle" : {
-    "width" : "20vh",
-    "height" : "20vh"
+    "width" : "auto",
+    "height" : "auto"
   },
   "inputDivStyle" : {
     "height" : "50vh",
-    "marginTop" : "10vh",
     "borderTopLeftRadius" : 10,
     "borderTopRightRadius" : 10,
     "backgroundPosition" : "bottom",
@@ -39,7 +38,7 @@
     "fontFamily" : "sans serif"
   },
   "usernameInputStyle" : {
-    "marginTop" : "7vh",
+    "marginTop" : "17vh",
     "borderRadius" : 10,
     "fontFamily" : "sans serif"
   },
