@@ -4,19 +4,25 @@
     "marginLeft" : "2vh"
   },
   "calendarStyle" : {
-    "height" : "22.5vh",
+    "height" : "6.5vh",
     "borderRadius" : 10,
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204)",
     "border" : "5px solid #ffcd00"
   },
+  "calendarDateStyle" : {
+    "padding" : 10,
+    "fontSize" : 35,
+    "color" : "#ffcd00"
+  },
   "umkcRooNewsStyle" : {
-    "height" : "62.5vh",
+    "height" : "78.5vh",
     "borderRadius" : 10,
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "border" : "5px solid #ffcd00"
+    "border" : "5px solid #ffcd00",
+    "background" : "rgba(0, 102, 204)"
   },
   "umkcRooNewsCardH4Style" : {
     "padding" : 5,
@@ -29,12 +35,11 @@
     "color" : "#ffcd00",
     "borderRadius" : 10,
     "background" : "rgba(0, 102, 204, 0.5)"
-
   },
   "umkcRooNewsCardBadgeStyle" : {
     "color" : "#ffcd00"
   },
-  "umkcRooNewsCardBadgeColor" : "#0066cc",
+  "umkcRooNewsCardBadgeColor" : "#04487F",
   "centerColStyle" : {
     "marginTop" : "1vh",
     "marginLeft" : "1vh",
@@ -43,10 +48,10 @@
   "agendaStyle" : {
     "height" : "86vh",
     "borderRadius" : 10,
+    "marginBottom" : "1vh",
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
-    "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204)",
     "border" : "5px solid #ffcd00"
 
   },
@@ -60,7 +65,7 @@
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204)",
     "border" : "5px solid #ffcd00"
 
   },
@@ -70,7 +75,7 @@
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204)",
     "border" : "5px solid #ffcd00"
 
   },
@@ -80,7 +85,7 @@
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
     "marginBottom" : "1vh",
-    "backgroundColor" : "#0066cc",
+    "background" : "rgba(0, 102, 204)",
     "border" : "5px solid #ffcd00"
   }
 }

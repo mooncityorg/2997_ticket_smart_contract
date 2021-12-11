@@ -1,4 +1,5 @@
 # Import <
+from time import strftime
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 from backEnd.API.Utility import scrapeUMKCRooNews
@@ -9,7 +10,6 @@ from backEnd.API.Utility import getJSON, application
 
 
 # Declaration <
-driver = None
 style = getJSON(file = '/frontEnd/Resource/Dashboard.json')
 
 # >
@@ -17,8 +17,6 @@ style = getJSON(file = '/frontEnd/Resource/Dashboard.json')
 
 def dashboardLayout(userId):
     '''  '''
-
-    global driver
 
     return dbc.Row(children = [
 
@@ -29,10 +27,21 @@ def dashboardLayout(userId):
                     #
 
                     # Calendar <
-                    dbc.Row(style = style['calendarStyle'],
+                    dbc.Row(justify = 'center',
+                            style = style['calendarStyle'],
                             children = [
 
-                                html.H1('calendar')
+                                dbc.Col(width = 'auto',
+                                        align = 'center',
+                                        children = [
+
+                                            # Date <
+                                            html.H4(children = strftime('%d %B %Y'),
+                                                    style = style['calendarDateStyle'])
+
+                                            # >
+
+                                        ])
 
                             ]),
 
@@ -47,7 +56,6 @@ def dashboardLayout(userId):
                                                   'borderRadius' : 10,
                                                   'backgroundSize' : 'cover',
                                                   'backgroundPosition' : 'center',
-                                                  'border' : '5px solid #ffcd00',
                                                   'background' : 'url({})'.format(article['Picture'])
 
                                                   },
@@ -57,9 +65,10 @@ def dashboardLayout(userId):
                                              dbc.CardBody(children = [
 
                                                  # Header <
+
                                                  html.H4(className = 'card-title',
-                                                         style = style['umkcRooNewsCardH4Style'],
-                                                         children = article['Title']),
+                                                         children = article['Title'],
+                                                         style = style['umkcRooNewsCardH4Style']),
 
                                                  # >
 
@@ -85,11 +94,9 @@ def dashboardLayout(userId):
 
                                              ])
 
-                                             # >
-
                                          ])
 
-                            for article in scrapeUMKCRooNews(driver)])
+                            for article in scrapeUMKCRooNews()])
 
                     # >
 
