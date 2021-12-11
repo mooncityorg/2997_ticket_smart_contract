@@ -16,19 +16,18 @@
     "borderRadius" : 10,
     "overflow" : "scroll",
     "marginBottom" : "1vh",
-    "backgroundColor" : "#FFFFFF",
     "border" : "5px solid #ffcd00"
   },
-  "umkcRooNewsCardStyle" : {
-    "border" : 0,
-    "height" : "15vh",
-    "borderRadius" : 10
-  },
   "umkcRooNewsCardH4Style" : {
-    "color" : "#0066cc"
+    "color" : "#ffcd00",
+    "borderRadius" : 10,
+    "background" : "rgba(0, 102, 204, 0.3)"
   },
   "umkcRooNewsCardPStyle" : {
-    "color" : "#0066cc"
+    "color" : "#ffcd00",
+    "borderRadius" : 10,
+    "background" : "rgba(0, 102, 204, 0.3)"
+
   },
   "umkcRooNewsCardBadgeStyle" : {
     "color" : "#ffcd00"

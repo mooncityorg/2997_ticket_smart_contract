@@ -47,7 +47,9 @@ def dashboardLayout(userId):
                                                   'borderRadius' : 10,
                                                   'backgroundSize' : 'cover',
                                                   'backgroundPosition' : 'center',
-                                                  'background' : 'url({})'.format(article['Picture'])},
+                                                  'background' : 'url({})'.format(article['Picture'])
+
+                                                  },
 
                                          children = [
 
@@ -55,16 +57,18 @@ def dashboardLayout(userId):
 
                                                  # Header <
                                                  html.H4(className = 'card-title',
+                                                         style = style['umkcRooNewsCardH4Style'],
                                                          children = article['Title']),
 
                                                  # >
 
                                                  # Author & Date <
                                                  html.P(className = 'card-text',
+                                                        style = style['umkcRooNewsCardPStyle'],
                                                         children = [
 
                                                             'by {}'.format(article['Author']),
-                                                            'on {}'.format(article['Date'])
+                                                            ' on {}'.format(article['Date'])
 
                                                         ]),
 
