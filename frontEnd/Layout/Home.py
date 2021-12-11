@@ -199,6 +199,9 @@ def headerCallback(eventValue, searchValue, userId, calendarClick, dashboardClic
     # >
 
     # else (default) <
-    else: return ([dashboardLayout(userId)] + outputs)
+    else:
+
+        #
+        return ([dashboardLayout(userId)] + outputs)
 
     # >

@@ -10,7 +10,6 @@ from backEnd.API.Utility import getJSON, application
 
 
 # Declaration <
-driver = None
 style = getJSON(file = '/frontEnd/Resource/Dashboard.json')
 
 # >
@@ -18,8 +17,6 @@ style = getJSON(file = '/frontEnd/Resource/Dashboard.json')
 
 def dashboardLayout(userId):
     '''  '''
-
-    global driver
 
     return dbc.Row(children = [
 
@@ -97,11 +94,9 @@ def dashboardLayout(userId):
 
                                              ])
 
-                                             # >
-
                                          ])
 
-                            for article in scrapeUMKCRooNews(driver)])
+                            for article in scrapeUMKCRooNews()])
 
                     # >
 

@@ -290,7 +290,7 @@ def scrapeCourse(driver):
     return (driver, schedule)
 
 
-def scrapeUMKCRooNews(driver, default = None):
+def scrapeUMKCRooNews():
     '''  '''
 
     # Declaration <

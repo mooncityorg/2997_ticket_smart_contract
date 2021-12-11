@@ -48,9 +48,9 @@
   "agendaStyle" : {
     "height" : "86vh",
     "borderRadius" : 10,
+    "marginBottom" : "1vh",
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
-    "marginBottom" : "1vh",
     "background" : "rgba(0, 102, 204)",
     "border" : "5px solid #ffcd00"
 
