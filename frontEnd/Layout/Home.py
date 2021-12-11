@@ -179,38 +179,26 @@ def headerCallback(eventValue, searchValue, userId, calendarClick, dashboardClic
                    roleValue):
     '''  '''
 
+    # Declaration <
+    outputs = [None, None, None, 0, 0, 0]
+
+    # >
+
     # if (header) <
     if (eventValue or searchValue or calendarClick or dashboardClick or preferenceClick):
 
-        # Declaration <
-        name = searchValue if (searchValue) else None
-        inputs = [eventValue] if (eventValue) else []
-        keys = ('searchId', 'calendarId', 'dashboardId', 'preferenceId')
-
-        # >
-
-        for c, i in enumerate([searchValue, calendarClick, dashboardClick, preferenceClick]):
-
-            if (i not in [0, None]): inputs.append(keys[c])
-
-        callbacks = {
-
-            'createId' : eventCreateLayout(userId),
-            'cancelId' : eventCancelLayout(userId),
-            'updateId' : eventUpdateLayout(userId),
-            'viewId' : eventViewLayout(userId),
-            'preferenceId' : preferenceLayout(userId),
-            'dashboardId' : dashboardLayout(userId),
-            'calendarId' : calendarLayout(userId),
-            'searchId' : searchLayout(userId, name, roleValue)
-
-        }[inputs[0]]
-
-        return (callbacks, None, None, None, 0, 0, 0)
+        if (searchValue is not None): return ([searchLayout(userId, searchValue, roleValue)] + outputs)
+        if (eventValue == 'createId'): return ([eventCreateLayout(userId)] + outputs)
+        if (eventValue == 'cancelId'): return ([eventCancelLayout(userId)] + outputs)
+        if (eventValue == 'updateId'): return ([eventUpdateLayout(userId)] + outputs)
+        if (eventValue == 'viewId'): return ([eventViewLayout(userId)] + outputs)
+        if (preferenceClick != 0): return ([preferenceLayout(userId)] + outputs)
+        if (dashboardClick != 0): return ([dashboardLayout(userId)] + outputs)
+        if (calendarClick != 0): return ([calendarLayout(userId)] + outputs)
 
     # >
 
     # else (default) <
-    else: return (dashboardLayout(userId), None, None, None, 0, 0, 0)
+    else: return ([dashboardLayout(userId)] + outputs)
 
     # >

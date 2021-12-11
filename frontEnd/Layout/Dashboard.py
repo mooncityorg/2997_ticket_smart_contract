@@ -1,4 +1,5 @@
 # Import <
+from time import strftime
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 from backEnd.API.Utility import scrapeUMKCRooNews
@@ -29,10 +30,21 @@ def dashboardLayout(userId):
                     #
 
                     # Calendar <
-                    dbc.Row(style = style['calendarStyle'],
+                    dbc.Row(justify = 'center',
+                            style = style['calendarStyle'],
                             children = [
 
-                                html.H1('calendar')
+                                dbc.Col(width = 'auto',
+                                        align = 'center',
+                                        children = [
+
+                                            # Date <
+                                            html.H4(children = strftime('%d %B %Y'),
+                                                    style = style['calendarDateStyle'])
+
+                                            # >
+
+                                        ])
 
                             ]),
 
