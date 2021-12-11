@@ -58,8 +58,8 @@ def dashboardLayout(userId):
                                                  # Header <
 
                                                  html.H4(className = 'card-title',
-                                                         style = style['umkcRooNewsCardH4Style'],
-                                                         children = article['Title']),
+                                                         children = article['Title'],
+                                                         style = style['umkcRooNewsCardH4Style']),
 
                                                  # >
 
