@@ -47,7 +47,6 @@ def dashboardLayout(userId):
                                                   'borderRadius' : 10,
                                                   'backgroundSize' : 'cover',
                                                   'backgroundPosition' : 'center',
-                                                  'border' : '5px solid #ffcd00',
                                                   'background' : 'url({})'.format(article['Picture'])
 
                                                   },
@@ -57,6 +56,7 @@ def dashboardLayout(userId):
                                              dbc.CardBody(children = [
 
                                                  # Header <
+
                                                  html.H4(className = 'card-title',
                                                          style = style['umkcRooNewsCardH4Style'],
                                                          children = article['Title']),
