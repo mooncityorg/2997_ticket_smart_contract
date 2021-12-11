@@ -21,6 +21,7 @@ application = Dash(suppress_callback_exceptions = True,
                    external_stylesheets = [dbc.themes.BOOTSTRAP])
 
 server = application.server
+articles = []
 
 # "Driver=ODBC Driver 17 for SQL Server;" # Linux
 # "Driver={SQL Server};" # Windows
@@ -142,7 +143,6 @@ def Authenticate(driver, code = None):
     '''  '''
 
     # Declaration <
-
     setting = getJSON(file = '/backEnd/Resource/Utility.json')['Authenticate']
 
     # >
@@ -289,6 +289,70 @@ def scrapeCourse(driver):
     # >
 
     return (driver, schedule)
+
+
+def scrapeUMKCRooNews(driver):
+    '''  '''
+
+    global articles
+
+    # Declaration <
+    #options = Options()
+    #options.headless = True
+    setting = getJSON(file = '/backEnd/Resource/Utility.json')['umkcRooNews']
+    driver = webdriver.Chrome(ChromeDriverManager().install())#, options = options)
+
+    # >
+
+    # Website <
+    driver.get(setting['Website'])
+    driver.execute_script('window.scrollTo(0,document.body.scrollHeight);')
+    sleep(0.5)
+
+    # >
+
+    print(articles)
+
+    # if (not articles) <
+    if (articles == []):
+
+        # iterate (articles)
+        for i in range(1, 13):
+
+            article = {}
+            for key, value in setting['Article'].items():
+
+                value = value.replace('<>', str(i))
+
+                # if (link) <
+                if (key == 'Link'):
+
+                    link = driver.find_element_by_xpath(value).get_attribute('href')
+                    article[key] = link
+
+                # >
+
+                # elif (picture) <
+                elif (key == 'Picture'):
+
+                    picture = driver.find_element_by_xpath(value).value_of_css_property('background-image')
+                    picture = picture.split('"')[1]
+                    article[key] = picture
+
+                # >
+
+                # else (title, author, date) <
+                else:
+
+                    other = driver.find_element_by_xpath(value).text
+                    article[key] = other
+
+                # >
+
+            articles.append(article)
+
+    articles = articles
+    return articles
 
 
 def parentQuery(tableName, columns, primary: tuple):
