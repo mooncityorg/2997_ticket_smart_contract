@@ -4,16 +4,14 @@
     "marginLeft" : "2vh"
   },
   "calendarStyle" : {
-    "height" : "42.5vh",
+    "height" : "22.5vh",
     "borderRadius" : 10,
-    "overflow-x" : "hidden",
-    "overflow-y" : "scroll",
     "marginBottom" : "1vh",
     "backgroundColor" : "#0066cc",
     "border" : "5px solid #ffcd00"
   },
   "umkcRooNewsStyle" : {
-    "height" : "42.5vh",
+    "height" : "62.5vh",
     "borderRadius" : 10,
     "overflow-x" : "hidden",
     "overflow-y" : "scroll",
@@ -21,14 +19,16 @@
     "border" : "5px solid #ffcd00"
   },
   "umkcRooNewsCardH4Style" : {
+    "padding" : 5,
     "color" : "#ffcd00",
     "borderRadius" : 10,
-    "background" : "rgba(0, 102, 204, 0.3)"
+    "background" : "rgba(0, 102, 204, 0.5)"
   },
   "umkcRooNewsCardPStyle" : {
+    "padding" : 5,
     "color" : "#ffcd00",
     "borderRadius" : 10,
-    "background" : "rgba(0, 102, 204, 0.3)"
+    "background" : "rgba(0, 102, 204, 0.5)"
 
   },
   "umkcRooNewsCardBadgeStyle" : {
