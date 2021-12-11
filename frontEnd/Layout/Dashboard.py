@@ -47,6 +47,7 @@ def dashboardLayout(userId):
                                                   'borderRadius' : 10,
                                                   'backgroundSize' : 'cover',
                                                   'backgroundPosition' : 'center',
+                                                  'border' : '5px solid #ffcd00',
                                                   'background' : 'url({})'.format(article['Picture'])
 
                                                   },
