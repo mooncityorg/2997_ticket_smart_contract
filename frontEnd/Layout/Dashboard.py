@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 from backEnd.API.Utility import scrapeUMKCRooNews
 from dash.dependencies import Input, Output, State
 from backEnd.API.Utility import getJSON, application
-
+from frontEnd.Layout.Event import eventViewLayout
 # >
 
 
@@ -64,8 +64,8 @@ def dashboardLayout(userId):
                     # Event Create <
                     dbc.Row(style = style['eventCreateStyle'],
                             children = [
-
-                                html.H1('create')
+                                eventViewLayout(userId)
+                                # html.H1('create')
 
                             ]),
 
