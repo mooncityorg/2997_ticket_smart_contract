@@ -37,6 +37,7 @@
     "background" : "rgba(0, 102, 204, 0.5)"
   },
   "umkcRooNewsCardBadgeStyle" : {
+    "borderRadius" : 10,
     "color" : "#ffcd00"
   },
   "umkcRooNewsCardBadgeColor" : "#04487F",

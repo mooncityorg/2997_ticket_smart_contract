@@ -221,7 +221,7 @@ def loginCallback(usernameDisabled: bool,
     if (usernameDisabled):
 
         # Declaration <
-        isUser = 1 in [1] # * method *
+        isUser = 1 in [11] # * method *
         isDisabled = True if (isUser) else False
         driver = Login(usernameInput, passwordInput)
         if ((driver) and (not isUser)): driver = Authenticate(driver)
@@ -283,9 +283,9 @@ def authenticateCallback(submit: int, click: int,
         # if (passed) <
         if (driver):
 
-            # setUser(usernameInput, scrapeUser)
-            # setCourse(usernameInput, scrapeCourse)
-            return (homeLayout(usernameInput))
+            driver, user = scrapeUser(driver)
+            driver, course = scrapeCourse(driver)
+            return (homeLayout('JAD6TJ'))
 
         # >
 

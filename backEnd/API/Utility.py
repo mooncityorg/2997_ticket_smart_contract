@@ -25,7 +25,7 @@ server = application.server
 # "Driver=ODBC Driver 17 for SQL Server;" # Linux
 # "Driver={SQL Server};" # Windows
 connection_string = pyodbc.connect(
-            "Driver={SQL Server};"
+            "Driver=ODBC Driver 17 for SQL Server;"
             "Server=451project.database.windows.net;"
             "Database=451_DB;"
             "UID=_db_;"
@@ -94,11 +94,11 @@ def Login(username: str, password: str) -> bool:
     '''  '''
 
     # Declaration <
-    options = Options()
-    options.headless = True
+    #options = Options()
+    #options.headless = True
     username += '@umsystem.edu'
     setting = getJSON(file = '/backEnd/Resource/Utility.json')['Verify']
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options = options)
+    driver = webdriver.Chrome(ChromeDriverManager().install()) #, options = options)
 
     # >
 
@@ -191,7 +191,7 @@ def scrapeUser(driver):
 
     # (-> Personal Information -> Names) <
     driver.find_element_by_xpath(setting['personalInformationButton']).click(), sleep(1)
-    driver.find_element_by_xpath(setting['namesButton']).click(), sleep(1)
+    driver.find_element_by_xpath(setting['namesButton']).click(), sleep(3)
 
     # >
 
