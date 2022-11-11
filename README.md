@@ -4,10 +4,9 @@
 
 ### Installation
 ```
-cd
 git clone https://github.com/ala2q6/CS451RC.git
-
 cd CS451RC
+
 pip3 install -r requirements.txt
 pip3 install selenium
 pip3 install pyodbc
