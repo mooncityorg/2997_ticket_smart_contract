@@ -1,4 +1,4 @@
-## CS451RC
+## CS451R-C
 > [University of Missouri - Kansas City](https://www.umkc.edu): [CS451R](https://catalog.umkc.edu/search/?P=COMP-SCI%20451R): Capstone
 ##
 
